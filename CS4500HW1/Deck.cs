@@ -1,10 +1,6 @@
-﻿using CS4500HW1;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using System.Reflection;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.IO;
 using System.Drawing;
 
@@ -42,14 +38,16 @@ namespace CS4500HW1
         {
             try
             {
-                // Assuming images are stored in a folder named "CardImages" within your project's output directory
+                // Path to the runtime directory of the application
                 var assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                var imagePath = Path.Combine(assemblyPath, "CardImages", imageName);
+                // Construct the path to the image, assuming the Images folder is copied to the output directory
+                var imagePath = Path.Combine(assemblyPath ?? string.Empty, "Images", imageName);
                 return Image.FromFile(imagePath);
             }
-            catch
+            catch (Exception ex)
             {
-                // Handle exceptions or return a default image
+                // Handle exceptions or log them as needed
+                Console.WriteLine($"Error loading image: {ex.Message}");
                 return null;
             }
         }
