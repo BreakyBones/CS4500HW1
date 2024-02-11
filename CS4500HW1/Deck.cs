@@ -60,6 +60,9 @@ namespace CS4500HW1
             {
                 int cardIndex = random.Next(cards.Count);
                 dealtCards.Add(cards[cardIndex]);
+
+                // TEST: If it is building the Abbreviated Card Forms for logging
+                System.Diagnostics.Debug.WriteLine(cards[cardIndex].CardOut);
             }
             return dealtCards;
         }

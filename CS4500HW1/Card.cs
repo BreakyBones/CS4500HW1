@@ -13,11 +13,38 @@ namespace CS4500HW1
         public string Value { get; private set; }
         public Image CardImage { get; private set; }
 
+        // This is the string that will output to the file
+        public string CardOut;
+
         public Card(string suit, string value, Image cardImage)
         {
             Suit = suit;
             Value = value;
             CardImage = cardImage;
+
+            // Take the first Suit Letter and then stick the Value onto it
+            char suitLet = suit[0];
+            string valueLet;
+            switch(value)
+            {
+                case "11":
+                    valueLet = "J";
+                    break;
+                case "12":
+                    valueLet = "Q";
+                    break;
+                case "13":
+                    valueLet = "K";
+                    break;
+                case "14":
+                    valueLet = "A";
+                    break;
+                default:
+                    valueLet = value;
+                    break;
+            }
+
+            CardOut = suitLet + valueLet;
         }
     }
 }
