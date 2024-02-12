@@ -15,6 +15,7 @@ namespace CS4500HW1
         public Deck deck;
         public Form1()
         {
+            //this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
             deck = new Deck();
             //Draw.FlatStyle = FlatStyle.Flat;
@@ -35,16 +36,27 @@ namespace CS4500HW1
             //Quit.Size = new Size(150, 40); // or any other size
         }
 
-        private void quit_Click(object sender, EventArgs e) {
-        
+        private void quit_Click(object sender, EventArgs e)
+        {
+
             Close();
-        
+
         }
 
         private void draw_Click(object sender, EventArgs e)
         {
             var cards = deck.Deal(4); // Deal 4 random cards
             DisplayCards(cards); // Display these cards on the form
+        }
+
+        private void checkDuplicates(List<Card> cards)
+        {
+
+            foreach (Card card in cards)
+            {
+                if (card != null) { }
+            }
+
         }
 
         private void DisplayCards(List<Card> cards)
@@ -69,5 +81,6 @@ namespace CS4500HW1
                 MessageBox.Show("Not enough cards were dealt.");
             }
         }
+
     }
 }

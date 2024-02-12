@@ -56,9 +56,17 @@ namespace CS4500HW1
         public List<Card> Deal(int count)
         {
             List<Card> dealtCards = new List<Card>();
+            HashSet<int> dealtIndices = new HashSet<int>(); // To track indices of dealt cards
+
             for (int i = 0; i < count; i++)
             {
-                int cardIndex = random.Next(cards.Count);
+                int cardIndex;
+                do
+                {
+                    cardIndex = random.Next(cards.Count);
+                } while (dealtIndices.Contains(cardIndex)); // Keep searching until a unique index is found
+
+                dealtIndices.Add(cardIndex); // Mark this card index as dealt
                 dealtCards.Add(cards[cardIndex]);
 
                 // TEST: If it is building the Abbreviated Card Forms for logging
