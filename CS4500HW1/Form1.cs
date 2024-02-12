@@ -17,9 +17,31 @@ namespace CS4500HW1
         {
             InitializeComponent();
             deck = new Deck();
+            //Draw.FlatStyle = FlatStyle.Flat;
+            //Draw.FlatAppearance.BorderColor = Color.Gold; // border color
+            //Draw.FlatAppearance.BorderSize = 2; // border size
+            //Draw.BackColor = Color.DarkGreen;
+            //Draw.ForeColor = Color.White;
+            //Draw.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            //Draw.Size = new Size(150, 40); // or any other size
+
+            //// Example settings for a "Quit" button
+            //Quit.FlatStyle = FlatStyle.Flat;
+            //Quit.FlatAppearance.BorderColor = Color.Gold; // border color
+            //Quit.FlatAppearance.BorderSize = 2; // border size
+            //Quit.BackColor = Color.DarkRed;
+            //Quit.ForeColor = Color.White;
+            //Quit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            //Quit.Size = new Size(150, 40); // or any other size
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void quit_Click(object sender, EventArgs e) {
+        
+            Close();
+        
+        }
+
+        private void draw_Click(object sender, EventArgs e)
         {
             var cards = deck.Deal(4); // Deal 4 random cards
             DisplayCards(cards); // Display these cards on the form
