@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
+using System.IO;
 
 namespace CS4500HW1
 {
@@ -29,22 +30,33 @@ namespace CS4500HW1
             {
                 case "11":
                     valueLet = "J";
+                    CardOut = valueLet + suitLet;
                     break;
                 case "12":
                     valueLet = "Q";
+                    CardOut = valueLet + suitLet;
                     break;
                 case "13":
                     valueLet = "K";
+                    CardOut = valueLet + suitLet;
                     break;
                 case "14":
                     valueLet = "A";
+                    CardOut = valueLet + suitLet;
                     break;
                 default:
                     valueLet = value;
+                    CardOut = suitLet + valueLet;
                     break;
             }
 
-            CardOut = suitLet + valueLet;
+            
+        }
+        
+        // returns the CardOut string
+        public string Log()
+        {
+            return CardOut;
         }
     }
 }

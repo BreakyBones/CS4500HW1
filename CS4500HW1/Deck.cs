@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
 using System.Drawing;
+using System.Windows.Forms;
+
 
 namespace CS4500HW1
 {
@@ -10,7 +12,9 @@ namespace CS4500HW1
     {
         private List<Card> cards = new List<Card>();
         private Random random = new Random();
-
+        string logPath = Application.StartupPath + "Log.txt";
+        string outlog = "";
+       
         public Deck()
         {
             InitializeDeck();
@@ -18,6 +22,13 @@ namespace CS4500HW1
 
         private void InitializeDeck()
         {
+            // On startup create the Date in the log file for the session.
+            using (StreamWriter sw = File.AppendText(logPath)) {
+                sw.WriteLine(DateTime.Now.ToString("MM/dd/yyyy"));
+            }
+            
+            
+
             var suits = new[] { "Hearts", "Diamonds", "Clubs", "Spades" };
             var values = new[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11" ,"12", "13", "14" };
 
@@ -69,9 +80,20 @@ namespace CS4500HW1
                 dealtIndices.Add(cardIndex); // Mark this card index as dealt
                 dealtCards.Add(cards[cardIndex]);
 
-                // TEST: If it is building the Abbreviated Card Forms for logging
-                System.Diagnostics.Debug.WriteLine(cards[cardIndex].CardOut);
+                // Log the cards to string for later use
+                if (i == count - 1)
+                {
+                    outlog = outlog + cards[cardIndex].Log();
+                }
+                else { outlog = outlog + cards[cardIndex].Log() + ","; }
             }
+            // Write the logged cards to the log file
+            using(StreamWriter sw = File.AppendText(logPath))
+            {
+                sw.WriteLine(outlog);
+            }
+            System.Diagnostics.Debug.WriteLine(outlog);
+            outlog = "";
             return dealtCards;
         }
 
