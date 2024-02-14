@@ -12,7 +12,7 @@ namespace CS4500HW1
     {
         private List<Card> cards = new List<Card>();
         private Random random = new Random();
-        string logPath = Application.StartupPath + "Log.txt";
+        string logPath = Application.StartupPath + "DealtCards.txt";
         string outlog = "";
        
         public Deck()
