@@ -1,4 +1,6 @@
-﻿using System;
+﻿//For the images, The background of the form is from google images while, the card backgrounds were a white box, so I had DALL-E generate one for me and I used that as the card background
+//Default winforms settings and initialization, rest were simple functions only searched syntax
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,36 +12,19 @@ using System.Windows.Forms;
 
 namespace CS4500HW1
 {
-    public partial class Form1 : Form
+    public partial class DrawCard : Form
     {
         public Deck deck;
-        public Form1()
+        public DrawCard()
         {
-            //this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
             deck = new Deck();
-            //Draw.FlatStyle = FlatStyle.Flat;
-            //Draw.FlatAppearance.BorderColor = Color.Gold; // border color
-            //Draw.FlatAppearance.BorderSize = 2; // border size
-            //Draw.BackColor = Color.DarkGreen;
-            //Draw.ForeColor = Color.White;
-            //Draw.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            //Draw.Size = new Size(150, 40); // or any other size
-
-            //// Example settings for a "Quit" button
-            //Quit.FlatStyle = FlatStyle.Flat;
-            //Quit.FlatAppearance.BorderColor = Color.Gold; // border color
-            //Quit.FlatAppearance.BorderSize = 2; // border size
-            //Quit.BackColor = Color.DarkRed;
-            //Quit.ForeColor = Color.White;
-            //Quit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            //Quit.Size = new Size(150, 40); // or any other size
         }
 
         private void quit_Click(object sender, EventArgs e)
         {
 
-            Close();
+            Application.Exit();
 
         }
 
@@ -47,16 +32,6 @@ namespace CS4500HW1
         {
             var cards = deck.Deal(4); // Deal 4 random cards
             DisplayCards(cards); // Display these cards on the form
-        }
-
-        private void checkDuplicates(List<Card> cards)
-        {
-
-            foreach (Card card in cards)
-            {
-                if (card != null) { }
-            }
-
         }
 
         private void DisplayCards(List<Card> cards)

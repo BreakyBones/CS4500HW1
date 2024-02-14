@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace CS4500HW1
 {
-    partial class Form1
+    partial class DrawCard
     {
         /// <summary>
         ///  Required designer variable.
@@ -32,7 +32,7 @@ namespace CS4500HW1
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DrawCard));
             Draw = new Button();
             Quit = new Button();
             pictureBox1 = new PictureBox();
