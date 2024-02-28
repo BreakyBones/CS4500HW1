@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DrawCard.resx~RFa7df911.TMP" />
+    <None Remove="DrawCard.resx~RFa839ecf.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Images\" />
   </ItemGroup>
 

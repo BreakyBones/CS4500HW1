@@ -4,6 +4,7 @@ using System.Reflection;
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 
 namespace CS4500HW1
@@ -63,40 +64,60 @@ namespace CS4500HW1
             }
         }
 
-        //Method for loading dealing cards
-        public List<Card> Deal(int count)
+        public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
             List<Card> dealtCards = new List<Card>();
-            HashSet<int> dealtIndices = new HashSet<int>(); // To track indices of dealt cards
+            outlog = "";
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < selectedSuits.Length; i++)
             {
-                int cardIndex;
-                do
-                {
-                    cardIndex = random.Next(cards.Count);
-                } while (dealtIndices.Contains(cardIndex)); // Keep searching until a unique index is found
+                // Map face card values to numbers
+                string value = MapFaceCardValue(selectedValues[i]);
+                string suit = selectedSuits[i];
 
-                dealtIndices.Add(cardIndex); // Mark this card index as dealt
-                dealtCards.Add(cards[cardIndex]);
+                // Find the card with the matching suit and value
+                Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
 
-                // Log the cards to string for later use
-                if (i == count - 1)
+                if (cardToDeal != null)
                 {
-                    outlog = outlog + cards[cardIndex].Log();
+                    dealtCards.Add(cardToDeal);
+                    outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                 }
-                else { outlog = outlog + cards[cardIndex].Log() + ","; }
+                else
+                {
+                    // If a card is not found, write a message to the debug output
+                    System.Diagnostics.Debug.WriteLine($"Card with suit {suit} and value {value} not found or already dealt.");
+                }
             }
-            // Write the logged cards to the log file
-            using(StreamWriter sw = File.AppendText(logPath))
+
+            // Log the cards dealt
+            using (StreamWriter sw = File.AppendText(logPath))
             {
                 sw.WriteLine(outlog);
             }
+
             System.Diagnostics.Debug.WriteLine(outlog);
-            outlog = "";
+
+            // Check if the correct number of cards were dealt
+            if (dealtCards.Count != selectedSuits.Length)
+            {
+                throw new InvalidOperationException("Not enough cards were dealt.");
+            }
+
             return dealtCards;
         }
 
+        private string MapFaceCardValue(string value)
+        {
+            switch (value)
+            {
+                case "J": return "11";
+                case "Q": return "12";
+                case "K": return "13";
+                case "A": return "14";
+                default: return value; // For number cards, the value does not change
+            }
+        }
 
     }
 }
