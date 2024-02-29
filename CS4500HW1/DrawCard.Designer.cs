@@ -172,6 +172,7 @@ namespace CS4500HW1
             // comboBox1
             // 
             comboBox1.BackColor = Color.Khaki;
+            comboBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(60, 456);
             comboBox1.Name = "comboBox1";
@@ -181,6 +182,7 @@ namespace CS4500HW1
             // comboBox2
             // 
             comboBox2.BackColor = Color.Khaki;
+            comboBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(322, 456);
             comboBox2.Name = "comboBox2";
@@ -190,6 +192,7 @@ namespace CS4500HW1
             // comboBox3
             // 
             comboBox3.BackColor = Color.Khaki;
+            comboBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
             comboBox3.Location = new Point(578, 456);
             comboBox3.Name = "comboBox3";
@@ -199,6 +202,7 @@ namespace CS4500HW1
             // comboBox4
             // 
             comboBox4.BackColor = Color.Khaki;
+            comboBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox4.FormattingEnabled = true;
             comboBox4.Location = new Point(843, 456);
             comboBox4.Name = "comboBox4";
@@ -214,11 +218,10 @@ namespace CS4500HW1
             pictureBoxC1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC1.TabIndex = 25;
             pictureBoxC1.TabStop = false;
+            pictureBoxC1.Click += PictureBoxSuit_Click;
             // 
             // pictureBoxD1
             // 
-
-
             pictureBoxD1.Image = (Image)resources.GetObject("pictureBoxD1.Image");
             pictureBoxD1.Location = new Point(109, 397);
             pictureBoxD1.Name = "pictureBoxD1";
@@ -226,6 +229,7 @@ namespace CS4500HW1
             pictureBoxD1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD1.TabIndex = 24;
             pictureBoxD1.TabStop = false;
+            pictureBoxD1.Click += PictureBoxSuit_Click;
             // 
             // pictureBoxH1
             // 
@@ -236,6 +240,7 @@ namespace CS4500HW1
             pictureBoxH1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH1.TabIndex = 23;
             pictureBoxH1.TabStop = false;
+            pictureBoxH1.Click += PictureBoxSuit_Click;
             // 
             // pictureBoxS1
             // 
@@ -246,6 +251,7 @@ namespace CS4500HW1
             pictureBoxS1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS1.TabIndex = 26;
             pictureBoxS1.TabStop = false;
+            pictureBoxS1.Click += PictureBoxSuit_Click;
             // 
             // pictureBoxS2
             // 
@@ -366,12 +372,6 @@ namespace CS4500HW1
             pictureBoxH4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH4.TabIndex = 35;
             pictureBoxH4.TabStop = false;
-
-            pictureBoxH1.Click += PictureBoxSuit_Click;
-            pictureBoxD1.Click += PictureBoxSuit_Click;
-            pictureBoxC1.Click += PictureBoxSuit_Click;
-            pictureBoxS1.Click += PictureBoxSuit_Click;
-
             // 
             // DrawCard
             // 
