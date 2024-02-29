@@ -1,4 +1,6 @@
-﻿using System;
+﻿// This makes sure that the values of 11, 12, 13, 14 are associated with J, Q, K, A respectively
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;

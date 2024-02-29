@@ -44,9 +44,10 @@
             NextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             NextBtn.Font = new System.Drawing.Font("Impact", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             NextBtn.ForeColor = System.Drawing.Color.White;
-            NextBtn.Location = new System.Drawing.Point(426, 277);
+            NextBtn.Location = new System.Drawing.Point(487, 369);
+            NextBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             NextBtn.Name = "NextBtn";
-            NextBtn.Size = new System.Drawing.Size(200, 40);
+            NextBtn.Size = new System.Drawing.Size(229, 53);
             NextBtn.TabIndex = 1;
             NextBtn.Text = "Next";
             NextBtn.UseVisualStyleBackColor = false;
@@ -58,9 +59,9 @@
             purposeTitle.BackColor = System.Drawing.Color.Transparent;
             purposeTitle.Font = new System.Drawing.Font("MS Gothic", 72F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             purposeTitle.ForeColor = System.Drawing.Color.Gold;
-            purposeTitle.Location = new System.Drawing.Point(311, 18);
+            purposeTitle.Location = new System.Drawing.Point(355, 24);
             purposeTitle.Name = "purposeTitle";
-            purposeTitle.Size = new System.Drawing.Size(434, 97);
+            purposeTitle.Size = new System.Drawing.Size(538, 120);
             purposeTitle.TabIndex = 7;
             purposeTitle.Text = "Welcome!";
             purposeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -71,22 +72,23 @@
             label1.BackColor = System.Drawing.Color.Transparent;
             label1.Font = new System.Drawing.Font("Constantia", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             label1.ForeColor = System.Drawing.Color.Gold;
-            label1.Location = new System.Drawing.Point(65, 152);
+            label1.Location = new System.Drawing.Point(12, 144);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(956, 66);
+            label1.Size = new System.Drawing.Size(1160, 164);
             label1.TabIndex = 8;
-            label1.Text = "The purpose of the program is to randomly draw 4 different cards by clicking the \r\ndraw cards button and log the outputted cards to a text file(CardsDealt.txt). ";
+            label1.Text = resources.GetString("label1.Text");
             label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // StartupForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new System.Drawing.Size(1037, 468);
+            ClientSize = new System.Drawing.Size(1185, 624);
             Controls.Add(label1);
             Controls.Add(purposeTitle);
             Controls.Add(NextBtn);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "StartupForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "StartupForm";

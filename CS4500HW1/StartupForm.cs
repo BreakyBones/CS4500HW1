@@ -1,4 +1,5 @@
-﻿using System;
+﻿// This is the designer to display the welcome message and a few instructions
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

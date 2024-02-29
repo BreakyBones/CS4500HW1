@@ -1,4 +1,8 @@
-﻿using System;
+﻿// This subfile makes sure that four cards are selected before sending the information
+// for those four cards and the date over to the external file, CardsDealt.txt.
+// This subfile also makes sure that the image holds the correct image for the card.
+
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
@@ -13,7 +17,7 @@ namespace CS4500HW1
     {
         private List<Card> cards = new List<Card>();
         private Random random = new Random();
-        string logPath = Application.StartupPath + "DealtCards.txt";
+        string logPath = Application.StartupPath + "CardsDealt.txt";
         string outlog = "";
        
         public Deck()

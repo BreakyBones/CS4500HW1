@@ -1,4 +1,5 @@
-﻿using System;
+﻿// This manages our files
+using System;
 using System.Collections.Generic;
 using System.Text;
 
