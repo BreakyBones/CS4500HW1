@@ -180,6 +180,7 @@ namespace CS4500HW1
             comboBox1.BackColor = Color.Khaki;
             comboBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Please select value" });
             comboBox1.Location = new Point(69, 608);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
@@ -191,6 +192,7 @@ namespace CS4500HW1
             comboBox2.BackColor = Color.Khaki;
             comboBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Please select value" });
             comboBox2.Location = new Point(368, 608);
             comboBox2.Margin = new Padding(3, 4, 3, 4);
             comboBox2.Name = "comboBox2";
@@ -202,6 +204,7 @@ namespace CS4500HW1
             comboBox3.BackColor = Color.Khaki;
             comboBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "Please select value" });
             comboBox3.Location = new Point(661, 608);
             comboBox3.Margin = new Padding(3, 4, 3, 4);
             comboBox3.Name = "comboBox3";
@@ -213,6 +216,7 @@ namespace CS4500HW1
             comboBox4.BackColor = Color.Khaki;
             comboBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox4.FormattingEnabled = true;
+            comboBox4.Items.AddRange(new object[] { "Please select value" });
             comboBox4.Location = new Point(963, 608);
             comboBox4.Margin = new Padding(3, 4, 3, 4);
             comboBox4.Name = "comboBox4";
