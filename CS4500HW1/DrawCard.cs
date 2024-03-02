@@ -175,8 +175,8 @@ namespace CS4500HW1
             // Clear highlight from the previous selection for this specific card
             if (selectedPictureBoxes[cardIndex] != null && selectedPictureBoxes[cardIndex] != pictureBox)
             {
-                selectedPictureBoxes[cardIndex].BackColor = Color.Transparent;
-                selectedPictureBoxes[cardIndex].BorderStyle = BorderStyle.None;
+                selectedPictureBoxes[cardIndex].BackColor = Color.White; //changed to white color so you can see the border easily
+                selectedPictureBoxes[cardIndex].BorderStyle = BorderStyle.FixedSingle; //keeps border
             }
 
             // Highlight the new selection
@@ -198,5 +198,14 @@ namespace CS4500HW1
             }
         }
 
+        private void pictureBoxH2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxS2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
