@@ -92,10 +92,10 @@ namespace CS4500HW1
             Draw.FlatStyle = FlatStyle.Flat;
             Draw.Font = new Font("Impact", 16F, FontStyle.Regular, GraphicsUnit.Point);
             Draw.ForeColor = Color.White;
-            Draw.Location = new Point(462, 900);
-            Draw.Margin = new Padding(4, 5, 4, 5);
+            Draw.Location = new Point(370, 720);
+            Draw.Margin = new Padding(3, 4, 3, 4);
             Draw.Name = "Draw";
-            Draw.Size = new Size(286, 66);
+            Draw.Size = new Size(229, 53);
             Draw.TabIndex = 0;
             Draw.Text = "Confirm 4 cards";
             Draw.UseVisualStyleBackColor = false;
@@ -109,10 +109,10 @@ namespace CS4500HW1
             Quit.FlatStyle = FlatStyle.Flat;
             Quit.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point);
             Quit.ForeColor = Color.White;
-            Quit.Location = new Point(826, 900);
-            Quit.Margin = new Padding(4, 5, 4, 5);
+            Quit.Location = new Point(661, 720);
+            Quit.Margin = new Padding(3, 4, 3, 4);
             Quit.Name = "Quit";
-            Quit.Size = new Size(286, 66);
+            Quit.Size = new Size(229, 53);
             Quit.TabIndex = 1;
             Quit.Text = "Quit";
             Quit.UseVisualStyleBackColor = false;
@@ -122,10 +122,10 @@ namespace CS4500HW1
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(86, 211);
-            pictureBox1.Margin = new Padding(4, 5, 4, 5);
+            pictureBox1.Location = new Point(69, 169);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(276, 425);
+            pictureBox1.Size = new Size(221, 340);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
@@ -133,10 +133,10 @@ namespace CS4500HW1
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.Location = new Point(461, 211);
-            pictureBox2.Margin = new Padding(4, 5, 4, 5);
+            pictureBox2.Location = new Point(369, 169);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(276, 425);
+            pictureBox2.Size = new Size(221, 340);
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
             // 
@@ -144,10 +144,10 @@ namespace CS4500HW1
             // 
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(822, 211);
-            pictureBox3.Margin = new Padding(4, 5, 4, 5);
+            pictureBox3.Location = new Point(658, 169);
+            pictureBox3.Margin = new Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(276, 425);
+            pictureBox3.Size = new Size(221, 340);
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
             // 
@@ -155,10 +155,10 @@ namespace CS4500HW1
             // 
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Location = new Point(1204, 211);
-            pictureBox4.Margin = new Padding(4, 5, 4, 5);
+            pictureBox4.Location = new Point(963, 169);
+            pictureBox4.Margin = new Padding(3, 4, 3, 4);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(276, 425);
+            pictureBox4.Size = new Size(221, 340);
             pictureBox4.TabIndex = 5;
             pictureBox4.TabStop = false;
             // 
@@ -168,10 +168,9 @@ namespace CS4500HW1
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("MS Gothic", 72F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label1.ForeColor = Color.Gold;
-            label1.Location = new Point(328, 21);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(265, 20);
             label1.Name = "label1";
-            label1.Size = new Size(936, 144);
+            label1.Size = new Size(782, 120);
             label1.TabIndex = 6;
             label1.Text = "CARD SHUFFLE";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -182,10 +181,10 @@ namespace CS4500HW1
             comboBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Please select value" });
-            comboBox1.Location = new Point(86, 760);
-            comboBox1.Margin = new Padding(4, 5, 4, 5);
+            comboBox1.Location = new Point(69, 608);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(274, 33);
+            comboBox1.Size = new Size(220, 28);
             comboBox1.TabIndex = 7;
             // 
             // comboBox2
@@ -194,10 +193,10 @@ namespace CS4500HW1
             comboBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "Please select value" });
-            comboBox2.Location = new Point(460, 760);
-            comboBox2.Margin = new Padding(4, 5, 4, 5);
+            comboBox2.Location = new Point(368, 608);
+            comboBox2.Margin = new Padding(3, 4, 3, 4);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(275, 33);
+            comboBox2.Size = new Size(221, 28);
             comboBox2.TabIndex = 8;
             // 
             // comboBox3
@@ -206,10 +205,10 @@ namespace CS4500HW1
             comboBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "Please select value" });
-            comboBox3.Location = new Point(826, 760);
-            comboBox3.Margin = new Padding(4, 5, 4, 5);
+            comboBox3.Location = new Point(661, 608);
+            comboBox3.Margin = new Padding(3, 4, 3, 4);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(272, 33);
+            comboBox3.Size = new Size(218, 28);
             comboBox3.TabIndex = 9;
             // 
             // comboBox4
@@ -218,20 +217,20 @@ namespace CS4500HW1
             comboBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox4.FormattingEnabled = true;
             comboBox4.Items.AddRange(new object[] { "Please select value" });
-            comboBox4.Location = new Point(1204, 760);
-            comboBox4.Margin = new Padding(4, 5, 4, 5);
+            comboBox4.Location = new Point(963, 608);
+            comboBox4.Margin = new Padding(3, 4, 3, 4);
             comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(274, 33);
+            comboBox4.Size = new Size(220, 28);
             comboBox4.TabIndex = 10;
             // 
             // pictureBoxC1
             // 
             pictureBoxC1.Image = (Image)resources.GetObject("pictureBoxC1.Image");
-            pictureBoxC1.Location = new Point(229, 661);
-            pictureBoxC1.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxC1.Location = new Point(183, 529);
+            pictureBoxC1.Margin = new Padding(3, 4, 3, 4);
             pictureBoxC1.Name = "pictureBoxC1";
-            pictureBoxC1.Padding = new Padding(1);
-            pictureBoxC1.Size = new Size(60, 65);
+            pictureBoxC1.Padding = new Padding(3);
+            pictureBoxC1.Size = new Size(48, 52);
             pictureBoxC1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC1.TabIndex = 25;
             pictureBoxC1.TabStop = false;
@@ -240,11 +239,11 @@ namespace CS4500HW1
             // pictureBoxD1
             // 
             pictureBoxD1.Image = (Image)resources.GetObject("pictureBoxD1.Image");
-            pictureBoxD1.Location = new Point(156, 661);
-            pictureBoxD1.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxD1.Location = new Point(125, 529);
+            pictureBoxD1.Margin = new Padding(3, 4, 3, 4);
             pictureBoxD1.Name = "pictureBoxD1";
-            pictureBoxD1.Padding = new Padding(1);
-            pictureBoxD1.Size = new Size(60, 65);
+            pictureBoxD1.Padding = new Padding(3);
+            pictureBoxD1.Size = new Size(48, 52);
             pictureBoxD1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD1.TabIndex = 24;
             pictureBoxD1.TabStop = false;
@@ -253,11 +252,11 @@ namespace CS4500HW1
             // pictureBoxH1
             // 
             pictureBoxH1.Image = (Image)resources.GetObject("pictureBoxH1.Image");
-            pictureBoxH1.Location = new Point(84, 661);
-            pictureBoxH1.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxH1.Location = new Point(67, 529);
+            pictureBoxH1.Margin = new Padding(3, 4, 3, 4);
             pictureBoxH1.Name = "pictureBoxH1";
-            pictureBoxH1.Padding = new Padding(1);
-            pictureBoxH1.Size = new Size(60, 65);
+            pictureBoxH1.Padding = new Padding(3);
+            pictureBoxH1.Size = new Size(48, 52);
             pictureBoxH1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH1.TabIndex = 23;
             pictureBoxH1.TabStop = false;
@@ -266,11 +265,11 @@ namespace CS4500HW1
             // pictureBoxS1
             // 
             pictureBoxS1.Image = (Image)resources.GetObject("pictureBoxS1.Image");
-            pictureBoxS1.Location = new Point(301, 661);
-            pictureBoxS1.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxS1.Location = new Point(241, 529);
+            pictureBoxS1.Margin = new Padding(3, 4, 3, 4);
             pictureBoxS1.Name = "pictureBoxS1";
-            pictureBoxS1.Padding = new Padding(1);
-            pictureBoxS1.Size = new Size(60, 65);
+            pictureBoxS1.Padding = new Padding(3);
+            pictureBoxS1.Size = new Size(48, 52);
             pictureBoxS1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS1.TabIndex = 26;
             pictureBoxS1.TabStop = false;
@@ -279,11 +278,11 @@ namespace CS4500HW1
             // pictureBoxS2
             // 
             pictureBoxS2.Image = (Image)resources.GetObject("pictureBoxS2.Image");
-            pictureBoxS2.Location = new Point(678, 661);
-            pictureBoxS2.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxS2.Location = new Point(542, 529);
+            pictureBoxS2.Margin = new Padding(3, 4, 3, 4);
             pictureBoxS2.Name = "pictureBoxS2";
-            pictureBoxS2.Padding = new Padding(1);
-            pictureBoxS2.Size = new Size(60, 65);
+            pictureBoxS2.Padding = new Padding(3);
+            pictureBoxS2.Size = new Size(48, 52);
             pictureBoxS2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS2.TabIndex = 30;
             pictureBoxS2.TabStop = false;
@@ -292,11 +291,11 @@ namespace CS4500HW1
             // pictureBoxC2
             // 
             pictureBoxC2.Image = (Image)resources.GetObject("pictureBoxC2.Image");
-            pictureBoxC2.Location = new Point(604, 661);
-            pictureBoxC2.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxC2.Location = new Point(483, 529);
+            pictureBoxC2.Margin = new Padding(3, 4, 3, 4);
             pictureBoxC2.Name = "pictureBoxC2";
-            pictureBoxC2.Padding = new Padding(1);
-            pictureBoxC2.Size = new Size(60, 65);
+            pictureBoxC2.Padding = new Padding(3);
+            pictureBoxC2.Size = new Size(48, 52);
             pictureBoxC2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC2.TabIndex = 29;
             pictureBoxC2.TabStop = false;
@@ -304,11 +303,11 @@ namespace CS4500HW1
             // pictureBoxD2
             // 
             pictureBoxD2.Image = (Image)resources.GetObject("pictureBoxD2.Image");
-            pictureBoxD2.Location = new Point(531, 661);
-            pictureBoxD2.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxD2.Location = new Point(425, 529);
+            pictureBoxD2.Margin = new Padding(3, 4, 3, 4);
             pictureBoxD2.Name = "pictureBoxD2";
-            pictureBoxD2.Padding = new Padding(1);
-            pictureBoxD2.Size = new Size(60, 65);
+            pictureBoxD2.Padding = new Padding(3);
+            pictureBoxD2.Size = new Size(48, 52);
             pictureBoxD2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD2.TabIndex = 28;
             pictureBoxD2.TabStop = false;
@@ -316,11 +315,11 @@ namespace CS4500HW1
             // pictureBoxH2
             // 
             pictureBoxH2.Image = (Image)resources.GetObject("pictureBoxH2.Image");
-            pictureBoxH2.Location = new Point(460, 661);
-            pictureBoxH2.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxH2.Location = new Point(368, 529);
+            pictureBoxH2.Margin = new Padding(3, 4, 3, 4);
             pictureBoxH2.Name = "pictureBoxH2";
-            pictureBoxH2.Padding = new Padding(1);
-            pictureBoxH2.Size = new Size(60, 65);
+            pictureBoxH2.Padding = new Padding(3);
+            pictureBoxH2.Size = new Size(48, 52);
             pictureBoxH2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH2.TabIndex = 27;
             pictureBoxH2.TabStop = false;
@@ -329,11 +328,11 @@ namespace CS4500HW1
             // pictureBoxS3
             // 
             pictureBoxS3.Image = (Image)resources.GetObject("pictureBoxS3.Image");
-            pictureBoxS3.Location = new Point(1038, 661);
-            pictureBoxS3.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxS3.Location = new Point(830, 529);
+            pictureBoxS3.Margin = new Padding(3, 4, 3, 4);
             pictureBoxS3.Name = "pictureBoxS3";
-            pictureBoxS3.Padding = new Padding(1);
-            pictureBoxS3.Size = new Size(60, 65);
+            pictureBoxS3.Padding = new Padding(3);
+            pictureBoxS3.Size = new Size(48, 52);
             pictureBoxS3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS3.TabIndex = 34;
             pictureBoxS3.TabStop = false;
@@ -341,11 +340,11 @@ namespace CS4500HW1
             // pictureBoxC3
             // 
             pictureBoxC3.Image = (Image)resources.GetObject("pictureBoxC3.Image");
-            pictureBoxC3.Location = new Point(964, 661);
-            pictureBoxC3.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxC3.Location = new Point(771, 529);
+            pictureBoxC3.Margin = new Padding(3, 4, 3, 4);
             pictureBoxC3.Name = "pictureBoxC3";
-            pictureBoxC3.Padding = new Padding(1);
-            pictureBoxC3.Size = new Size(60, 65);
+            pictureBoxC3.Padding = new Padding(3);
+            pictureBoxC3.Size = new Size(48, 52);
             pictureBoxC3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC3.TabIndex = 33;
             pictureBoxC3.TabStop = false;
@@ -353,11 +352,11 @@ namespace CS4500HW1
             // pictureBoxD3
             // 
             pictureBoxD3.Image = (Image)resources.GetObject("pictureBoxD3.Image");
-            pictureBoxD3.Location = new Point(891, 661);
-            pictureBoxD3.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxD3.Location = new Point(713, 529);
+            pictureBoxD3.Margin = new Padding(3, 4, 3, 4);
             pictureBoxD3.Name = "pictureBoxD3";
-            pictureBoxD3.Padding = new Padding(1);
-            pictureBoxD3.Size = new Size(60, 65);
+            pictureBoxD3.Padding = new Padding(3);
+            pictureBoxD3.Size = new Size(48, 52);
             pictureBoxD3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD3.TabIndex = 32;
             pictureBoxD3.TabStop = false;
@@ -365,11 +364,11 @@ namespace CS4500HW1
             // pictureBoxH3
             // 
             pictureBoxH3.Image = (Image)resources.GetObject("pictureBoxH3.Image");
-            pictureBoxH3.Location = new Point(820, 661);
-            pictureBoxH3.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxH3.Location = new Point(656, 529);
+            pictureBoxH3.Margin = new Padding(3, 4, 3, 4);
             pictureBoxH3.Name = "pictureBoxH3";
-            pictureBoxH3.Padding = new Padding(1);
-            pictureBoxH3.Size = new Size(60, 65);
+            pictureBoxH3.Padding = new Padding(3);
+            pictureBoxH3.Size = new Size(48, 52);
             pictureBoxH3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH3.TabIndex = 31;
             pictureBoxH3.TabStop = false;
@@ -377,11 +376,11 @@ namespace CS4500HW1
             // pictureBoxS4
             // 
             pictureBoxS4.Image = (Image)resources.GetObject("pictureBoxS4.Image");
-            pictureBoxS4.Location = new Point(1419, 661);
-            pictureBoxS4.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxS4.Location = new Point(1135, 529);
+            pictureBoxS4.Margin = new Padding(3, 4, 3, 4);
             pictureBoxS4.Name = "pictureBoxS4";
-            pictureBoxS4.Padding = new Padding(1);
-            pictureBoxS4.Size = new Size(60, 65);
+            pictureBoxS4.Padding = new Padding(3);
+            pictureBoxS4.Size = new Size(48, 52);
             pictureBoxS4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS4.TabIndex = 38;
             pictureBoxS4.TabStop = false;
@@ -389,11 +388,11 @@ namespace CS4500HW1
             // pictureBoxC4
             // 
             pictureBoxC4.Image = (Image)resources.GetObject("pictureBoxC4.Image");
-            pictureBoxC4.Location = new Point(1346, 661);
-            pictureBoxC4.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxC4.Location = new Point(1077, 529);
+            pictureBoxC4.Margin = new Padding(3, 4, 3, 4);
             pictureBoxC4.Name = "pictureBoxC4";
-            pictureBoxC4.Padding = new Padding(1);
-            pictureBoxC4.Size = new Size(60, 65);
+            pictureBoxC4.Padding = new Padding(3);
+            pictureBoxC4.Size = new Size(48, 52);
             pictureBoxC4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC4.TabIndex = 37;
             pictureBoxC4.TabStop = false;
@@ -401,11 +400,11 @@ namespace CS4500HW1
             // pictureBoxD4
             // 
             pictureBoxD4.Image = (Image)resources.GetObject("pictureBoxD4.Image");
-            pictureBoxD4.Location = new Point(1272, 661);
-            pictureBoxD4.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxD4.Location = new Point(1018, 529);
+            pictureBoxD4.Margin = new Padding(3, 4, 3, 4);
             pictureBoxD4.Name = "pictureBoxD4";
-            pictureBoxD4.Padding = new Padding(1);
-            pictureBoxD4.Size = new Size(60, 65);
+            pictureBoxD4.Padding = new Padding(3);
+            pictureBoxD4.Size = new Size(48, 52);
             pictureBoxD4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD4.TabIndex = 36;
             pictureBoxD4.TabStop = false;
@@ -413,21 +412,21 @@ namespace CS4500HW1
             // pictureBoxH4
             // 
             pictureBoxH4.Image = (Image)resources.GetObject("pictureBoxH4.Image");
-            pictureBoxH4.Location = new Point(1201, 661);
-            pictureBoxH4.Margin = new Padding(4, 5, 4, 5);
+            pictureBoxH4.Location = new Point(961, 529);
+            pictureBoxH4.Margin = new Padding(3, 4, 3, 4);
             pictureBoxH4.Name = "pictureBoxH4";
-            pictureBoxH4.Padding = new Padding(1);
-            pictureBoxH4.Size = new Size(60, 65);
+            pictureBoxH4.Padding = new Padding(3);
+            pictureBoxH4.Size = new Size(48, 52);
             pictureBoxH4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH4.TabIndex = 35;
             pictureBoxH4.TabStop = false;
             // 
             // DrawCard
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1561, 1029);
+            ClientSize = new Size(1249, 823);
             Controls.Add(pictureBoxS4);
             Controls.Add(pictureBoxC4);
             Controls.Add(pictureBoxD4);
@@ -455,8 +454,9 @@ namespace CS4500HW1
             Controls.Add(pictureBox1);
             Controls.Add(Quit);
             Controls.Add(Draw);
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "DrawCard";
+            Padding = new Padding(3);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CARD GAME";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
