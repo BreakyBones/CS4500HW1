@@ -229,6 +229,7 @@ namespace CS4500HW1
             pictureBoxC1.Location = new Point(183, 529);
             pictureBoxC1.Margin = new Padding(3, 4, 3, 4);
             pictureBoxC1.Name = "pictureBoxC1";
+            pictureBoxC1.Padding = new Padding(5);
             pictureBoxC1.Size = new Size(48, 52);
             pictureBoxC1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC1.TabIndex = 25;
@@ -241,6 +242,7 @@ namespace CS4500HW1
             pictureBoxD1.Location = new Point(125, 529);
             pictureBoxD1.Margin = new Padding(3, 4, 3, 4);
             pictureBoxD1.Name = "pictureBoxD1";
+            pictureBoxD1.Padding = new Padding(5);
             pictureBoxD1.Size = new Size(48, 52);
             pictureBoxD1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD1.TabIndex = 24;
@@ -253,6 +255,7 @@ namespace CS4500HW1
             pictureBoxH1.Location = new Point(67, 529);
             pictureBoxH1.Margin = new Padding(3, 4, 3, 4);
             pictureBoxH1.Name = "pictureBoxH1";
+            pictureBoxH1.Padding = new Padding(5);
             pictureBoxH1.Size = new Size(48, 52);
             pictureBoxH1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH1.TabIndex = 23;
@@ -265,6 +268,7 @@ namespace CS4500HW1
             pictureBoxS1.Location = new Point(241, 529);
             pictureBoxS1.Margin = new Padding(3, 4, 3, 4);
             pictureBoxS1.Name = "pictureBoxS1";
+            pictureBoxS1.Padding = new Padding(5);
             pictureBoxS1.Size = new Size(48, 52);
             pictureBoxS1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS1.TabIndex = 26;
@@ -277,6 +281,7 @@ namespace CS4500HW1
             pictureBoxS2.Location = new Point(542, 529);
             pictureBoxS2.Margin = new Padding(3, 4, 3, 4);
             pictureBoxS2.Name = "pictureBoxS2";
+            pictureBoxS2.Padding = new Padding(5);
             pictureBoxS2.Size = new Size(48, 52);
             pictureBoxS2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS2.TabIndex = 30;
@@ -288,6 +293,7 @@ namespace CS4500HW1
             pictureBoxC2.Location = new Point(483, 529);
             pictureBoxC2.Margin = new Padding(3, 4, 3, 4);
             pictureBoxC2.Name = "pictureBoxC2";
+            pictureBoxC2.Padding = new Padding(5);
             pictureBoxC2.Size = new Size(48, 52);
             pictureBoxC2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC2.TabIndex = 29;
@@ -299,6 +305,7 @@ namespace CS4500HW1
             pictureBoxD2.Location = new Point(425, 529);
             pictureBoxD2.Margin = new Padding(3, 4, 3, 4);
             pictureBoxD2.Name = "pictureBoxD2";
+            pictureBoxD2.Padding = new Padding(5);
             pictureBoxD2.Size = new Size(48, 52);
             pictureBoxD2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD2.TabIndex = 28;
@@ -310,6 +317,7 @@ namespace CS4500HW1
             pictureBoxH2.Location = new Point(368, 529);
             pictureBoxH2.Margin = new Padding(3, 4, 3, 4);
             pictureBoxH2.Name = "pictureBoxH2";
+            pictureBoxH2.Padding = new Padding(5);
             pictureBoxH2.Size = new Size(48, 52);
             pictureBoxH2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH2.TabIndex = 27;
@@ -321,6 +329,7 @@ namespace CS4500HW1
             pictureBoxS3.Location = new Point(830, 529);
             pictureBoxS3.Margin = new Padding(3, 4, 3, 4);
             pictureBoxS3.Name = "pictureBoxS3";
+            pictureBoxS3.Padding = new Padding(5);
             pictureBoxS3.Size = new Size(48, 52);
             pictureBoxS3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS3.TabIndex = 34;
@@ -332,6 +341,7 @@ namespace CS4500HW1
             pictureBoxC3.Location = new Point(771, 529);
             pictureBoxC3.Margin = new Padding(3, 4, 3, 4);
             pictureBoxC3.Name = "pictureBoxC3";
+            pictureBoxC3.Padding = new Padding(5);
             pictureBoxC3.Size = new Size(48, 52);
             pictureBoxC3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC3.TabIndex = 33;
@@ -343,6 +353,7 @@ namespace CS4500HW1
             pictureBoxD3.Location = new Point(713, 529);
             pictureBoxD3.Margin = new Padding(3, 4, 3, 4);
             pictureBoxD3.Name = "pictureBoxD3";
+            pictureBoxD3.Padding = new Padding(5);
             pictureBoxD3.Size = new Size(48, 52);
             pictureBoxD3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD3.TabIndex = 32;
@@ -354,6 +365,7 @@ namespace CS4500HW1
             pictureBoxH3.Location = new Point(656, 529);
             pictureBoxH3.Margin = new Padding(3, 4, 3, 4);
             pictureBoxH3.Name = "pictureBoxH3";
+            pictureBoxH3.Padding = new Padding(5);
             pictureBoxH3.Size = new Size(48, 52);
             pictureBoxH3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH3.TabIndex = 31;
@@ -365,6 +377,7 @@ namespace CS4500HW1
             pictureBoxS4.Location = new Point(1135, 529);
             pictureBoxS4.Margin = new Padding(3, 4, 3, 4);
             pictureBoxS4.Name = "pictureBoxS4";
+            pictureBoxS4.Padding = new Padding(5);
             pictureBoxS4.Size = new Size(48, 52);
             pictureBoxS4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS4.TabIndex = 38;
@@ -376,6 +389,7 @@ namespace CS4500HW1
             pictureBoxC4.Location = new Point(1077, 529);
             pictureBoxC4.Margin = new Padding(3, 4, 3, 4);
             pictureBoxC4.Name = "pictureBoxC4";
+            pictureBoxC4.Padding = new Padding(5);
             pictureBoxC4.Size = new Size(48, 52);
             pictureBoxC4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxC4.TabIndex = 37;
@@ -387,6 +401,7 @@ namespace CS4500HW1
             pictureBoxD4.Location = new Point(1018, 529);
             pictureBoxD4.Margin = new Padding(3, 4, 3, 4);
             pictureBoxD4.Name = "pictureBoxD4";
+            pictureBoxD4.Padding = new Padding(5);
             pictureBoxD4.Size = new Size(48, 52);
             pictureBoxD4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxD4.TabIndex = 36;
@@ -398,6 +413,7 @@ namespace CS4500HW1
             pictureBoxH4.Location = new Point(961, 529);
             pictureBoxH4.Margin = new Padding(3, 4, 3, 4);
             pictureBoxH4.Name = "pictureBoxH4";
+            pictureBoxH4.Padding = new Padding(5);
             pictureBoxH4.Size = new Size(48, 52);
             pictureBoxH4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH4.TabIndex = 35;
