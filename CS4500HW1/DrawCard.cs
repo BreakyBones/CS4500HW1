@@ -99,6 +99,15 @@ namespace CS4500HW1
                 }
             }
 
+            for (int i = 0; i < selectedSuits.Length; i++)
+            {
+                if (selectedValues[i] == "Please select value")
+                {
+                    MessageBox.Show($"Please select 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, or A as the value for card {i + 1}.");
+                    return;
+                }
+            }
+
             // This will test if the four cards are unique
             string card1 = selectedSuits[0] + selectedValues[0];
             string card2 = selectedSuits[1] + selectedValues[1];
