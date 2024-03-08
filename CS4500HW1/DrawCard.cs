@@ -99,6 +99,35 @@ namespace CS4500HW1
                 }
             }
 
+            // This will test if the four cards are unique
+            string card1 = selectedSuits[0] + selectedValues[0];
+            string card2 = selectedSuits[1] + selectedValues[1];
+            string card3 = selectedSuits[2] + selectedValues[2];
+            string card4 = selectedSuits[3] + selectedValues[3];
+            string[] cards = { card1, card2, card3, card4 };
+            for (int j = 1;  j < cards.Length; j++)
+            {
+                if (cards[0] == cards[j])
+                {
+                    MessageBox.Show($"Please make sure no two cards have the same value");
+                    return;
+                }
+            }
+            for (int j = 2; j < cards.Length; j++) 
+            {
+                if (cards[1] == cards[j])
+                {
+                    MessageBox.Show($"Please make sure no two cards have the same value");
+                    return;
+                }
+            }
+            // The last comparison does not need a whole for loop for it
+            if (cards[2] == cards[3])
+            {
+                MessageBox.Show($"Please make sure no two cards have the same value");
+                return;
+            }
+
             // Get the selected cards from the deck
             var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
             DisplayCards(selectedCards); // Make sure you have a method to display the cards on the form
@@ -151,15 +180,6 @@ namespace CS4500HW1
                 HighlightPictureBox(pictureBox, cardIndex);
             }
         }
-
-        //private void HandleSuitSelection(PictureBox pictureBox, int cardIndex, char suitInitial)
-        //{
-        //    // Set the new selection
-        //    selectedSuits[cardIndex] = GetSuitFromInitial(suitInitial);
-
-        //    // Highlight the selected PictureBox for this specific card
-        //    HighlightPictureBox(pictureBox, cardIndex);
-        //}
 
         private void ClearPreviousSelection(int cardIndex)
         {
