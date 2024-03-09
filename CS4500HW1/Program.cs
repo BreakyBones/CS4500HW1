@@ -8,7 +8,7 @@
 // Team members include Noor Ghazal, Kanaan Sullivan, Grant Harris, and Mihir Bhakta
 // Authors of the code are primarily Noor Ghazal and Kanaan Sullivan
 // Class name is CMPSCI 4500: Intro to Software Profession
-// Date of last Commit: February 28, 2024
+// Date of last Commit: March 8, 2024
 // The central data structures are winforms, which are used for displaying messages and 
 // for the process of selecting or dealing cards.
 // External files include images for all 52 cards in a deck
@@ -16,7 +16,7 @@
 // This program lets users select any four cards from one deck of 52 cards,
 // then puts these cards' information to the file listed above and "puts" the cards back into deck
 // when the user selects quit or "Confirm 4 cards", 
-// If user hits the "confirm 4 cards", then any 4 cards out of 52 can be selected again
+// If user hits the "confirm 4", then any 4 cards out of 52 can be selected again
 // and the process is repeated.
 // For each card selected select one of the boxes containing the suit to select the suit
 // and then the dropdown must be used to enter the value instead of typing in the value.
@@ -44,3 +44,4 @@ namespace CS4500HW1
         }
     }
 }
+// End of file

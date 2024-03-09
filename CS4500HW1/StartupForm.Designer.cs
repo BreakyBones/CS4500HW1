@@ -1,4 +1,5 @@
-﻿// This file primarily is for disposing resources and cleaning up resources to be able to set up the Welcome page
+﻿// This is StartupForm.Designer.cs
+// This file primarily is for disposing resources and cleaning up resources to be able to set up the Welcome page
 namespace CS4500HW1
 {
     partial class StartupForm
@@ -104,3 +105,4 @@ namespace CS4500HW1
         private System.Windows.Forms.Label label1;
     }
 }
+// End of file

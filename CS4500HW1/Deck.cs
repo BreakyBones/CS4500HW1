@@ -1,4 +1,5 @@
-﻿// This subfile makes sure that four cards are selected before sending the information
+﻿// Deck.cs
+// This subfile makes sure that four cards are selected before sending the information
 // for those four cards and the date over to the external file, CardsDealt.txt.
 // This subfile also makes sure that the image holds the correct image for the card.
 

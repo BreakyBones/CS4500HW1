@@ -1,4 +1,5 @@
-﻿// This file declares all of the properties for the Card selection page, which includes the pictures for the cards,
+﻿// This is DrawCard.Designer.cs
+// This file declares all of the properties for the Card selection page, which includes the pictures for the cards,
 // the pictures for all four suites for each card, the drop-down for selecting the value of the cards, and the buttons
 // Before that happens, any resources that need to be disposed to set up the design will be disposed if needed.
 using System.Drawing;
@@ -505,4 +506,4 @@ namespace CS4500HW1
         private TextBox textBoxLog;
     }
 }
-
+// End of file

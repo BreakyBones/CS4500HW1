@@ -1,4 +1,5 @@
-﻿// This is the designer to display the welcome message and a few instructions
+﻿// This is StartupForm.cs
+// This is the designer to display the welcome message and a few instructions
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,3 +25,4 @@ namespace CS4500HW1
         }
     }
 }
+// End of file
