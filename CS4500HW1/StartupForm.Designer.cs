@@ -74,7 +74,7 @@
             label1.ForeColor = System.Drawing.Color.Gold;
             label1.Location = new System.Drawing.Point(12, 144);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(1160, 164);
+            label1.Size = new System.Drawing.Size(1150, 164);
             label1.TabIndex = 8;
             label1.Text = resources.GetString("label1.Text");
             label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
