@@ -19,7 +19,8 @@ namespace CS4500HW1
         private Random random = new Random();
         string logPath = Application.StartupPath + "CardsDealt.txt";
         string outlog = "";
-       
+        public string Outlog => outlog;
+
         public Deck()
         {
             InitializeDeck();

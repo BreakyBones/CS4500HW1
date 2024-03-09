@@ -60,6 +60,7 @@ namespace CS4500HW1
             pictureBoxC4 = new PictureBox();
             pictureBoxD4 = new PictureBox();
             pictureBoxH4 = new PictureBox();
+            textBoxLog = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -395,12 +396,22 @@ namespace CS4500HW1
             pictureBoxH4.TabIndex = 35;
             pictureBoxH4.TabStop = false;
             // 
+            // textBoxLog
+            // 
+            textBoxLog.Location = new Point(891, 5);
+            textBoxLog.Multiline = true;
+            textBoxLog.Name = "textBoxLog";
+            textBoxLog.ScrollBars = ScrollBars.Vertical;
+            textBoxLog.Size = new Size(196, 107);
+            textBoxLog.TabIndex = 39;
+            // 
             // DrawCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1093, 617);
+            Controls.Add(textBoxLog);
             Controls.Add(pictureBoxS4);
             Controls.Add(pictureBoxC4);
             Controls.Add(pictureBoxD4);
@@ -488,6 +499,7 @@ namespace CS4500HW1
         private PictureBox pictureBoxC4;
         private PictureBox pictureBoxD4;
         private PictureBox pictureBoxH4;
+        private TextBox textBoxLog;
     }
 }
 

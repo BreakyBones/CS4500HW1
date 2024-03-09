@@ -140,6 +140,7 @@ namespace CS4500HW1
             // Get the selected cards from the deck
             var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
             DisplayCards(selectedCards); // Make sure you have a method to display the cards on the form
+            textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
         }
 
         private void DisplayCards(List<Card> cards)
