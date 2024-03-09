@@ -1,4 +1,6 @@
-﻿
+﻿// This file declares all of the properties for the Card selection page, which includes the pictures for the cards,
+// the pictures for all four suites for each card, the drop-down for selecting the value of the cards, and the buttons
+// Before that happens, any resources that need to be disposed to set up the design will be disposed if needed.
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -24,6 +26,7 @@ namespace CS4500HW1
             base.Dispose(disposing);
         }
 
+        // List the design properties
         #region Windows Form Designer generated code
 
         /// <summary>

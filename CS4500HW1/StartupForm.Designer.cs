@@ -1,4 +1,5 @@
-﻿namespace CS4500HW1
+﻿// This file primarily is for disposing resources and cleaning up resources to be able to set up the Welcome page
+namespace CS4500HW1
 {
     partial class StartupForm
     {
