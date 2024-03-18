@@ -134,6 +134,7 @@ namespace CS4500HW1
                     {
                         success = 0;
                         letsSee = 1;
+                        remaining = 1;
                     }
                 }
                 if (remaining > 1)
