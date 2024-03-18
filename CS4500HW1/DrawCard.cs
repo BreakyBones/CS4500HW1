@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -88,6 +89,12 @@ namespace CS4500HW1
 
         }
 
+        // This is a "global" variable since I do not the equality to return a value each time but I need 
+        // to have a value based on if any of the cards matched or not. This global variable holds that value.
+        // 0 will mean that a card in the collection equaled another card
+        public static int success = 0;
+        public static int letsSee = 0;
+
         private void draw_Click(object sender, EventArgs e)
         {
             // Make sure all suits and values have been selected
@@ -115,29 +122,40 @@ namespace CS4500HW1
             string card3 = selectedSuits[2] + selectedValues[2];
             string card4 = selectedSuits[3] + selectedValues[3];
             string[] cards = { card1, card2, card3, card4 };
-            for (int j = 1;  j < cards.Length; j++)
+
+            // This is a recursive function to test if any two cards in a collection are equal
+            static void equality(int compareLength, int remaining, params string[] cardsArray)
             {
-                if (cards[0] == cards[j])
+                for (int j = compareLength - remaining; j < compareLength; j++)
                 {
-                    MessageBox.Show($"Please make sure no two cards have the same value");
-                    return;
+                    int startIndex = compareLength - remaining - 1;
+
+                    if (cardsArray[startIndex] == cardsArray[j])
+                    {
+                        success = 0;
+                        letsSee = 1;
+                    }
+                }
+                if (remaining > 1)
+                {
+                    remaining--;
+                    equality(compareLength, remaining, cardsArray);
+                }
+                if (remaining < 2 && letsSee == 0)
+                {
+                    success = 1;
                 }
             }
-            for (int j = 2; j < cards.Length; j++) 
+            // the initial call to the recursive function
+
+            equality(cards.Length, cards.Length - 1, cards);
+            if (success == 0)
             {
-                if (cards[1] == cards[j])
-                {
-                    MessageBox.Show($"Please make sure no two cards have the same value");
-                    return;
-                }
-            }
-            // The last comparison does not need a whole for loop for it
-            if (cards[2] == cards[3])
-            {
-                MessageBox.Show($"Please make sure no two cards have the same value");
+                success = 1;
+                MessageBox.Show("Select OK and retry without having any cards being equal");
                 return;
             }
-
+            
             // Get the selected cards from the deck
             var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
             DisplayCards(selectedCards); // Make sure you have a method to display the cards on the form
