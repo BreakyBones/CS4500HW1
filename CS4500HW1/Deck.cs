@@ -86,8 +86,19 @@ namespace CS4500HW1
 
                 if (cardToDeal != null)
                 {
-                    dealtCards.Add(cardToDeal);
-                    outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+
+                    
+
+                    if (cardToDeal.Suit == "Hearts" || cardToDeal.Suit == "Diamonds")
+                    {
+                        dealtCards.Add(cardToDeal);
+                        outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                    } else
+                    {
+                        dealtCards.Add(cardToDeal);
+                        outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                    }
+                    
                 }
                 else
                 {

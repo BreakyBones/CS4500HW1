@@ -146,14 +146,10 @@ namespace CS4500HW1
 
         }
 
-        // This is a "global" variable since I do not the equality to return a value each time but I need 
-        // to have a value based on if any of the cards matched or not. This global variable holds that value.
-        // 0 will mean that a card in the collection equaled another card
-        public static int success = 0;
-        public static int letsSee = 0;
-
         private void draw_Click(object sender, EventArgs e)
         {
+          
+
             // Make sure all suits and values have been selected
             for (int i = 0; i < selectedSuits.Length; i++)
             {
@@ -180,67 +176,12 @@ namespace CS4500HW1
             string card4 = selectedSuits[3] + selectedValues[3];
             string[] cards = { card1, card2, card3, card4 };
 
-            // This is a recursive function to test if any two cards in a collection are equal
-            static void equality(int compareLength, int remaining, params string[] cardsArray)
-            {
-                for (int j = compareLength - remaining; j < compareLength; j++)
-                {
-                    int startIndex = compareLength - remaining - 1;
-
-                    if (cardsArray[startIndex] == cardsArray[j])
-                    {
-                        success = 0;
-                        letsSee = 1;
-                        remaining = 1;
-                    }
-                }
-                if (remaining > 1)
-                {
-                    remaining--;
-                    equality(compareLength, remaining, cardsArray);
-                }
-                if (remaining < 2 && letsSee == 0)
-                {
-                    success = 1;
-                }
-            }
-            // the initial call to the recursive function
-
-            equality(cards.Length, cards.Length - 1, cards);
-            if (success == 0)
-            {
-                success = 1;
-                MessageBox.Show("Select OK and retry without having any cards being equal");
-                return;
-            }
+            
 
             // Get the selected cards from the deck
             var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
-            DisplayCards(selectedCards); // Make sure you have a method to display the cards on the form
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
-        }
-
-        private void DisplayCards(List<Card> cards)
-        {
-            if (cards.Count >= 4)
-            {
-                // Assuming cards.Count will be exactly 4 as you're dealing 4 cards
-                pictureBox1.Image = cards[0].CardImage;
-                pictureBox2.Image = cards[1].CardImage;
-                pictureBox3.Image = cards[2].CardImage;
-                pictureBox4.Image = cards[3].CardImage;
-
-                // Set the SizeMode to ensure images fit nicely in the PictureBoxes
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
-            else
-            {
-                // Handle the case where fewer than 4 cards are dealt (optional)
-                MessageBox.Show("Not enough cards were dealt.");
-            }
+            
         }
 
         private void PictureBoxSuit_Click(object sender, EventArgs e)

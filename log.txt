@@ -1,0 +1,196 @@
+commit 9645d040cf6497a969794dfaca79a5a77faf3552 (HEAD -> master)
+Merge: e314965 1b47c4b
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Fri Mar 8 19:30:35 2024 -0600
+
+    Merge branch 'master' of https://github.com/BreakyBones/CS4500HW1
+
+commit 1b47c4b59f83f19347ee67d1ea09215786920246 (origin/master)
+Merge: 00f7edf b175276
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Fri Mar 8 18:59:09 2024 -0600
+
+    Merge branch 'master' of https://github.com/BreakyBones/CS4500HW1
+
+commit 00f7edf6e8190e3ac7323bae639e575580dc3fb2
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Fri Mar 8 18:58:52 2024 -0600
+
+    Added teextbox and append current session's dealt cards.
+
+commit e314965565f5796622440a10e493f8b7a7631ce6
+Merge: d5d0984 b175276
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Fri Mar 8 18:44:23 2024 -0600
+
+    Merge branch 'master' of https://github.com/BreakyBones/CS4500HW1
+
+commit b17527690469d4d4e4fcfb53271e9a7c9ab26b1f
+Author: grantDH6 <grantdharris@yahoo.com>
+Date:   Fri Mar 8 18:15:12 2024 -0600
+
+    Welcome message
+
+commit 9e07c656d28e7f83ff11839f8b50558493410c0e
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Fri Mar 8 17:32:09 2024 -0600
+
+    Deleted file manager
+
+commit f3e474375f553e01970916881a32912579db57b5
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Fri Mar 8 17:03:47 2024 -0600
+
+    Changed name of button
+
+commit d5d09845ce9acfc817236200ff46066dc30ee198
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Fri Mar 8 16:48:38 2024 -0600
+
+    Revert "Fixed error for when a user selects the value for the card as "Please select value""
+    
+    This reverts commit c27d4036a4196a85ada5437a9285caea9fa1ea0d.
+
+commit c27d4036a4196a85ada5437a9285caea9fa1ea0d
+Author: grantDH6 <grantdharris@yahoo.com>
+Date:   Fri Mar 8 15:48:47 2024 -0600
+
+    Fixed error for when a user selects the value for the card as "Please select value"
+
+commit 9458a35b580cda0c7f32ffc6145ef388e590ec8f
+Author: grantDH6 <grantdharris@yahoo.com>
+Date:   Thu Mar 7 23:23:28 2024 -0600
+
+    I made sure no two cards were equal.
+
+commit 8f97a652ea6c36709137760addc672f4beb0af0d
+Author: grantDH6 <grantdharris@yahoo.com>
+Date:   Fri Mar 1 22:50:21 2024 -0600
+
+    Changed padding to 3 since Mihir got it to stay
+
+commit cc472aa31595165f3aedd39224250eed6f347dfe
+Author: mnbmch <mnbmch@umsl.edu>
+Date:   Fri Mar 1 22:30:22 2024 -0600
+
+    Made it so the white border stays after you change btwn suits.
+
+commit 0ab0527c8c97870ab71d79863de8a465363b70a4
+Author: grantDH6 <grantdharris@yahoo.com>
+Date:   Fri Mar 1 19:10:01 2024 -0600
+
+    Added padding to the suit boxes in the DrawCard.cs
+
+commit ba351643c143834ce45c17ee8f532861b74795cc
+Author: grantDH6 <grantdharris@yahoo.com>
+Date:   Thu Feb 29 20:06:01 2024 -0600
+
+    Added "Please elect value"
+
+commit 36c5772b68c906cdabbe94d248de8127cbf5bd4e
+Author: grantDH6 <grantdharris@yahoo.com>
+Date:   Wed Feb 28 21:00:49 2024 -0600
+
+    Mainly added comments and changed the messages in the designers
+
+commit 3c0cbe8e3d1250cc786e76cdb9f738cfa09a3eda
+Author: grantDH6 <grantdharris@yahoo.com>
+Date:   Wed Feb 28 20:43:33 2024 -0600
+
+    This commit includes the intro commit to our program. Found in Program.cs
+
+commit e8af0f4d607f69302e76c32b10cfb4b83ad26570
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Wed Feb 28 20:38:07 2024 -0600
+
+    Minor UI changes
+
+commit 768ac0b00c4b43d071419afba33ab60d343cd084
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Wed Feb 28 00:50:49 2024 -0600
+
+    Revamped all the logic and finished core rework. Working version. Error in default selection of 2 not registering.
+
+commit 630070e1732eadba5a116feacc152f5e211a36b1
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Tue Feb 13 21:20:35 2024 -0600
+
+    Changed the output file name to DealtCards.txt
+
+commit 83e67d346e9e2ff7276493cf11594f61036bb41a
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Tue Feb 13 21:16:19 2024 -0600
+
+    Added startup form and logic for switching forms
+
+commit cbad2631b420dc07465dcf33e1ea0c0ac57469cf
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Tue Feb 13 15:28:01 2024 -0600
+
+    Logging function complete
+
+commit c878f5ab9e9060ac62ae1082ce90d1f95f52d9ee
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Mon Feb 12 16:21:17 2024 -0600
+
+    Finished front end, tested and fixed duplicate cards showing.
+
+commit f16aac4654577b3c7a6a1b73126166d8f172fc2a
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Mon Feb 12 03:51:27 2024 -0600
+
+    Added Backgrounds
+
+commit c2006a1b24d7cb8c79be7fe9c420e9c199426108
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Sun Feb 11 04:55:06 2024 -0600
+
+    Added card abbreviation for loggin purposes
+
+commit 1130fe17b8ec19b941151c041f01df36292d47b2
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Sun Feb 4 17:21:35 2024 -0600
+
+    Finished logic for randomizing cards shown and images loaded successfuly
+
+commit ef5c0c93f57f7098b72099797c33ec73a1c3928a
+Author: Noor Ghazal <deenghazal@gmail.com>
+Date:   Sun Feb 4 17:05:47 2024 -0600
+
+    Added logic and code to deck and cards
+
+commit 12bc50d078d35c22370c0bf1de621b212e3cca7b
+Author: gdhvrm <gdhvrm@mail.missouri.edu>
+Date:   Sat Feb 3 15:02:35 2024 -0600
+
+    took out jokers
+
+commit bc68c11fed61513f61d9f655fa8b441f89fef26d
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Sat Feb 3 14:52:49 2024 -0600
+
+    Added Card Images
+
+commit 68d9d82d654e9a7e56a49e8d0269c9f0668b73e3
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Sat Feb 3 14:43:49 2024 -0600
+
+    Added Draw Cards and Quit Buttons
+
+commit 790b125b3023e7a6222ab234725bd6334e569425
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Sat Feb 3 14:20:31 2024 -0600
+
+    Test Commit
+
+commit 4004265875538b45c8644affa37d781386d8ec9a
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Sat Feb 3 14:13:18 2024 -0600
+
+    Add project files.
+
+commit df2b86295936bf33b09565f26e2c5a3289ba9089
+Author: Kanaan <krs8dd@umsystem.edu>
+Date:   Sat Feb 3 14:13:17 2024 -0600
+
+    Add .gitignore and .gitattributes.
