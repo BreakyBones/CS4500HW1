@@ -146,9 +146,21 @@ namespace CS4500HW1
 
         }
 
+        // This is a "global" variable since I do not the equality to return a value each time but I need 
+        // to have a value based on if any of the cards matched or not. This global variable holds that value.
+        // 0 will mean that a card in the collection equaled another card
+        public static int success = 0;
+        public static int letsSee = 0;
+
         private void draw_Click(object sender, EventArgs e)
         {
-          
+            var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
+
+            if (pictureBoxes.Any(pb => pb.Image == null)) {
+                MessageBox.Show("Please confirm all cards!");
+                return;
+            
+            }
 
             // Make sure all suits and values have been selected
             for (int i = 0; i < selectedSuits.Length; i++)
@@ -176,12 +188,32 @@ namespace CS4500HW1
             string card4 = selectedSuits[3] + selectedValues[3];
             string[] cards = { card1, card2, card3, card4 };
 
-            
+            for (int i = 0; i < selectedSuits.Length; i++)
+            {
+                bool isRedCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
+                HighlightPictureBox(pictureBoxes[i], isRedCard);
+            }
+
+
 
             // Get the selected cards from the deck
             var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
-            
+
+
+        }
+        private void HighlightPictureBox(PictureBox pictureBox, bool isRedCard)
+        {
+            if (isRedCard)
+            {
+                pictureBox.BorderStyle = BorderStyle.Fixed3D;
+                pictureBox.BackColor = Color.Gold;
+            }
+            else
+            {
+                pictureBox.BorderStyle = BorderStyle.None;
+                pictureBox.BackColor = Color.Transparent; // Reset to no highlight
+            }
         }
 
         private void PictureBoxSuit_Click(object sender, EventArgs e)
