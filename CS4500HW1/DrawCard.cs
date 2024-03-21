@@ -82,6 +82,63 @@ namespace CS4500HW1
             }
         }
 
+        private void card1Confirm_Click(object sender, EventArgs e)
+        {
+            DisplaySelectedCard(0);
+        }
+
+        private void card2Confirm_Click(object sender, EventArgs e)
+        {
+            DisplaySelectedCard(1);
+        }
+
+        private void card3Confirm_Click(object sender, EventArgs e)
+        {
+            DisplaySelectedCard(2);
+        }
+
+        private void card4Confirm_Click(object sender, EventArgs e)
+        {
+            DisplaySelectedCard(3);
+        }
+
+        private void DisplaySelectedCard(int cardIndex)
+        {
+            if (string.IsNullOrEmpty(selectedSuits[cardIndex]) || string.IsNullOrEmpty(selectedValues[cardIndex]))
+            {
+                MessageBox.Show($"Please select both the suit and value for card {cardIndex + 1}.");
+                return;
+            }
+
+            // Check for duplicate card selection
+            for (int i = 0; i < selectedSuits.Length; i++)
+            {
+                // Skip the current card index
+                if (i == cardIndex) continue;
+
+                if (!string.IsNullOrEmpty(selectedSuits[i]) && !string.IsNullOrEmpty(selectedValues[i]) &&
+                    selectedSuits[i] == selectedSuits[cardIndex] && selectedValues[i] == selectedValues[cardIndex])
+                {
+                    MessageBox.Show("Duplicate card selection detected. Please select a different card.");
+                    return;
+                }
+            }
+
+            // If no duplicates are found, proceed to display the card
+            var cardToDisplay = deck.DealSelectedCards(new[] { selectedSuits[cardIndex] }, new[] { selectedValues[cardIndex] }).FirstOrDefault();
+            if (cardToDisplay != null)
+            {
+                var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
+                pictureBoxes[cardIndex].Image = cardToDisplay.CardImage;
+                pictureBoxes[cardIndex].SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                MessageBox.Show($"The selected card could not be found.");
+            }
+        }
+
+
         private void quit_Click(object sender, EventArgs e)
         {
 
@@ -156,7 +213,7 @@ namespace CS4500HW1
                 MessageBox.Show("Select OK and retry without having any cards being equal");
                 return;
             }
-            
+
             // Get the selected cards from the deck
             var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
             DisplayCards(selectedCards); // Make sure you have a method to display the cards on the form
@@ -248,15 +305,6 @@ namespace CS4500HW1
             }
         }
 
-        private void pictureBoxH2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxS2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 // End of file

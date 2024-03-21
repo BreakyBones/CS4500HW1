@@ -65,6 +65,10 @@ namespace CS4500HW1
             pictureBoxD4 = new PictureBox();
             pictureBoxH4 = new PictureBox();
             textBoxLog = new TextBox();
+            card1Confirm = new Button();
+            card2Confirm = new Button();
+            card3Confirm = new Button();
+            card4Confirm = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -97,7 +101,7 @@ namespace CS4500HW1
             Draw.FlatStyle = FlatStyle.Flat;
             Draw.Font = new Font("Impact", 16F, FontStyle.Regular, GraphicsUnit.Point);
             Draw.ForeColor = Color.White;
-            Draw.Location = new Point(324, 540);
+            Draw.Location = new Point(324, 582);
             Draw.Name = "Draw";
             Draw.Size = new Size(200, 40);
             Draw.TabIndex = 0;
@@ -113,7 +117,7 @@ namespace CS4500HW1
             Quit.FlatStyle = FlatStyle.Flat;
             Quit.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point);
             Quit.ForeColor = Color.White;
-            Quit.Location = new Point(578, 540);
+            Quit.Location = new Point(578, 581);
             Quit.Name = "Quit";
             Quit.Size = new Size(200, 40);
             Quit.TabIndex = 1;
@@ -169,9 +173,9 @@ namespace CS4500HW1
             label1.ForeColor = Color.Gold;
             label1.Location = new Point(232, 15);
             label1.Name = "label1";
-            label1.Size = new Size(630, 97);
+            label1.Size = new Size(532, 97);
             label1.TabIndex = 6;
-            label1.Text = "CARD SHUFFLE";
+            label1.Text = "ART DEALER";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // comboBox1
@@ -276,7 +280,6 @@ namespace CS4500HW1
             pictureBoxS2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxS2.TabIndex = 30;
             pictureBoxS2.TabStop = false;
-            pictureBoxS2.Click += pictureBoxS2_Click;
             // 
             // pictureBoxC2
             // 
@@ -310,7 +313,6 @@ namespace CS4500HW1
             pictureBoxH2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxH2.TabIndex = 27;
             pictureBoxH2.TabStop = false;
-            pictureBoxH2.Click += pictureBoxH2_Click;
             // 
             // pictureBoxS3
             // 
@@ -409,12 +411,68 @@ namespace CS4500HW1
             textBoxLog.Size = new Size(196, 107);
             textBoxLog.TabIndex = 39;
             // 
+            // card1Confirm
+            // 
+            card1Confirm.BackColor = Color.ForestGreen;
+            card1Confirm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            card1Confirm.ForeColor = Color.Gold;
+            card1Confirm.Location = new Point(59, 502);
+            card1Confirm.Name = "card1Confirm";
+            card1Confirm.Size = new Size(194, 39);
+            card1Confirm.TabIndex = 40;
+            card1Confirm.Text = "Confirm Card";
+            card1Confirm.UseVisualStyleBackColor = false;
+            card1Confirm.Click += card1Confirm_Click;
+            // 
+            // card2Confirm
+            // 
+            card2Confirm.BackColor = Color.ForestGreen;
+            card2Confirm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            card2Confirm.ForeColor = Color.Gold;
+            card2Confirm.Location = new Point(322, 502);
+            card2Confirm.Name = "card2Confirm";
+            card2Confirm.Size = new Size(194, 39);
+            card2Confirm.TabIndex = 41;
+            card2Confirm.Text = "Confirm Card";
+            card2Confirm.UseVisualStyleBackColor = false;
+            card2Confirm.Click += card2Confirm_Click;
+            // 
+            // card3Confirm
+            // 
+            card3Confirm.BackColor = Color.ForestGreen;
+            card3Confirm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            card3Confirm.ForeColor = Color.Gold;
+            card3Confirm.Location = new Point(578, 502);
+            card3Confirm.Name = "card3Confirm";
+            card3Confirm.Size = new Size(194, 39);
+            card3Confirm.TabIndex = 42;
+            card3Confirm.Text = "Confirm Card";
+            card3Confirm.UseVisualStyleBackColor = false;
+            card3Confirm.Click += card3Confirm_Click;
+            // 
+            // card4Confirm
+            // 
+            card4Confirm.BackColor = Color.ForestGreen;
+            card4Confirm.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            card4Confirm.ForeColor = Color.Gold;
+            card4Confirm.Location = new Point(841, 502);
+            card4Confirm.Name = "card4Confirm";
+            card4Confirm.Size = new Size(194, 39);
+            card4Confirm.TabIndex = 43;
+            card4Confirm.Text = "Confirm Card";
+            card4Confirm.UseVisualStyleBackColor = false;
+            card4Confirm.Click += card4Confirm_Click;
+            // 
             // DrawCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1093, 617);
+            ClientSize = new Size(1093, 657);
+            Controls.Add(card4Confirm);
+            Controls.Add(card3Confirm);
+            Controls.Add(card2Confirm);
+            Controls.Add(card1Confirm);
             Controls.Add(textBoxLog);
             Controls.Add(pictureBoxS4);
             Controls.Add(pictureBoxC4);
@@ -504,6 +562,10 @@ namespace CS4500HW1
         private PictureBox pictureBoxD4;
         private PictureBox pictureBoxH4;
         private TextBox textBoxLog;
+        private Button card1Confirm;
+        private Button card2Confirm;
+        private Button card3Confirm;
+        private Button card4Confirm;
     }
 }
 // End of file
