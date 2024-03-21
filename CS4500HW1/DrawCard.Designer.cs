@@ -37,7 +37,7 @@ namespace CS4500HW1
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DrawCard));
-            Draw = new Button();
+            DealBtn = new Button();
             Quit = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -69,6 +69,7 @@ namespace CS4500HW1
             card2Confirm = new Button();
             card3Confirm = new Button();
             card4Confirm = new Button();
+            NextRoundBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -91,23 +92,23 @@ namespace CS4500HW1
             ((System.ComponentModel.ISupportInitialize)pictureBoxH4).BeginInit();
             SuspendLayout();
             // 
-            // Draw
+            // DealBtn
             // 
-            Draw.AccessibleDescription = "Button to Draw Cards";
-            Draw.AccessibleName = "Draw";
-            Draw.BackColor = Color.DarkGreen;
-            Draw.FlatAppearance.BorderColor = Color.FromArgb(192, 192, 0);
-            Draw.FlatAppearance.BorderSize = 2;
-            Draw.FlatStyle = FlatStyle.Flat;
-            Draw.Font = new Font("Impact", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            Draw.ForeColor = Color.White;
-            Draw.Location = new Point(324, 582);
-            Draw.Name = "Draw";
-            Draw.Size = new Size(200, 40);
-            Draw.TabIndex = 0;
-            Draw.Text = "Confirm";
-            Draw.UseVisualStyleBackColor = false;
-            Draw.Click += draw_Click;
+            DealBtn.AccessibleDescription = "Button to Draw Cards";
+            DealBtn.AccessibleName = "DealBtn";
+            DealBtn.BackColor = Color.DarkGreen;
+            DealBtn.FlatAppearance.BorderColor = Color.FromArgb(192, 192, 0);
+            DealBtn.FlatAppearance.BorderSize = 2;
+            DealBtn.FlatStyle = FlatStyle.Flat;
+            DealBtn.Font = new Font("Impact", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            DealBtn.ForeColor = Color.White;
+            DealBtn.Location = new Point(324, 582);
+            DealBtn.Name = "DealBtn";
+            DealBtn.Size = new Size(200, 40);
+            DealBtn.TabIndex = 0;
+            DealBtn.Text = "Deal";
+            DealBtn.UseVisualStyleBackColor = false;
+            DealBtn.Click += draw_Click;
             // 
             // Quit
             // 
@@ -463,12 +464,31 @@ namespace CS4500HW1
             card4Confirm.UseVisualStyleBackColor = false;
             card4Confirm.Click += card4Confirm_Click;
             // 
+            // NextRoundBtn
+            // 
+            NextRoundBtn.AccessibleDescription = "Button to Draw Cards";
+            NextRoundBtn.AccessibleName = "Draw";
+            NextRoundBtn.BackColor = Color.DarkGreen;
+            NextRoundBtn.FlatAppearance.BorderColor = Color.FromArgb(192, 192, 0);
+            NextRoundBtn.FlatAppearance.BorderSize = 2;
+            NextRoundBtn.FlatStyle = FlatStyle.Flat;
+            NextRoundBtn.Font = new Font("Impact", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            NextRoundBtn.ForeColor = Color.White;
+            NextRoundBtn.Location = new Point(60, 581);
+            NextRoundBtn.Name = "NextRoundBtn";
+            NextRoundBtn.Size = new Size(200, 40);
+            NextRoundBtn.TabIndex = 44;
+            NextRoundBtn.Text = "Next Round";
+            NextRoundBtn.UseVisualStyleBackColor = false;
+            NextRoundBtn.Click += NextRoundBtn_Click;
+            // 
             // DrawCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1093, 657);
+            Controls.Add(NextRoundBtn);
             Controls.Add(card4Confirm);
             Controls.Add(card3Confirm);
             Controls.Add(card2Confirm);
@@ -500,7 +520,7 @@ namespace CS4500HW1
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(Quit);
-            Controls.Add(Draw);
+            Controls.Add(DealBtn);
             Name = "DrawCard";
             Padding = new Padding(3, 2, 3, 2);
             StartPosition = FormStartPosition.CenterScreen;
@@ -531,7 +551,7 @@ namespace CS4500HW1
 
         #endregion
 
-        private System.Windows.Forms.Button Draw;
+        private System.Windows.Forms.Button DealBtn;
         private System.Windows.Forms.Button Quit;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -566,6 +586,7 @@ namespace CS4500HW1
         private Button card2Confirm;
         private Button card3Confirm;
         private Button card4Confirm;
+        private Button NextRoundBtn;
     }
 }
 // End of file

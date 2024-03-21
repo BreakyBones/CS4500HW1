@@ -53,6 +53,9 @@ namespace CS4500HW1
             comboBox2.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
             comboBox3.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
             comboBox4.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
+
+            DealBtn.Visible = true;
+            NextRoundBtn.Visible = false; // Hide the Next Round button initially
         }
         private void InitializeValueDropdowns()
         {
@@ -78,10 +81,18 @@ namespace CS4500HW1
             if (comboBox != null)
             {
                 int cardIndex = int.Parse(comboBox.Name.Substring(comboBox.Name.Length - 1)) - 1;
-                selectedValues[cardIndex] = comboBox.SelectedItem.ToString();
+                // Check if SelectedItem is not null before calling ToString()
+                if (comboBox.SelectedItem != null)
+                {
+                    selectedValues[cardIndex] = comboBox.SelectedItem.ToString();
+                }
+                else
+                {
+                    // Handle the case where SelectedItem is null, if needed
+                    selectedValues[cardIndex] = string.Empty; // or another default/fallback value
+                }
             }
         }
-
         private void card1Confirm_Click(object sender, EventArgs e)
         {
             DisplaySelectedCard(0);
@@ -156,10 +167,11 @@ namespace CS4500HW1
         {
             var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
 
-            if (pictureBoxes.Any(pb => pb.Image == null)) {
+            if (pictureBoxes.Any(pb => pb.Image == null))
+            {
                 MessageBox.Show("Please confirm all cards!");
                 return;
-            
+
             }
 
             // Make sure all suits and values have been selected
@@ -191,7 +203,7 @@ namespace CS4500HW1
             for (int i = 0; i < selectedSuits.Length; i++)
             {
                 bool isRedCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
-                HighlightPictureBox(pictureBoxes[i], isRedCard);
+                HighlightCardPictureBox(pictureBoxes[i], isRedCard);
             }
 
 
@@ -200,19 +212,92 @@ namespace CS4500HW1
             var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
 
+            // Align the "Next Round" button over the "Deal" button
+            NextRoundBtn.Location = DealBtn.Location;
+            NextRoundBtn.Size = DealBtn.Size;
+
+            DealBtn.Visible = false;
+            NextRoundBtn.Visible = true;
 
         }
-        private void HighlightPictureBox(PictureBox pictureBox, bool isRedCard)
+
+        private void NextRoundBtn_Click(object sender, EventArgs e)
+        {
+            // Reset selections, dropdowns, and any game state here
+            ClearAllSelectionsAndDropdowns();
+
+            // Toggle buttons visibility
+            NextRoundBtn.Visible = false;
+            DealBtn.Visible = true;
+        }
+
+        private void ClearAllSelectionsAndDropdowns()
+        {
+            // Reset combo box
+            foreach (var comboBox in new[] { comboBox1, comboBox2, comboBox3, comboBox4 })
+            {
+                comboBox.SelectedIndex = 0; // Reset dropdowns
+            }
+            // Reset picture box
+            foreach (var pictureBox in new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 })
+            {
+                pictureBox.Image = null;
+                pictureBox.Tag = null;
+                pictureBox.Invalidate();
+            }
+            // Iterate over all PictureBoxes and reset 
+            var allSuitPictureBoxes = new[] {
+            pictureBoxH1, pictureBoxD1, pictureBoxC1, pictureBoxS1,
+                 pictureBoxH2, pictureBoxD2, pictureBoxC2, pictureBoxS2,
+                 pictureBoxH3, pictureBoxD3, pictureBoxC3, pictureBoxS3,
+                 pictureBoxH4, pictureBoxD4, pictureBoxC4, pictureBoxS4
+                };
+
+                foreach (var pictureBox in allSuitPictureBoxes)
+                 {
+                 pictureBox.BackColor = Color.White; 
+                 pictureBox.BorderStyle = BorderStyle.FixedSingle; 
+                }
+
+            // Clear any stored selections from arrays (Just in case)
+            Array.Clear(selectedSuits, 0, selectedSuits.Length);
+            Array.Clear(selectedValues, 0, selectedValues.Length);
+            selectedPictureBoxes = new PictureBox[4];
+
+
+
+        }
+        private void HighlightCardPictureBox(PictureBox pictureBox, bool isRedCard)
         {
             if (isRedCard)
             {
-                pictureBox.BorderStyle = BorderStyle.Fixed3D;
-                pictureBox.BackColor = Color.Gold;
+                // Attach a custom paint event handler to draw the highlight
+                pictureBox.Paint += PictureBox_CustomPaint;
+                pictureBox.Tag = "highlight"; // Use Tag to indicate the PictureBox should be highlighted
             }
             else
             {
-                pictureBox.BorderStyle = BorderStyle.None;
-                pictureBox.BackColor = Color.Transparent; // Reset to no highlight
+                // Remove the custom paint event handler when not highlighted
+                pictureBox.Paint -= PictureBox_CustomPaint;
+                pictureBox.Tag = null;
+            }
+            pictureBox.Invalidate(); // Force the PictureBox to repaint
+        }
+
+        //Had chatGPT custom make this paint tint in the paint. The border was causing a lot of problems and did not look correct like the suit selections
+        private void PictureBox_CustomPaint(object sender, PaintEventArgs e)
+        {
+            PictureBox pictureBox = sender as PictureBox;
+            if (pictureBox != null && pictureBox.Tag == "highlight")
+            {
+                // Use a semi-transparent color for the tint
+                Color tintColour = Color.FromArgb(128, Color.Gold);
+
+                // Fill a rectangle over the entire PictureBox with the semi-transparent color
+                using (SolidBrush brush = new SolidBrush(tintColour))
+                {
+                    e.Graphics.FillRectangle(brush, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
+                }
             }
         }
 
