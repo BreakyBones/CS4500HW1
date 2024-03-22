@@ -116,7 +116,8 @@ namespace CS4500HW1
 
         private void DisplaySelectedCard(int cardIndex)
         {
-            if (string.IsNullOrEmpty(selectedSuits[cardIndex]) || string.IsNullOrEmpty(selectedValues[cardIndex]))
+            if (string.IsNullOrEmpty(selectedSuits[cardIndex]) || string.IsNullOrEmpty(selectedValues[cardIndex]) 
+                || selectedValues[cardIndex] == "Please select value")
             {
                 MessageBox.Show($"Please select both the suit and value for card {cardIndex + 1}.");
                 return;
@@ -174,18 +175,9 @@ namespace CS4500HW1
             // Make sure all suits and values have been selected
             for (int i = 0; i < selectedSuits.Length; i++)
             {
-                if (string.IsNullOrEmpty(selectedSuits[i]) || string.IsNullOrEmpty(selectedValues[i]))
+                if (string.IsNullOrEmpty(selectedSuits[i]) || string.IsNullOrEmpty(selectedValues[i]) || selectedValues[i] == "Please select value")
                 {
                     MessageBox.Show($"Please select both the suit and value for card {i + 1}.");
-                    return;
-                }
-            }
-
-            for (int i = 0; i < selectedSuits.Length; i++)
-            {
-                if (selectedValues[i] == "Please select value")
-                {
-                    MessageBox.Show($"Please select 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, or A as the value for card {i + 1}.");
                     return;
                 }
             }
