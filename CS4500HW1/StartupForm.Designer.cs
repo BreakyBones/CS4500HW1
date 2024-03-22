@@ -52,6 +52,7 @@ namespace CS4500HW1
             this.NextBtn.TabIndex = 1;
             this.NextBtn.Text = "Next";
             this.NextBtn.UseVisualStyleBackColor = false;
+            NextBtn.Click += NextBtn_Click;
             // 
             // purposeTitle
             // 
