@@ -2,6 +2,7 @@
 // This file is for the design of selecting four cards and viewing the 4 cards
 //For the images, The background of the form is from google images while, the card backgrounds were a white box, so I had DALL-E generate one for me and I used that as the card background
 //Default winforms settings and initialization, rest were simple functions only searched syntax
+//Latest Revision: 03/21/2024 by Kanaan and Noor
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -157,12 +158,8 @@ namespace CS4500HW1
 
         }
 
-        // This is a "global" variable since I do not the equality to return a value each time but I need 
-        // to have a value based on if any of the cards matched or not. This global variable holds that value.
-        // 0 will mean that a card in the collection equaled another card
-        public static int success = 0;
-        public static int letsSee = 0;
-
+        // This is the Deal! Button, it makes sure all values and cards are selected and confirmed and handles the logic for the actual selecting of dealer cards.
+        // Created by Kanaan 
         private void draw_Click(object sender, EventArgs e)
         {
             var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
@@ -224,6 +221,8 @@ namespace CS4500HW1
             DealBtn.Visible = true;
         }
 
+        // This is the code associated with the Next Round Button, on clicking it it resets all buttons to their previous states while keeping the History text box in tact
+        // Created by Noor
         private void ClearAllSelectionsAndDropdowns()
         {
             // Reset combo box
@@ -260,6 +259,8 @@ namespace CS4500HW1
 
 
         }
+        // On Dealer Selection of liked cards, highlight the cards and tint them to ensure that the user knows which cards the dealers liked
+        // Created by Noor and Kanaan
         private void HighlightCardPictureBox(PictureBox pictureBox, bool isRedCard)
         {
             if (isRedCard)
@@ -318,7 +319,7 @@ namespace CS4500HW1
                 HighlightPictureBox(pictureBox, cardIndex);
             }
         }
-
+        // Continuation of ressetting on next round button
         private void ClearPreviousSelection(int cardIndex)
         {
             if (selectedPictureBoxes[cardIndex] != null)

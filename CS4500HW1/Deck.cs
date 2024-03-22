@@ -2,7 +2,7 @@
 // This subfile makes sure that four cards are selected before sending the information
 // for those four cards and the date over to the external file, CardsDealt.txt.
 // This subfile also makes sure that the image holds the correct image for the card.
-
+// Latest Revision: 03/21/2024 by Kanaan and Noor
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -70,6 +70,9 @@ namespace CS4500HW1
             }
         }
 
+
+        // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
+        // Created by Kanaan
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
             List<Card> dealtCards = new List<Card>();
