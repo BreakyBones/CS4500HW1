@@ -193,13 +193,6 @@ namespace CS4500HW1
                 }
             }
 
-            // This will test if the four cards are unique
-            string card1 = selectedSuits[0] + selectedValues[0];
-            string card2 = selectedSuits[1] + selectedValues[1];
-            string card3 = selectedSuits[2] + selectedValues[2];
-            string card4 = selectedSuits[3] + selectedValues[3];
-            string[] cards = { card1, card2, card3, card4 };
-
             for (int i = 0; i < selectedSuits.Length; i++)
             {
                 bool isRedCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
