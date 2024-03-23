@@ -2,7 +2,7 @@
 // This file is for the design of selecting four cards and viewing the 4 cards
 //For the images, The background of the form is from google images while, the card backgrounds were a white box, so I had DALL-E generate one for me and I used that as the card background
 //Default winforms settings and initialization, rest were simple functions only searched syntax
-//Latest Revision: 03/21/2024 by Kanaan and Noor
+//Latest Revision: 03/22/2024 by Kanaan and Noor
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
