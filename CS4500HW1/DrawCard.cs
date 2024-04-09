@@ -184,8 +184,8 @@ namespace CS4500HW1
 
             for (int i = 0; i < selectedSuits.Length; i++)
             {
-                bool isRedCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
-                HighlightCardPictureBox(pictureBoxes[i], isRedCard);
+                bool isArtDealerCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
+                HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
             }
 
 
@@ -253,9 +253,9 @@ namespace CS4500HW1
         }
         // On Dealer Selection of liked cards, highlight the cards and tint them to ensure that the user knows which cards the dealers liked
         // Created by Noor and Kanaan
-        private void HighlightCardPictureBox(PictureBox pictureBox, bool isRedCard)
+        private void HighlightCardPictureBox(PictureBox pictureBox, bool isArtDealerCard)
         {
-            if (isRedCard)
+            if (isArtDealerCard)
             {
                 // Attach a custom paint event handler to draw the highlight
                 pictureBox.Paint += PictureBox_CustomPaint;
