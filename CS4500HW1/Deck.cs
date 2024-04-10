@@ -19,6 +19,11 @@ namespace CS4500HW1
         private List<Card> cards = new List<Card>();
         private Random random = new Random();
         string logPath = Application.StartupPath + "CardsDealt.txt";
+
+        //This is Mihir, I add another file here for LastWon.txt and used https://www.c-sharpcorner.com/article/c-sharp-write-to-file/ to help
+        //Not sure if this works, but it would be code for making a LastWon.txt file
+        string winnerPath = Application.StartupPath + "LastWon.txt";
+
         string outlog = "";
         public string Outlog => outlog;
 
@@ -76,11 +81,11 @@ namespace CS4500HW1
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
             List<Card> dealtCards = new List<Card>();
-            outlog = ""int highValue = 1;
+            outlog = ""; int highValue = 1; //highValue means highest rank found
             // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
-            // First find highest value of the cards
-                for (int i = 1; i < selectedSuits.Length; i++)
+            // First find highest value of the cards PATTERN 6
+                for (int i = 0; i < selectedSuits.Length; i++) //changed i=1 to 0
                 {
                     // Map face card values to numbers
                     string value = MapFaceCardValue(selectedValues[i]);
@@ -89,15 +94,17 @@ namespace CS4500HW1
                     // Find the card with the matching suit and value
                     Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
                     if (cardToDeal != null)
-                    {
-                        if (cardToDeal.Value > highValue)
+                    {   
+                        //Hey this is Mihir, I edited this so it parses the integer value from the string so it's comparable to highValue.
+                        if (int.Parse(cardToDeal.Value) > highValue)
                         {
-                            highValue = cardToDeal.Value;
+                            highValue = int.Parse(cardToDeal.Value);
                         }
                         // After the high value is calculated, the art dealer selects its cards here for Pattern 6.
-                        if (i = selectedSuits.Length - 1)
-                        {
-                            if ((cardToDeal.Value == highValue)
+                        if (i == selectedSuits.Length - 1)
+                        {   
+                            //Hey this is Mihir, I edited this so it parses the integer value from the string so it's comparable to highValue.
+                            if (int.Parse(cardToDeal.Value) == highValue)
                             {
                                 dealtCards.Add(cardToDeal);
                                 outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
@@ -165,9 +172,9 @@ namespace CS4500HW1
 
                     // end if for PATTERN 3
                     // Code: if value from LastWon.txt is three, then do PATTERN 4 which is for selecting single digit cards
-                        if ((cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "4" ||
+                        if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "4" ||
                         cardToDeal.Value == "5" || cardToDeal.Value == "6" || cardToDeal.Value == "7" || 
-                        cardToDeal.Value == "8" || cardToDeal.Value == "9")
+                        cardToDeal.Value == "8" || cardToDeal.Value == "9") //This is Mihir, I removed a parenthesis
                         {
                             dealtCards.Add(cardToDeal);
                             outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
@@ -179,7 +186,7 @@ namespace CS4500HW1
                         }
                     // end if for PATTERN 4
                     // Code: if value from LastWon.txt is four, then do PATTERN 5 which is for selecting prime single digit cards
-                        if ((cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "5" || cardToDeal.Value == "7")
+                        if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "5" || cardToDeal.Value == "7")
                         {
                             dealtCards.Add(cardToDeal);
                             outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");

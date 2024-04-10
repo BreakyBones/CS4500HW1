@@ -181,12 +181,61 @@ namespace CS4500HW1
                     return;
                 }
             }
-
-            for (int i = 0; i < selectedSuits.Length; i++)
+            //This is Mihir Bhakta, I added if statements to determine the pattern and I added other for loops for patterns 2-5 similar to
+            //that of pattern 1, which was already here.
+            //Make it set equal to the number from the LastWon.txt file later
+            int patternNum = 300;
+            //If statements Pattern 1 Red cards
+            if (patternNum == 0)
             {
-                bool isArtDealerCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
-                HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    bool isArtDealerCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
+                    HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                }
             }
+            //Added the same sort of thing for patterns 2-5 - Mihir
+            //Pattern 2 All clubs
+            if (patternNum == 1) 
+            {
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    bool isArtDealerCard = selectedSuits[i] == "Clubs";
+                    HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                }
+            }
+            //Pattern 3 All Face Cards 
+            if (patternNum == 2) 
+            { 
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    bool isArtDealerCard = selectedValues[i] == "11" || selectedValues[i] == "12" || selectedValues[i] == "13";
+                    HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                }
+            }
+            //Pattern 4 All Single Digits
+            if (patternNum == 3)
+            {
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    bool isArtDealerCard = selectedValues[i] == "2" || selectedValues[i] == "3" || selectedValues[i] == "4"
+                        || selectedValues[i] == "5" || selectedValues[i] == "6" || selectedValues[i] == "7"
+                        || selectedValues[i] == "8" || selectedValues[i] == "9";
+                    HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                }
+            }
+            //Pattern 5 All Single Digit Primes
+            if (patternNum == 4)
+            {
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    bool isArtDealerCard = selectedValues[i] == "2" || selectedValues[i] == "3"
+                        || selectedValues[i] == "5" || selectedValues[i] == "7";
+
+                    HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                }
+            }
+            //Pattern 6 I'm not sure how to do this.
 
 
 
