@@ -75,20 +75,52 @@ namespace CS4500HW1
             }
         }
 
+        public int PatternSix(string[] selectedSuits, string[] selectedValues)
+        {
+            List<Card> dealtCards = new List<Card>();
+            int highValue = 1; //highValue means highest rank found
+            // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
+            // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
+            // First find highest value of the cards PATTERN 6. Authored by Grant
+            for (int i = 0; i < selectedSuits.Length; i++) //changed i=1 to 0
+            {
+                // Map face card values to numbers
+                string value = MapFaceCardValue(selectedValues[i]);
+                string suit = selectedSuits[i];
+
+                // Find the card with the matching suit and value
+                Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
+                if (cardToDeal != null)
+                {
+                    //Hey this is Mihir, I edited this so it parses the integer value from the string so it's comparable to highValue.
+                    if (int.Parse(cardToDeal.Value) > highValue)
+                    {
+                    highValue = int.Parse(cardToDeal.Value);
+                    }
+                }
+             
+            }
+            return highValue;
+        }
+
 
         // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
         // Created by Kanaan
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
             List<Card> dealtCards = new List<Card>();
-            outlog = ""; int highValue = 1; //highValue means highest rank found
+            outlog = ""; 
+            int highestValue = 1; //highValue means highest rank found
             // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
             // First find highest value of the cards PATTERN 6. Authored by Grant
             int patternNumber = 0;
             if (patternNumber == 5)
             {
-                for (int i = 0; i < selectedSuits.Length; i++) //changed i=1 to 0
+                highestValue = PatternSix(selectedSuits, selectedValues);
+                //Hey this is Mihir, I edited this so it parses the integer value from the string so it's comparable to highValue.
+                
+                for (int i = 0; i < selectedSuits.Length; i++)
                 {
                     // Map face card values to numbers
                     string value = MapFaceCardValue(selectedValues[i]);
@@ -96,28 +128,16 @@ namespace CS4500HW1
 
                     // Find the card with the matching suit and value
                     Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
-                    if (cardToDeal != null)
+
+                    if (int.Parse(cardToDeal.Value) == highestValue)
                     {
-                        //Hey this is Mihir, I edited this so it parses the integer value from the string so it's comparable to highValue.
-                        if (int.Parse(cardToDeal.Value) > highValue)
-                        {
-                            highValue = int.Parse(cardToDeal.Value);
-                        }
-                        // After the high value is calculated, the art dealer selects its cards here for Pattern 6.
-                        if (i == selectedSuits.Length - 1)
-                        {
-                            //Hey this is Mihir, I edited this so it parses the integer value from the string so it's comparable to highValue.
-                            if (int.Parse(cardToDeal.Value) == highValue)
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                            else
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                        }
+                        dealtCards.Add(cardToDeal);
+                        outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                    }
+                    else
+                    {
+                        dealtCards.Add(cardToDeal);
+                        outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                     }
                 }
             }

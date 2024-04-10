@@ -24,6 +24,8 @@ namespace CS4500HW1
         private string[] selectedSuits = new string[4]; // Holds the selected suit for each card
         private string[] selectedValues = new string[4]; // Holds the selected value for each card
 
+        
+
         public DrawCard()
         {
             InitializeComponent();
@@ -235,7 +237,19 @@ namespace CS4500HW1
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
                 }
             }
-            //Pattern 6 I'm not sure how to do this.
+            //Pattern 6 Added by Grant
+            if (patternNum == 5)
+            {
+                int highValue = 1;
+                highValue = deck.PatternSix(selectedSuits, selectedValues);
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    bool isArtDealerCard = int.Parse(selectedValues[i]) == highValue;
+
+                    HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                }
+
+            }
 
 
 
