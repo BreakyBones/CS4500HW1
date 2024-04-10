@@ -137,68 +137,83 @@ namespace CS4500HW1
                     {
                         // if the value read from LastWon.txt is zero, then do the redCard option
                         // This needs code to read that value.
-                        if (cardToDeal.Suit == "Hearts" || cardToDeal.Suit == "Diamonds")
+                        //Pattern 1
+                        if (patternNumber == 0) //This is Mihir, I'm adding these if pattern statements to remove a bug that was causing
+                            //the program to crash upon selected a card.
                         {
-                            dealtCards.Add(cardToDeal);
-                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                        }
-                        else
-                        {
-                            dealtCards.Add(cardToDeal);
-                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            if (cardToDeal.Suit == "Hearts" || cardToDeal.Suit == "Diamonds")
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
+                            else
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
                         }
                         // end if for PATTERN 1
                         // Code: if value from LastWon.txt is one, then do PATTERN 2 which is for selecting clubs
-
-                        if (cardToDeal.Suit == "Clubs")
+                        if (patternNumber == 1)
                         {
-                            dealtCards.Add(cardToDeal);
-                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                        }
-                        else
-                        {
-                            dealtCards.Add(cardToDeal);
-                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            if (cardToDeal.Suit == "Clubs")
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
+                            else
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
                         }
                         // end if for PATTERN 2
                         // Code: if value from LastWon.txt is two, then do PATTERN 3 which is for selecting face value cards
                         // 11 is for jack, 12 is for queen, and 13 is for king
-                        if (cardToDeal.Value == "11" || cardToDeal.Value == "12" || cardToDeal.Value == "13")
+                        if (patternNumber == 2)
                         {
-                            dealtCards.Add(cardToDeal);
-                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                            if (cardToDeal.Value == "11" || cardToDeal.Value == "12" || cardToDeal.Value == "13")
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
+                            else
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
                         }
-                        else
-                        {
-                            dealtCards.Add(cardToDeal);
-                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
-                        }
-
                         // end if for PATTERN 3
                         // Code: if value from LastWon.txt is three, then do PATTERN 4 which is for selecting single digit cards
-                        if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "4" ||
+                        if (patternNumber == 3)
+                        {
+                            if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "4" ||
                         cardToDeal.Value == "5" || cardToDeal.Value == "6" || cardToDeal.Value == "7" ||
                         cardToDeal.Value == "8" || cardToDeal.Value == "9") //This is Mihir, I removed a parenthesis
-                        {
-                            dealtCards.Add(cardToDeal);
-                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                        }
-                        else
-                        {
-                            dealtCards.Add(cardToDeal);
-                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
+                            else
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
                         }
                         // end if for PATTERN 4
                         // Code: if value from LastWon.txt is four, then do PATTERN 5 which is for selecting prime single digit cards
-                        if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "5" || cardToDeal.Value == "7")
+                        if (patternNumber == 4)
                         {
-                            dealtCards.Add(cardToDeal);
-                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                        }
-                        else
-                        {
-                            dealtCards.Add(cardToDeal);
-                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "5" || cardToDeal.Value == "7")
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
+                            else
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
                         }
                         // end if for PATTERN 5
                         // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
@@ -223,7 +238,7 @@ namespace CS4500HW1
             // Check if the correct number of cards were dealt
             if (dealtCards.Count != selectedSuits.Length)
             {
-                throw new InvalidOperationException("Not enough cards were dealt.");
+                throw new InvalidOperationException("Not enough cards were dealt."+dealtCards.Count+"and"+selectedSuits.Length);
             }
     
             return dealtCards;
