@@ -122,145 +122,129 @@ namespace CS4500HW1
             //COULD make it so drawcard deals with the pattern number and we just call that patternumber from DrawCard if that works
             Debug.Write("pattern number before file is: " + patternNumber);
             //This is Mihir, I added this to try to read the patternumber from the file.
-            using (StreamReader srPattern = new StreamReader(patternFile))
-            {
-                patternNumber = int.Parse(srPattern.ReadToEnd());
-            }
+            //using (StreamReader srPattern = new StreamReader(patternFile))
+            //{
+            //   patternNumber = int.Parse(srPattern.ReadToEnd());
+            //}
             
             Debug.Write("pattern number after file is: " + patternNumber);
                 
 
-            if (patternNumber == 5)
+            for (int i = 0; i < selectedSuits.Length; i++)
             {
-                highestValue = PatternSix(selectedSuits, selectedValues);
-                //Hey this is Mihir, I edited this so it parses the integer value from the string so it's comparable to highValue.
-                
-                for (int i = 0; i < selectedSuits.Length; i++)
+                // Map face card values to numbers
+                string value = MapFaceCardValue(selectedValues[i]);
+                string suit = selectedSuits[i];
+
+                // Find the card with the matching suit and value
+                Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
+
+                if (cardToDeal != null)
                 {
-                    // Map face card values to numbers
-                    string value = MapFaceCardValue(selectedValues[i]);
-                    string suit = selectedSuits[i];
-
-                    // Find the card with the matching suit and value
-                    Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
-
-                    if (int.Parse(cardToDeal.Value) == highestValue)
+                    // if the value read from LastWon.txt is zero, then do the redCard option
+                    // This needs code to read that value.
+                    //Pattern 1
+                    if (patternNumber == 0) //This is Mihir, I'm adding these if pattern statements to remove a bug that was causing
+                        //the program to crash upon selected a card.
                     {
-                        dealtCards.Add(cardToDeal);
-                        outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        if (cardToDeal.Suit == "Hearts" || cardToDeal.Suit == "Diamonds")
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
                     }
-                    else
+                    // end if for PATTERN 1
+                    // Code: if value from LastWon.txt is one, then do PATTERN 2 which is for selecting clubs
+                    if (patternNumber == 1)
                     {
-                        dealtCards.Add(cardToDeal);
-                        outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        if (cardToDeal.Suit == "Clubs")
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
                     }
-                }
-            }
-
-            if (patternNumber < 5)
-            {
-                for (int i = 0; i < selectedSuits.Length; i++)
-                {
-                    // Map face card values to numbers
-                    string value = MapFaceCardValue(selectedValues[i]);
-                    string suit = selectedSuits[i];
-
-                    // Find the card with the matching suit and value
-                    Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
-
-                    if (cardToDeal != null)
+                    // end if for PATTERN 2
+                    // Code: if value from LastWon.txt is two, then do PATTERN 3 which is for selecting face value cards
+                    // 11 is for jack, 12 is for queen, and 13 is for king
+                    if (patternNumber == 2)
                     {
-                        // if the value read from LastWon.txt is zero, then do the redCard option
-                        // This needs code to read that value.
-                        //Pattern 1
-                        if (patternNumber == 0) //This is Mihir, I'm adding these if pattern statements to remove a bug that was causing
-                            //the program to crash upon selected a card.
+                        if (cardToDeal.Value == "11" || cardToDeal.Value == "12" || cardToDeal.Value == "13")
                         {
-                            if (cardToDeal.Suit == "Hearts" || cardToDeal.Suit == "Diamonds")
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                            else
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
                         }
-                        // end if for PATTERN 1
-                        // Code: if value from LastWon.txt is one, then do PATTERN 2 which is for selecting clubs
-                        if (patternNumber == 1)
+                        else
                         {
-                            if (cardToDeal.Suit == "Clubs")
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                            else
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
-                        // end if for PATTERN 2
-                        // Code: if value from LastWon.txt is two, then do PATTERN 3 which is for selecting face value cards
-                        // 11 is for jack, 12 is for queen, and 13 is for king
-                        if (patternNumber == 2)
-                        {
-                            if (cardToDeal.Value == "11" || cardToDeal.Value == "12" || cardToDeal.Value == "13")
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                            else
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                        }
-                        // end if for PATTERN 3
-                        // Code: if value from LastWon.txt is three, then do PATTERN 4 which is for selecting single digit cards
-                        if (patternNumber == 3)
-                        {
-                            if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "4" ||
+                    }
+                    // end if for PATTERN 3
+                    // Code: if value from LastWon.txt is three, then do PATTERN 4 which is for selecting single digit cards
+                    if (patternNumber == 3)
+                    {
+                        if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "4" ||
                         cardToDeal.Value == "5" || cardToDeal.Value == "6" || cardToDeal.Value == "7" ||
                         cardToDeal.Value == "8" || cardToDeal.Value == "9") //This is Mihir, I removed a parenthesis
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                            else
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                        }
-                        // end if for PATTERN 4
-                        // Code: if value from LastWon.txt is four, then do PATTERN 5 which is for selecting prime single digit cards
-                        if (patternNumber == 4)
                         {
-                            if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "5" || cardToDeal.Value == "7")
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                            else
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
                         }
-                        // end if for PATTERN 5
-                        // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
-
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
                     }
-                    else
+                    // end if for PATTERN 4
+                    // Code: if value from LastWon.txt is four, then do PATTERN 5 which is for selecting prime single digit cards
+                    if (patternNumber == 4)
                     {
-                        // If a card is not found, write a message to the debug output
-                        System.Diagnostics.Debug.WriteLine($"Card with suit {suit} and value {value} not found or already dealt.");
+                        if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "5" || cardToDeal.Value == "7")
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");                            }
+                        }
+                    // end if for PATTERN 5
+                    // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
+                    if (patternNumber == 5)
+                    {
+                        highestValue = PatternSix(selectedSuits, selectedValues);
+                        if (int.Parse(cardToDeal.Value) == highestValue)
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
                     }
+
+                }
+                else
+                {
+                    // If a card is not found, write a message to the debug output
+                    System.Diagnostics.Debug.WriteLine($"Card with suit {suit} and value {value} not found or already dealt.");
                 }
             }
+        
 
             // Log the cards dealt
             using (StreamWriter sw = File.AppendText(logPath))

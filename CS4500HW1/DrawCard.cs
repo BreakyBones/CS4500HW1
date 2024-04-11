@@ -190,11 +190,11 @@ namespace CS4500HW1
             //Make it set equal to the number from the LastWon.txt file later
             int patternNum = 5;
             //This is Mihir, I added this to try to read the patternumber from the file.
-            using (StreamReader srPattern = new StreamReader(patternFile))
-            {
-                patternNum = int.Parse(srPattern.ReadToEnd());
-            }
-            //If atements Pattern 1 Red cards
+            //using (StreamReader srPattern = new StreamReader(patternFile))
+            //{
+            //    patternNum = int.Parse(srPattern.ReadToEnd());
+            //}
+            //If statements Pattern 1 Red cards
             if (patternNum == 0)
             {
                 for (int i = 0; i < selectedSuits.Length; i++)
@@ -244,12 +244,15 @@ namespace CS4500HW1
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
                 }
             }
-            // Pattern 6 Added by Grant
+            // Pattern 6 Added by Grant on April 10
             if (patternNum == 5)
             {
                 int highValue = 1;
                 bool isArtDealerCard = false;
 
+                // This retrieves the highest value of the cards.
+                // It returns an integer string only which is why I use the switch statement to give 
+                // a path to the actual value of the card
                 highValue = deck.PatternSix(selectedSuits, selectedValues);
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
