@@ -109,7 +109,7 @@ namespace CS4500HW1
         int counter = 0;
         // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
         // Created by Kanaan
-        public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
+        public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues, int patternNumber)
         {
             List<Card> dealtCards = new List<Card>();
             outlog = ""; 
@@ -118,9 +118,7 @@ namespace CS4500HW1
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
             // First find highest value of the cards PATTERN 6. Authored by Grant
 
-            int patternNumber;
-            DrawCard patter = new DrawCard();
-            patternNumber = patter.patternNum;
+            
             //COULD make it so drawcard deals with the pattern number and we just call that patternumber from DrawCard if that works
            // Debug.Write("pattern number before file is: " + patternNumber);
             //This is Mihir, I added this to try to read the patternumber from the file.

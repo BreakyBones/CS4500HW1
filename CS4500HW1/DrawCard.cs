@@ -149,7 +149,7 @@ namespace CS4500HW1
             }
 
             // If no duplicates are found, proceed to display the card
-            var cardToDisplay = deck.DealSelectedCards(new[] { selectedSuits[cardIndex] }, new[] { selectedValues[cardIndex] }).FirstOrDefault();
+            var cardToDisplay = deck.DealSelectedCards(new[] { selectedSuits[cardIndex] }, new[] { selectedValues[cardIndex] }, patternNum).FirstOrDefault();
             if (cardToDisplay != null)
             {
                 var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
@@ -372,7 +372,7 @@ namespace CS4500HW1
 
 
             // Get the selected cards from the deck
-            var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
+            var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues, patternNum);
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
 
             // Align the "Next Round" button over the "Deal" button
