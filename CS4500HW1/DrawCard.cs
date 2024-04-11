@@ -186,8 +186,8 @@ namespace CS4500HW1
             //This is Mihir Bhakta, I added if statements to determine the pattern and I added other for loops for patterns 2-5 similar to
             //that of pattern 1, which was already here.
             //Make it set equal to the number from the LastWon.txt file later
-            int patternNum = 300;
-            //If statements Pattern 1 Red cards
+            int patternNum = 5;
+            //If atements Pattern 1 Red cards
             if (patternNum == 0)
             {
                 for (int i = 0; i < selectedSuits.Length; i++)
@@ -211,7 +211,7 @@ namespace CS4500HW1
             { 
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
-                    bool isArtDealerCard = selectedValues[i] == "11" || selectedValues[i] == "12" || selectedValues[i] == "13";
+                    bool isArtDealerCard = selectedValues[i] == "J" || selectedValues[i] == "Q" || selectedValues[i] == "K";
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
                 }
             }
@@ -237,14 +237,38 @@ namespace CS4500HW1
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
                 }
             }
-            //Pattern 6 Added by Grant
+            // Pattern 6 Added by Grant
             if (patternNum == 5)
             {
                 int highValue = 1;
+                bool isArtDealerCard = false;
                 highValue = deck.PatternSix(selectedSuits, selectedValues);
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
-                    bool isArtDealerCard = int.Parse(selectedValues[i]) == highValue;
+                    // If highest value card is a face value card or Ace.
+                    if (highValue > 10)
+                    {
+                        switch (highValue)
+                        {
+                            case 11:
+                                isArtDealerCard = selectedValues[i] == "J";
+                                break;
+                            case 12:
+                                isArtDealerCard = selectedValues[i] == "Q";
+                                break;
+                            case 13:
+                                isArtDealerCard = selectedValues[i] == "K";
+                                break;
+                            case 14:
+                                isArtDealerCard = selectedValues[i] == "A";
+                                break;
+                        }
+                    }
+                    // If highest Value card is a numerical value card
+                    if (highValue < 11)
+                    {
+                        isArtDealerCard = int.Parse(selectedValues[i]) == highValue;
+                    }
 
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
                 }

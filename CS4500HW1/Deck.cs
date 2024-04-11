@@ -114,7 +114,7 @@ namespace CS4500HW1
             // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
             // First find highest value of the cards PATTERN 6. Authored by Grant
-            int patternNumber = 0;
+            int patternNumber = 5;
             if (patternNumber == 5)
             {
                 highestValue = PatternSix(selectedSuits, selectedValues);
