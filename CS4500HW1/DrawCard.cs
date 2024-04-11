@@ -242,6 +242,7 @@ namespace CS4500HW1
             {
                 int highValue = 1;
                 bool isArtDealerCard = false;
+
                 highValue = deck.PatternSix(selectedSuits, selectedValues);
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
