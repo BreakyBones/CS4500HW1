@@ -10,6 +10,7 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
+using System.Diagnostics;
 
 
 namespace CS4500HW1
@@ -22,7 +23,9 @@ namespace CS4500HW1
 
         //This is Mihir, I add another file here for LastWon.txt and used https://www.c-sharpcorner.com/article/c-sharp-write-to-file/ to help
         //Not sure if this works, but it would be code for making a LastWon.txt file
-        string winnerPath = Application.StartupPath + "LastWon.txt";
+        string patternFile = Application.StartupPath + "LastWon.txt";
+
+
 
         string outlog = "";
         public string Outlog => outlog;
@@ -114,7 +117,19 @@ namespace CS4500HW1
             // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
             // First find highest value of the cards PATTERN 6. Authored by Grant
+
             int patternNumber = 5;
+            //COULD make it so drawcard deals with the pattern number and we just call that patternumber from DrawCard if that works
+            Debug.Write("pattern number before file is: " + patternNumber);
+            //This is Mihir, I added this to try to read the patternumber from the file.
+            using (StreamReader srPattern = new StreamReader(patternFile))
+            {
+                patternNumber = int.Parse(srPattern.ReadToEnd());
+            }
+            
+            Debug.Write("pattern number after file is: " + patternNumber);
+                
+
             if (patternNumber == 5)
             {
                 highestValue = PatternSix(selectedSuits, selectedValues);
