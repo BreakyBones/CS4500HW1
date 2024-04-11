@@ -82,8 +82,6 @@ namespace CS4500HW1
         {
             List<Card> dealtCards = new List<Card>();
             int highValue = 1; //highValue means highest rank found
-            // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
-            // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
             // First find highest value of the cards PATTERN 6. Authored by Grant
             for (int i = 0; i < selectedSuits.Length; i++) //changed i=1 to 0
             {
@@ -105,8 +103,10 @@ namespace CS4500HW1
             }
             return highValue;
         }
-
-
+        // I am declaring some variables outside of DealSelectedCards since they are only to reset when a pattern is one.
+        // Create the 2d string list
+        // This counter will count how many times this current pattern has been used minus one
+        int counter = 0;
         // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
         // Created by Kanaan
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
@@ -128,24 +128,31 @@ namespace CS4500HW1
             //}
             
             Debug.Write("pattern number after file is: " + patternNumber);
-                
 
+            // Increment by one. When the for loop is done, This goes back to when is Pattern is won.
+            // I will add a WIN counter here also
+            counter = counter++;
             for (int i = 0; i < selectedSuits.Length; i++)
             {
                 // Map face card values to numbers
                 string value = MapFaceCardValue(selectedValues[i]);
                 string suit = selectedSuits[i];
+                // value + suit is the card
+                // Add it the the counter-ith row of the 2Dlist 
 
                 // Find the card with the matching suit and value
                 Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
+
+                // This is Grant. Trying to create a 2-D list which will be used 
+                // to check if any 4-deck hands in the current pattern history are equal.
+
 
                 if (cardToDeal != null)
                 {
                     // if the value read from LastWon.txt is zero, then do the redCard option
                     // This needs code to read that value.
                     //Pattern 1
-                    if (patternNumber == 0) //This is Mihir, I'm adding these if pattern statements to remove a bug that was causing
-                        //the program to crash upon selected a card.
+                    if (patternNumber == 0)
                     {
                         if (cardToDeal.Suit == "Hearts" || cardToDeal.Suit == "Diamonds")
                         {
@@ -236,7 +243,8 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
-
+                    // I will run a crazy for loop when i = 3 to make sure no other rows in the 2-D list are equal to any other row
+                    // I hope to learn how to access each element as I should.                
                 }
                 else
                 {
