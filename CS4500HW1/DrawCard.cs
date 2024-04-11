@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -24,7 +25,8 @@ namespace CS4500HW1
         private string[] selectedSuits = new string[4]; // Holds the selected suit for each card
         private string[] selectedValues = new string[4]; // Holds the selected value for each card
 
-        
+
+        string patternFile = Application.StartupPath + "LastWon.txt";
 
         public DrawCard()
         {
@@ -187,6 +189,11 @@ namespace CS4500HW1
             //that of pattern 1, which was already here.
             //Make it set equal to the number from the LastWon.txt file later
             int patternNum = 5;
+            //This is Mihir, I added this to try to read the patternumber from the file.
+            using (StreamReader srPattern = new StreamReader(patternFile))
+            {
+                patternNum = int.Parse(srPattern.ReadToEnd());
+            }
             //If atements Pattern 1 Red cards
             if (patternNum == 0)
             {

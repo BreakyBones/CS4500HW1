@@ -13,6 +13,8 @@
 // for the process of selecting or dealing cards.
 // External files include images for all 52 cards in a deck
 // and the file CardsDealt.txt used to keep track of the cards that were dealt or chosen.
+//There is also a file called LastWon.txt that must be made and the user must enter the number
+//0 into that file.
 // This program starts with a welcome message.The user clicks Next to start selecting cards.
 // One by one, the user confirms each of the four cards separately.
 // For each card selected select one of the boxes containing the suit to select the suit
