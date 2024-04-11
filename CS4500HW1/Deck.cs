@@ -118,16 +118,18 @@ namespace CS4500HW1
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
             // First find highest value of the cards PATTERN 6. Authored by Grant
 
-            int patternNumber = 5;
+            int patternNumber;
+            DrawCard patter = new DrawCard();
+            patternNumber = patter.patternNum;
             //COULD make it so drawcard deals with the pattern number and we just call that patternumber from DrawCard if that works
-            Debug.Write("pattern number before file is: " + patternNumber);
+           // Debug.Write("pattern number before file is: " + patternNumber);
             //This is Mihir, I added this to try to read the patternumber from the file.
             //using (StreamReader srPattern = new StreamReader(patternFile))
             //{
             //   patternNumber = int.Parse(srPattern.ReadToEnd());
             //}
             
-            Debug.Write("pattern number after file is: " + patternNumber);
+        //    Debug.Write("pattern number after file is: " + patternNumber);
 
             // Increment by one. When the for loop is done, This goes back to when is Pattern is won.
             // I will add a WIN counter here also

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace CS4500HW1
         private PictureBox[] selectedPictureBoxes = new PictureBox[4]; // Assuming 4 cards
         private string[] selectedSuits = new string[4]; // Holds the selected suit for each card
         private string[] selectedValues = new string[4]; // Holds the selected value for each card
+        //Mihir - made patternNum to be used by both Deck.cs and DrawCard.cs instead of having 2 of the same thing.
+        //and made a counter to keep track of rounds won for a pattern and if the round was won or not.
+        public int patternNum = 0;
+        int numCardsWon = 0;
+        int roundsWon = 0;
+        bool isPatternWon = false;
 
 
         string patternFile = Application.StartupPath + "LastWon.txt";
@@ -168,7 +175,7 @@ namespace CS4500HW1
         private void draw_Click(object sender, EventArgs e)
         {
             var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
-
+            isPatternWon = true;
             if (pictureBoxes.Any(pb => pb.Image == null))
             {
                 MessageBox.Show("Please confirm all cards!");
@@ -188,7 +195,7 @@ namespace CS4500HW1
             //This is Mihir Bhakta, I added if statements to determine the pattern and I added other for loops for patterns 2-5 similar to
             //that of pattern 1, which was already here.
             //Make it set equal to the number from the LastWon.txt file later
-            int patternNum = 5;
+            //int patternNum = 5;
             //This is Mihir, I added this to try to read the patternumber from the file.
             //using (StreamReader srPattern = new StreamReader(patternFile))
             //{
@@ -199,18 +206,46 @@ namespace CS4500HW1
             {
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
+                    
                     bool isArtDealerCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                    //Mihir: If the card is highlighted, it means it was selected so if all 4 get selected then user gets a win for a round
+                    //if 2 wins, then user gets a win for the pattern and moves onto the next pattern
+                    if (isArtDealerCard == true)
+                    {
+                        numCardsWon++;
+                        if(numCardsWon == 4) //All 4 cards were highlighted
+                        {
+                            numCardsWon = 0;
+                            roundsWon++;
+                            Debug.Write("roundswon:"+roundsWon);
+                        }
+                    }
+                    
+                   
                 }
             }
             //Added the same sort of thing for patterns 2-5 - Mihir
             //Pattern 2 All clubs
             if (patternNum == 1) 
             {
+                Debug.Write("pattern moved into CLUBS");
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
                     bool isArtDealerCard = selectedSuits[i] == "Clubs";
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                    //Mihir: If the card is highlighted, it means it was selected so if all 4 get selected then user gets a win for a round
+                    //if 2 wins, then user gets a win for the pattern and moves onto the next pattern
+                    if (isArtDealerCard == true)
+                    {
+                        numCardsWon++;
+                        if (numCardsWon == 4) //All 4 cards were highlighted
+                        {
+                            numCardsWon = 0;
+                            roundsWon++;
+                            Debug.Write("roundswon:" + roundsWon);
+                        }
+                    }
                 }
             }
             //Pattern 3 All Face Cards 
@@ -220,6 +255,18 @@ namespace CS4500HW1
                 {
                     bool isArtDealerCard = selectedValues[i] == "J" || selectedValues[i] == "Q" || selectedValues[i] == "K";
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                    //Mihir: If the card is highlighted, it means it was selected so if all 4 get selected then user gets a win for a round
+                    //if 2 wins, then user gets a win for the pattern and moves onto the next pattern
+                    if (isArtDealerCard == true)
+                    {
+                        numCardsWon++;
+                        if (numCardsWon == 4) //All 4 cards were highlighted
+                        {
+                            numCardsWon = 0;
+                            roundsWon++;
+                            Debug.Write("roundswon:" + roundsWon);
+                        }
+                    }
                 }
             }
             //Pattern 4 All Single Digits
@@ -231,6 +278,18 @@ namespace CS4500HW1
                         || selectedValues[i] == "5" || selectedValues[i] == "6" || selectedValues[i] == "7"
                         || selectedValues[i] == "8" || selectedValues[i] == "9";
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                    //Mihir: If the card is highlighted, it means it was selected so if all 4 get selected then user gets a win for a round
+                    //if 2 wins, then user gets a win for the pattern and moves onto the next pattern
+                    if (isArtDealerCard == true)
+                    {
+                        numCardsWon++;
+                        if (numCardsWon == 4) //All 4 cards were highlighted
+                        {
+                            numCardsWon = 0;
+                            roundsWon++;
+                            Debug.Write("roundswon:" + roundsWon);
+                        }
+                    }
                 }
             }
             //Pattern 5 All Single Digit Primes
@@ -242,6 +301,18 @@ namespace CS4500HW1
                         || selectedValues[i] == "5" || selectedValues[i] == "7";
 
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                    //Mihir: If the card is highlighted, it means it was selected so if all 4 get selected then user gets a win for a round
+                    //if 2 wins, then user gets a win for the pattern and moves onto the next pattern
+                    if (isArtDealerCard == true)
+                    {
+                        numCardsWon++;
+                        if (numCardsWon == 4) //All 4 cards were highlighted
+                        {
+                            numCardsWon = 0;
+                            roundsWon++;
+                            Debug.Write("roundswon:" + roundsWon);
+                        }
+                    }
                 }
             }
             // Pattern 6 Added by Grant on April 10
@@ -282,6 +353,18 @@ namespace CS4500HW1
                     }
 
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
+                    //Mihir: If the card is highlighted, it means it was selected so if all 4 get selected then user gets a win for a round
+                    //if 2 wins, then user gets a win for the pattern and moves onto the next pattern
+                    if (isArtDealerCard == true)
+                    {
+                        numCardsWon++;
+                        if (numCardsWon == 4) //All 4 cards were highlighted
+                        {
+                            numCardsWon = 0;
+                            roundsWon++;
+                            Debug.Write("roundswon:" + roundsWon);
+                        }
+                    }
                 }
 
             }
@@ -300,7 +383,7 @@ namespace CS4500HW1
             NextRoundBtn.Visible = true;
 
         }
-
+        
         private void NextRoundBtn_Click(object sender, EventArgs e)
         {
             // Reset selections, dropdowns, and any game state here
@@ -309,6 +392,18 @@ namespace CS4500HW1
             // Toggle buttons visibility
             NextRoundBtn.Visible = false;
             DealBtn.Visible = true;
+
+            //Upon clicking the button, make this value = true for the pattern to increase for hightling to work properly
+            if (roundsWon >= 2 && isPatternWon == true)
+            {
+                roundsWon = 0;
+                Debug.Write("user won this round, moving onto the next pattern");
+
+                patternNum++;
+
+            }
+            isPatternWon = false;
+            
         }
 
         // This is the code associated with the Next Round Button, on clicking it it resets all buttons to their previous states while keeping the History text box in tact
