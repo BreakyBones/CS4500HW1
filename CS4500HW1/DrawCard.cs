@@ -128,7 +128,7 @@ namespace CS4500HW1
 
         private void DisplaySelectedCard(int cardIndex)
         {
-            if (string.IsNullOrEmpty(selectedSuits[cardIndex]) || string.IsNullOrEmpty(selectedValues[cardIndex]) 
+            if (string.IsNullOrEmpty(selectedSuits[cardIndex]) || string.IsNullOrEmpty(selectedValues[cardIndex])
                 || selectedValues[cardIndex] == "Please select value")
             {
                 MessageBox.Show($"Please select both the suit and value for card {cardIndex + 1}.");
@@ -183,7 +183,8 @@ namespace CS4500HW1
         {
             //Created by mihir: reading the pattern number from LastWon.txt
             fileCounter++;
-            if(fileCounter == 1) {
+            if (fileCounter == 1)
+            {
                 using (StreamReader srPattern = new StreamReader(patternFile))
                 {
                     patternNum = int.Parse(srPattern.ReadToEnd());
@@ -200,25 +201,16 @@ namespace CS4500HW1
                         {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
                             MessageBox.Show("Ok, goodbye!");
                             System.Threading.Thread.Sleep(5000);
-                            patternNum = 0;
-                            srPattern.Close();
-                            // This was added by Grant so that the game properly reset when user selects to quit after winning the whole game
-                            using (StreamWriter swPattern = new StreamWriter(patternFile))
-                            {
-                                swPattern.Write(patternNum);
-                                //Closes the file, I hope
-                                swPattern.Close();
-                            }
                             Application.Exit();
                         }
                     }
                 }
-              
+                // if(patternNum == 5)
             }
 
 
 
-            Debug.Write("patternNum initial value read from file:" + patternNum+"\n");
+            Debug.Write("patternNum initial value read from file:" + patternNum + "\n");
 
             var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
             isPatternWon = true;
@@ -239,9 +231,9 @@ namespace CS4500HW1
                 }
             }
 
-            
-                //This is Mihir, I added if statements to determine the pattern and I added other for loops for patterns 2-5 similar to
-                //that of pattern 1, which was already here.
+
+            //This is Mihir, I added if statements to determine the pattern and I added other for loops for patterns 2-5 similar to
+            //that of pattern 1, which was already here.
 
 
             //If statements Pattern 1 Red cards
@@ -249,7 +241,7 @@ namespace CS4500HW1
             {
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
-                    
+
                     bool isArtDealerCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
                     //Mihir: If the card is highlighted, it means it was selected so if all 4 get selected then user gets a win for a round
@@ -257,20 +249,20 @@ namespace CS4500HW1
                     if (isArtDealerCard == true)
                     {
                         numCardsWon++;
-                        if(numCardsWon == 4) //All 4 cards were highlighted
+                        if (numCardsWon == 4) //All 4 cards were highlighted
                         {
                             numCardsWon = 0;
                             roundsWon++;
-                            Debug.Write("roundswon:"+roundsWon);
+                            Debug.Write("roundswon:" + roundsWon);
                         }
                     }
-                    
-                   
+
+
                 }
             }
             //Added the same sort of thing for patterns 2-5 - Mihir
             //Pattern 2 All clubs
-            if (patternNum == 1) 
+            if (patternNum == 1)
             {
                 Debug.Write("pattern moved into CLUBS");
                 for (int i = 0; i < selectedSuits.Length; i++)
@@ -292,8 +284,8 @@ namespace CS4500HW1
                 }
             }
             //Pattern 3 All Face Cards 
-            if (patternNum == 2) 
-            { 
+            if (patternNum == 2)
+            {
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
                     bool isArtDealerCard = selectedValues[i] == "J" || selectedValues[i] == "Q" || selectedValues[i] == "K";
@@ -426,7 +418,7 @@ namespace CS4500HW1
             NextRoundBtn.Visible = true;
 
         }
-        
+
         private void NextRoundBtn_Click(object sender, EventArgs e)
         {
             // Reset selections, dropdowns, and any game state here
@@ -443,11 +435,9 @@ namespace CS4500HW1
                 roundsWon = 0;
                 Debug.Write("user won this round, moving onto the next pattern");
                 //Mihir - telling the user they won a pattern or that they won the whole game.
-                if(patternNum <= 4)
+                if (patternNum <= 4)
                 {
-                    // Display the correct pattern that was wrong
-                    int patternNu = patternNum + 1;
-                    MessageBox.Show("Congratulations! User Won pattern "+patternNu+". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
+                    MessageBox.Show("Congratulations! User Won pattern " + patternNum + ". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
                 }
                 if (patternNum == 5)
                 {
@@ -470,7 +460,7 @@ namespace CS4500HW1
 
             }
             isPatternWon = false;
-            
+
         }
 
         // This is the code associated with the Next Round Button, on clicking it it resets all buttons to their previous states while keeping the History text box in tact
@@ -497,11 +487,11 @@ namespace CS4500HW1
                  pictureBoxH4, pictureBoxD4, pictureBoxC4, pictureBoxS4
                 };
 
-                foreach (var pictureBox in allSuitPictureBoxes)
-                 {
-                 pictureBox.BackColor = Color.White; 
-                 pictureBox.BorderStyle = BorderStyle.FixedSingle; 
-                }
+            foreach (var pictureBox in allSuitPictureBoxes)
+            {
+                pictureBox.BackColor = Color.White;
+                pictureBox.BorderStyle = BorderStyle.FixedSingle;
+            }
 
             // Clear any stored selections from arrays (Just in case)
             Array.Clear(selectedSuits, 0, selectedSuits.Length);

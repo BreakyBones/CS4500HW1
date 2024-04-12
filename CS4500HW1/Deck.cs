@@ -40,14 +40,15 @@ namespace CS4500HW1
         private void InitializeDeck()
         {
             // On startup create the Date in the log file for the session.
-            using (StreamWriter sw = File.AppendText(logPath)) {
+            using (StreamWriter sw = File.AppendText(logPath))
+            {
                 sw.WriteLine(DateTime.Now.ToString("MM/dd/yyyy"));
             }
-            
-            
+
+
 
             var suits = new[] { "Hearts", "Diamonds", "Clubs", "Spades" };
-            var values = new[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11" ,"12", "13", "14" };
+            var values = new[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" };
 
             foreach (var suit in suits)
             {
@@ -98,22 +99,22 @@ namespace CS4500HW1
                     //Hey this is Mihir, I edited this so it parses the integer value from the string so it's comparable to highValue.
                     if (int.Parse(cardToDeal.Value) > highValue)
                     {
-                    highValue = int.Parse(cardToDeal.Value);
+                        highValue = int.Parse(cardToDeal.Value);
                     }
                 }
-             
+
             }
             return highValue;
         }
         // I am declaring some variables outside of DealSelectedCards since they are only to reset when a pattern is one.
         // Create the 2d string list
-        
+
         // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
         // Created by Kanaan
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
             List<Card> dealtCards = new List<Card>();
-            outlog = ""; 
+            outlog = "";
             int highestValue = 1; //highValue means highest rank found
             // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
@@ -122,7 +123,7 @@ namespace CS4500HW1
 
             // Increment by one. When the for loop is done, This goes back to when is Pattern is won.
             // Everything that is related to lists or arrays, I used chatGPT since I have never worked with it before in C#
-            List<string> cardHand = new List<string>();
+            // List<string> cardHand = new List<string>();
 
             for (int i = 0; i < selectedSuits.Length; i++)
             {
@@ -130,11 +131,11 @@ namespace CS4500HW1
                 string value = MapFaceCardValue(selectedValues[i]);
                 string suit = selectedSuits[i];
                 string thisCard = selectedValues[i] + selectedSuits[i];
-                cardHand.Add(thisCard);
-                //using (StreamWriter sw = File.AppendText(seeDuplicate))
-                //{
-                //    sw.WriteLine(thisCard);
-                //}
+                // cardHand.Add(thisCard);
+                using (StreamWriter sw = File.AppendText(seeDuplicate))
+                {
+                    sw.WriteLine(thisCard);
+                }
 
 
 
@@ -221,8 +222,9 @@ namespace CS4500HW1
                         else
                         {
                             dealtCards.Add(cardToDeal);
-                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");                            }
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
+                    }
                     // end if for PATTERN 5
                     // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
                     if (DrawCard.patternNum == 5)
@@ -247,12 +249,9 @@ namespace CS4500HW1
                     // If a card is not found, write a message to the debug output
                     System.Diagnostics.Debug.WriteLine($"Card with suit {suit} and value {value} not found or already dealt.");
                 }
-            
+
             }
 
-            // Learned about the Sort function through ChatGPT.
-            cardHand.Sort();
-           
 
 
 
@@ -267,11 +266,11 @@ namespace CS4500HW1
             // Check if the correct number of cards were dealt
             if (dealtCards.Count != selectedSuits.Length)
             {
-                throw new InvalidOperationException("Not enough cards were dealt."+dealtCards.Count+"and"+selectedSuits.Length);
+                throw new InvalidOperationException("Not enough cards were dealt." + dealtCards.Count + "and" + selectedSuits.Length);
             }
-    
+
             return dealtCards;
-        }        
+        }
 
         private string MapFaceCardValue(string value)
         {
