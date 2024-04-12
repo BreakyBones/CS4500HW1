@@ -31,6 +31,7 @@ namespace CS4500HW1
         int numCardsWon = 0;
         int roundsWon = 0;
         bool isPatternWon = false;
+        int fileCounter;
 
 
         string patternFile = Application.StartupPath + "LastWon.txt";
@@ -181,25 +182,30 @@ namespace CS4500HW1
         private void draw_Click(object sender, EventArgs e)
         {
             //Created by mihir: reading the pattern number from LastWon.txt
-            using (StreamReader srPattern = new StreamReader(patternFile))
-            {
-               patternNum = int.Parse(srPattern.ReadToEnd());
-                if (patternNum == 6)
+            fileCounter++;
+            if(fileCounter == 1) {
+                using (StreamReader srPattern = new StreamReader(patternFile))
                 {
-                    //This is Mihir Bhakta. I used https://stackoverflow.com/questions/3036829/how-do-i-create-a-message-box-with-yes-no-choices-and-a-dialogresult
-                    //to help me create this box that takes a yes or no from the user for the pattern number being 6.
-                    DialogResult dialogResult = MessageBox.Show("You already won all the patterns for the Art Dealer.\r\nWould you like to start over again with the first pattern?", "Some Title", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
+                    patternNum = int.Parse(srPattern.ReadToEnd());
+                    if (patternNum == 6)
                     {
-                        patternNum = 0;
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
-                        MessageBox.Show("Ok, goodbye!");
-                        System.Threading.Thread.Sleep(5000);
-                        Application.Exit();
+                        //This is Mihir Bhakta. I used https://stackoverflow.com/questions/3036829/how-do-i-create-a-message-box-with-yes-no-choices-and-a-dialogresult
+                        //to help me create this box that takes a yes or no from the user for the pattern number being 6.
+                        DialogResult dialogResult = MessageBox.Show("You already won all the patterns for the Art Dealer.\r\nWould you like to start over again with the first pattern?", "Art Dealer", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            //Change this to -1 and try again in a minute
+                            patternNum = 0;
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
+                            MessageBox.Show("Ok, goodbye!");
+                            System.Threading.Thread.Sleep(5000);
+                            Application.Exit();
+                        }
                     }
                 }
+               // if(patternNum == 5)
             }
             
 
@@ -434,7 +440,19 @@ namespace CS4500HW1
                 }
                 if (patternNum == 5)
                 {
-                    MessageBox.Show("WOW, Congratulations! Not only has the user won pattern " + patternNum + ", the user has won the every pattern, which means the user has won the WHOLE GAME!");
+                    //MessageBox.Show("WOW, Congratulations! Not only has the user won the pattern, the user has won every pattern, which means the user has won the WHOLE GAME!");
+                    DialogResult dialogResult = MessageBox.Show("WOW, Congratulations! Not only has the user won the pattern, the user has won every pattern, which means the user has won the WHOLE GAME!\r\nWould you like to start over again with the first pattern?", "Art Dealer", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Debug.Write("It got to this point");
+                        patternNum = -1;
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
+                        MessageBox.Show("Ok, goodbye!");
+                        System.Threading.Thread.Sleep(5000);
+                        Application.Exit();
+                    }
                 }
 
                 patternNum++;
