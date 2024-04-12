@@ -184,7 +184,25 @@ namespace CS4500HW1
             using (StreamReader srPattern = new StreamReader(patternFile))
             {
                patternNum = int.Parse(srPattern.ReadToEnd());
+                if (patternNum == 6)
+                {
+                    //This is Mihir Bhakta. I used https://stackoverflow.com/questions/3036829/how-do-i-create-a-message-box-with-yes-no-choices-and-a-dialogresult
+                    //to help me create this box that takes a yes or no from the user for the pattern number being 6.
+                    DialogResult dialogResult = MessageBox.Show("You already won all the patterns for the Art Dealer.\r\nWould you like to start over again with the first pattern?", "Some Title", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        patternNum = 0;
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
+                        MessageBox.Show("Ok, goodbye!");
+                        System.Threading.Thread.Sleep(5000);
+                        Application.Exit();
+                    }
+                }
             }
+            
+
             Debug.Write("patternNum initial value read from file:" + patternNum+"\n");
 
             var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
@@ -205,17 +223,14 @@ namespace CS4500HW1
                     return;
                 }
             }
-            //This is Mihir Bhakta, I added if statements to determine the pattern and I added other for loops for patterns 2-5 similar to
-            //that of pattern 1, which was already here.
-            //Make it set equal to the number from the LastWon.txt file later
-            //int patternNum = 5;
-            //This is Mihir, I added this to try to read the patternumber from the file.
-            //using (StreamReader srPattern = new StreamReader(patternFile))
-            //{
-            //    patternNum = int.Parse(srPattern.ReadToEnd());
-            //}
-            //If statements Pattern 1 Red cards
-            if (patternNum == 0)
+
+            
+                //This is Mihir, I added if statements to determine the pattern and I added other for loops for patterns 2-5 similar to
+                //that of pattern 1, which was already here.
+
+
+                //If statements Pattern 1 Red cards
+                if (patternNum == 0)
             {
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
@@ -406,11 +421,21 @@ namespace CS4500HW1
             NextRoundBtn.Visible = false;
             DealBtn.Visible = true;
 
-            //Upon clicking the button, make this value = true for the pattern to increase for hightling to work properly
+            //Created by Mihir - Upon clicking the button, make this value = true for the pattern to increase for hightling to work properly
+            //This ALSO means the user won the pattern
             if (roundsWon >= 2 && isPatternWon == true)
             {
                 roundsWon = 0;
                 Debug.Write("user won this round, moving onto the next pattern");
+                //Mihir - telling the user they won a pattern or that they won the whole game.
+                if(patternNum <= 4)
+                {
+                    MessageBox.Show("Congratulations! User Won pattern "+patternNum+". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
+                }
+                if (patternNum == 5)
+                {
+                    MessageBox.Show("WOW, Congratulations! Not only has the user won pattern " + patternNum + ", the user has won the every pattern, which means the user has won the WHOLE GAME!");
+                }
 
                 patternNum++;
 
