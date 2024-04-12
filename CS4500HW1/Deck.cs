@@ -72,7 +72,7 @@ namespace CS4500HW1
                 var imagePath = Path.Combine(assemblyPath ?? string.Empty, "Images", imageName);
                 return Image.FromFile(imagePath);
             }
-            catch (Exception ex)
+            catch (Exception ex)// random comment
             {
                 // Handle exceptions or log them as needed
                 Console.WriteLine($"Error loading image: {ex.Message}");

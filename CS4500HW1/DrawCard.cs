@@ -194,7 +194,6 @@ namespace CS4500HW1
                         DialogResult dialogResult = MessageBox.Show("You already won all the patterns for the Art Dealer.\r\nWould you like to start over again with the first pattern?", "Art Dealer", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            //Change this to -1 and try again in a minute
                             patternNum = 0;
                         }
                         else if (dialogResult == DialogResult.No)
