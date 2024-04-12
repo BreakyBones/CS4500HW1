@@ -27,9 +27,9 @@ namespace CS4500HW1
         private string[] selectedValues = new string[4]; // Holds the selected value for each card
         //Mihir - made patternNum to be used by both Deck.cs and DrawCard.cs instead of having 2 of the same thing.
         //and made a counter to keep track of rounds won for a pattern and if the round was won or not.
-        public int patternNum;
-        int numCardsWon = 0;
-        int roundsWon = 0;
+        public static int patternNum;
+        public static int numCardsWon = 0;
+        public static int roundsWon = 0;
         bool isPatternWon = false;
         int fileCounter;
 
@@ -150,7 +150,7 @@ namespace CS4500HW1
             }
 
             // If no duplicates are found, proceed to display the card
-            var cardToDisplay = deck.DealSelectedCards(new[] { selectedSuits[cardIndex] }, new[] { selectedValues[cardIndex] }, patternNum).FirstOrDefault();
+            var cardToDisplay = deck.DealSelectedCards(new[] { selectedSuits[cardIndex] }, new[] { selectedValues[cardIndex] }).FirstOrDefault();
             if (cardToDisplay != null)
             {
                 var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
@@ -207,7 +207,8 @@ namespace CS4500HW1
                 }
                // if(patternNum == 5)
             }
-            
+
+
 
             Debug.Write("patternNum initial value read from file:" + patternNum+"\n");
 
@@ -235,8 +236,8 @@ namespace CS4500HW1
                 //that of pattern 1, which was already here.
 
 
-                //If statements Pattern 1 Red cards
-                if (patternNum == 0)
+            //If statements Pattern 1 Red cards
+            if (patternNum == 0)
             {
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
@@ -406,7 +407,7 @@ namespace CS4500HW1
 
 
             // Get the selected cards from the deck
-            var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues, patternNum);
+            var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
 
             // Align the "Next Round" button over the "Deal" button
