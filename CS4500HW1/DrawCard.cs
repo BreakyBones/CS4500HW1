@@ -201,11 +201,20 @@ namespace CS4500HW1
                         {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
                             MessageBox.Show("Ok, goodbye!");
                             System.Threading.Thread.Sleep(5000);
+                            patternNum = 0;
+                            srPattern.Close();
+                            // This was added by Grant so that the game properly reset when user selects to quit after winning the whole game
+                            using (StreamWriter swPattern = new StreamWriter(patternFile))
+                            {
+                                swPattern.Write(patternNum);
+                                //Closes the file, I hope
+                                swPattern.Close();
+                            }
                             Application.Exit();
                         }
                     }
                 }
-               // if(patternNum == 5)
+              
             }
 
 
@@ -437,7 +446,9 @@ namespace CS4500HW1
                 //Mihir - telling the user they won a pattern or that they won the whole game.
                 if(patternNum <= 4)
                 {
-                    MessageBox.Show("Congratulations! User Won pattern "+patternNum+". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
+                    // Display the correct pattern that was wrong
+                    int patterNu = patternNum + 1;
+                    MessageBox.Show("Congratulations! User Won pattern "+patternNu+". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
                 }
                 if (patternNum == 5)
                 {
