@@ -122,7 +122,7 @@ namespace CS4500HW1
 
             // Increment by one. When the for loop is done, This goes back to when is Pattern is won.
             // Everything that is related to lists or arrays, I used chatGPT since I have never worked with it before in C#
-            // List<string> cardHand = new List<string>();
+            List<string> cardHand = new List<string>();
 
             for (int i = 0; i < selectedSuits.Length; i++)
             {
@@ -130,11 +130,11 @@ namespace CS4500HW1
                 string value = MapFaceCardValue(selectedValues[i]);
                 string suit = selectedSuits[i];
                 string thisCard = selectedValues[i] + selectedSuits[i];
-                // cardHand.Add(thisCard);
-                using (StreamWriter sw = File.AppendText(seeDuplicate))
-                {
-                    sw.WriteLine(thisCard);
-                }
+                cardHand.Add(thisCard);
+                //using (StreamWriter sw = File.AppendText(seeDuplicate))
+                //{
+                //    sw.WriteLine(thisCard);
+                //}
 
 
 
@@ -249,6 +249,9 @@ namespace CS4500HW1
                 }
             
             }
+
+            // Learned about the Sort function through ChatGPT.
+            cardHand.Sort();
            
 
 

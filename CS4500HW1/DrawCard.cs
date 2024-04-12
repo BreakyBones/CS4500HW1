@@ -447,7 +447,7 @@ namespace CS4500HW1
                 if(patternNum <= 4)
                 {
                     // Display the correct pattern that was wrong
-                    int patterNu = patternNum + 1;
+                    int patternNu = patternNum + 1;
                     MessageBox.Show("Congratulations! User Won pattern "+patternNu+". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
                 }
                 if (patternNum == 5)
