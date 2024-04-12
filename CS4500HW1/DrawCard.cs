@@ -198,6 +198,7 @@ namespace CS4500HW1
                         MessageBox.Show("Ok, goodbye!");
                         System.Threading.Thread.Sleep(5000);
                         Application.Exit();
+                        patternNum = 0;
                     }
                 }
             }
@@ -229,8 +230,8 @@ namespace CS4500HW1
                 //that of pattern 1, which was already here.
 
 
-                //If statements Pattern 1 Red cards
-                if (patternNum == 0)
+            //If statements Pattern 1 Red cards
+            if (patternNum == 0)
             {
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
