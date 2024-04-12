@@ -19,13 +19,13 @@ namespace CS4500HW1
     {
         private List<Card> cards = new List<Card>();
         private Random random = new Random();
-        string logPath = Application.StartupPath + "CardsDealt.txt";
+        public static string logPath = Application.StartupPath + "CardsDealt.txt";
 
         string seeDuplicate = Application.StartupPath + "CurrentPattern.txt";
 
         //This is Mihir, I add another file here for LastWon.txt and used https://www.c-sharpcorner.com/article/c-sharp-write-to-file/ to help
         //Not sure if this works, but it would be code for making a LastWon.txt file
-        string patternFile = Application.StartupPath + "LastWon.txt";
+        public static string patternFile = Application.StartupPath + "LastWon.txt";
 
 
 

@@ -33,7 +33,7 @@ namespace CS4500HW1
         bool isPatternWon = false;
 
 
-        string patternFile = Application.StartupPath + "LastWon.txt";
+        //string patternFile = Application.StartupPath + "LastWon.txt";
 
         public DrawCard()
         {
@@ -166,7 +166,7 @@ namespace CS4500HW1
         private void quit_Click(object sender, EventArgs e)
         {
             //This is created by Mihir - it writes the pattern number to the file.
-            using (StreamWriter swPattern = new StreamWriter(patternFile))
+            using (StreamWriter swPattern = new StreamWriter(Deck.patternFile))
             {
                 swPattern.Write(patternNum);
                 //Closes the file, I hope
@@ -182,7 +182,7 @@ namespace CS4500HW1
         {
             //Created by mihir: reading the pattern number from LastWon.txt
             int latestWon;
-            using (StreamReader srPattern = new StreamReader(patternFile))
+            using (StreamReader srPattern = new StreamReader(Deck.patternFile))
             {
                 latestWon = int.Parse(srPattern.ReadToEnd());
                 if (latestWon == 5)
@@ -193,17 +193,21 @@ namespace CS4500HW1
                     if (dialogResult == DialogResult.Yes)
                     {
                         patternNum = 0;
+                        // This is put in since I want to open the StreamWriter for writing zero to the last won file.
+                        
                     }
                     else if (dialogResult == DialogResult.No)
                     {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
                         MessageBox.Show("Ok, goodbye!");
-                        System.Threading.Thread.Sleep(5000);
-                        Application.Exit();
+                        System.Threading.Thread.Sleep(3000);
                         patternNum = 0;
+                        
+                        Application.Exit();
                     }
                 }
             }
-            
+
+
 
             Debug.Write("patternNum initial value read from file:" + patternNum+"\n");
 
