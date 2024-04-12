@@ -21,6 +21,8 @@ namespace CS4500HW1
         private Random random = new Random();
         string logPath = Application.StartupPath + "CardsDealt.txt";
 
+        string seeDuplicate = Application.StartupPath + "CurrentPattern.txt";
+
         //This is Mihir, I add another file here for LastWon.txt and used https://www.c-sharpcorner.com/article/c-sharp-write-to-file/ to help
         //Not sure if this works, but it would be code for making a LastWon.txt file
         string patternFile = Application.StartupPath + "LastWon.txt";
@@ -105,8 +107,7 @@ namespace CS4500HW1
         }
         // I am declaring some variables outside of DealSelectedCards since they are only to reset when a pattern is one.
         // Create the 2d string list
-        // This counter will count how many times this current pattern has been used minus one
-        int counter = 0;
+        
         // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
         // Created by Kanaan
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues, int patternNumber)
@@ -118,33 +119,28 @@ namespace CS4500HW1
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
             // First find highest value of the cards PATTERN 6. Authored by Grant
 
-            
-            //COULD make it so drawcard deals with the pattern number and we just call that patternumber from DrawCard if that works
-           // Debug.Write("pattern number before file is: " + patternNumber);
-            //This is Mihir, I added this to try to read the patternumber from the file.
-            //using (StreamReader srPattern = new StreamReader(patternFile))
-            //{
-            //   patternNumber = int.Parse(srPattern.ReadToEnd());
-            //}
-            
-        //    Debug.Write("pattern number after file is: " + patternNumber);
 
             // Increment by one. When the for loop is done, This goes back to when is Pattern is won.
-            // I will add a WIN counter here also
-            counter = counter++;
+            // Everything that is related to lists or arrays, I used chatGPT since I have never worked with it before in C#
+            // List<string> cardHand = new List<string>();
+
             for (int i = 0; i < selectedSuits.Length; i++)
             {
                 // Map face card values to numbers
                 string value = MapFaceCardValue(selectedValues[i]);
                 string suit = selectedSuits[i];
-                // value + suit is the card
-                // Add it the the counter-ith row of the 2Dlist 
+                string thisCard = selectedValues[i] + selectedSuits[i];
+                // cardHand.Add(thisCard);
+                using (StreamWriter sw = File.AppendText(seeDuplicate))
+                {
+                    sw.WriteLine(thisCard);
+                }
+
+
+
 
                 // Find the card with the matching suit and value
                 Card cardToDeal = cards.FirstOrDefault(card => card.Suit == suit && card.Value == value);
-
-                // This is Grant. Trying to create a 2-D list which will be used 
-                // to check if any 4-deck hands in the current pattern history are equal.
 
 
                 if (cardToDeal != null)
@@ -251,15 +247,18 @@ namespace CS4500HW1
                     // If a card is not found, write a message to the debug output
                     System.Diagnostics.Debug.WriteLine($"Card with suit {suit} and value {value} not found or already dealt.");
                 }
+            
             }
-        
+           
+
+
 
             // Log the cards dealt
             using (StreamWriter sw = File.AppendText(logPath))
             {
                 sw.WriteLine(outlog);
             }
-
+            // This below is uncommented for testing
             System.Diagnostics.Debug.WriteLine(outlog);
 
             // Check if the correct number of cards were dealt
