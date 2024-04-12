@@ -149,7 +149,7 @@ namespace CS4500HW1
             }
 
             // If no duplicates are found, proceed to display the card
-            var cardToDisplay = deck.DealSelectedCards(new[] { selectedSuits[cardIndex] }, new[] { selectedValues[cardIndex] }, patternNum).FirstOrDefault();
+            var cardToDisplay = deck.DealSelectedCards(new[] { selectedSuits[cardIndex] }, new[] { selectedValues[cardIndex] }).FirstOrDefault();
             if (cardToDisplay != null)
             {
                 var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
@@ -181,10 +181,11 @@ namespace CS4500HW1
         private void draw_Click(object sender, EventArgs e)
         {
             //Created by mihir: reading the pattern number from LastWon.txt
+            int latestWon;
             using (StreamReader srPattern = new StreamReader(patternFile))
             {
-               patternNum = int.Parse(srPattern.ReadToEnd());
-                if (patternNum == 6)
+                latestWon = int.Parse(srPattern.ReadToEnd());
+                if (latestWon == 5)
                 {
                     //This is Mihir Bhakta. I used https://stackoverflow.com/questions/3036829/how-do-i-create-a-message-box-with-yes-no-choices-and-a-dialogresult
                     //to help me create this box that takes a yes or no from the user for the pattern number being 6.
@@ -401,7 +402,7 @@ namespace CS4500HW1
 
 
             // Get the selected cards from the deck
-            var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues, patternNum);
+            var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
 
             // Align the "Next Round" button over the "Deal" button

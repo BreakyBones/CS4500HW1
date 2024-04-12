@@ -110,7 +110,7 @@ namespace CS4500HW1
         
         // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
         // Created by Kanaan
-        public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues, int patternNumber)
+        public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
             List<Card> dealtCards = new List<Card>();
             outlog = ""; 
@@ -148,7 +148,7 @@ namespace CS4500HW1
                     // if the value read from LastWon.txt is zero, then do the redCard option
                     // This needs code to read that value.
                     //Pattern 1
-                    if (patternNumber == 0)
+                    if (DrawCard.patternNum == 0)
                     {
                         if (cardToDeal.Suit == "Hearts" || cardToDeal.Suit == "Diamonds")
                         {
@@ -163,7 +163,7 @@ namespace CS4500HW1
                     }
                     // end if for PATTERN 1
                     // Code: if value from LastWon.txt is one, then do PATTERN 2 which is for selecting clubs
-                    if (patternNumber == 1)
+                    if (DrawCard.patternNum == 1)
                     {
                         if (cardToDeal.Suit == "Clubs")
                         {
@@ -179,7 +179,7 @@ namespace CS4500HW1
                     // end if for PATTERN 2
                     // Code: if value from LastWon.txt is two, then do PATTERN 3 which is for selecting face value cards
                     // 11 is for jack, 12 is for queen, and 13 is for king
-                    if (patternNumber == 2)
+                    if (DrawCard.patternNum == 2)
                     {
                         if (cardToDeal.Value == "11" || cardToDeal.Value == "12" || cardToDeal.Value == "13")
                         {
@@ -194,7 +194,7 @@ namespace CS4500HW1
                     }
                     // end if for PATTERN 3
                     // Code: if value from LastWon.txt is three, then do PATTERN 4 which is for selecting single digit cards
-                    if (patternNumber == 3)
+                    if (DrawCard.patternNum == 3)
                     {
                         if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "4" ||
                         cardToDeal.Value == "5" || cardToDeal.Value == "6" || cardToDeal.Value == "7" ||
@@ -211,7 +211,7 @@ namespace CS4500HW1
                     }
                     // end if for PATTERN 4
                     // Code: if value from LastWon.txt is four, then do PATTERN 5 which is for selecting prime single digit cards
-                    if (patternNumber == 4)
+                    if (DrawCard.patternNum == 4)
                     {
                         if (cardToDeal.Value == "2" || cardToDeal.Value == "3" || cardToDeal.Value == "5" || cardToDeal.Value == "7")
                         {
@@ -225,7 +225,7 @@ namespace CS4500HW1
                         }
                     // end if for PATTERN 5
                     // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
-                    if (patternNumber == 5)
+                    if (DrawCard.patternNum == 5)
                     {
                         highestValue = PatternSix(selectedSuits, selectedValues);
                         if (int.Parse(cardToDeal.Value) == highestValue)
