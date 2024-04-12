@@ -27,9 +27,9 @@ namespace CS4500HW1
         private string[] selectedValues = new string[4]; // Holds the selected value for each card
         //Mihir - made patternNum to be used by both Deck.cs and DrawCard.cs instead of having 2 of the same thing.
         //and made a counter to keep track of rounds won for a pattern and if the round was won or not.
-        public int patternNum;
-        int numCardsWon = 0;
-        int roundsWon = 0;
+        public static int patternNum;
+        public static int numCardsWon = 0;
+        public static int roundsWon = 0;
         bool isPatternWon = false;
 
 
