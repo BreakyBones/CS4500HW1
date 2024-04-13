@@ -188,6 +188,13 @@ namespace CS4500HW1
             if (Deck.equalHands == true)
             {
                 MessageBox.Show($"Please make sure this hand does not equal any other hands/deals that were selected in this pattern. Try again");
+                // Reset picture box
+                foreach (var pictureBox in new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 })
+                {
+                    pictureBox.Image = null;
+                    pictureBox.Tag = null;
+                    pictureBox.Invalidate();
+                }
                 return;
             }
 
@@ -221,9 +228,9 @@ namespace CS4500HW1
 
 
             Debug.Write("patternNum initial value read from file:" + patternNum + "\n");
+            isPatternWon = true;
 
             var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
-            isPatternWon = true;
             if (pictureBoxes.Any(pb => pb.Image == null))
             {
                 MessageBox.Show("Please confirm all cards!");
