@@ -48,7 +48,7 @@ namespace CS4500HW1
                     break;
                 default:
                     valueLet = value;
-                    CardOut = suitLet + valueLet;
+                    CardOut = valueLet + suitLet;
                     break;
             }
 
