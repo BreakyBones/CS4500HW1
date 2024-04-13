@@ -27,7 +27,7 @@ namespace CS4500HW1
         //Not sure if this works, but it would be code for making a LastWon.txt file
         public static string patternFile = Application.StartupPath + "LastWon.txt";
 
-        public bool equalHands = false;
+        public static bool equalHands = false;
 
 
         string outlog = "";
@@ -308,6 +308,13 @@ namespace CS4500HW1
                         {
                             equalHands = true;
                             Debug.Write("Equal Hands. \n");
+                            return dealtCards;
+                        }
+                        else 
+                        { 
+                            equalHands = false;
+                            Debug.Write("not Equal Hands. \n");
+
                         }
                     }
                     // Assuming badFour does not equal four and the process of checking the current hand to all previous hands
