@@ -27,6 +27,7 @@ namespace CS4500HW1
         //Not sure if this works, but it would be code for making a LastWon.txt file
         public static string patternFile = Application.StartupPath + "LastWon.txt";
 
+        public bool equalHands = false;
 
 
         string outlog = "";
@@ -127,11 +128,14 @@ namespace CS4500HW1
 
             for (int i = 0; i < selectedSuits.Length; i++)
             {
-                // Map face card values to numbers
                 string value = MapFaceCardValue(selectedValues[i]);
                 string suit = selectedSuits[i];
-                string thisCard = selectedValues[i] + selectedSuits[i];
-                cardHand.Add(thisCard);
+                // Map face card values to numbers
+                if (selectedSuits.Length == 4)
+                {
+                    string thisCard = selectedValues[i] + selectedSuits[i];
+                    cardHand.Add(thisCard);
+                }
 
 
 
@@ -249,75 +253,73 @@ namespace CS4500HW1
 
             }
 
-            // This stats the part of trying to see duplicate patterns
-            cardHand.Sort();
-
-            // Read all lines from the file into an array. This line and the next three lines are from ChatGPT
-            string[] lines = File.ReadAllLines(seeDuplicate);
-            // Get the number of lines in the file
-            int numLines = lines.Length;
-            string eachCard;
-            if (numLines == 0)
+            if (selectedSuits.Length == 4)
             {
-                foreach (string sortCard in cardHand)
-                {
-                    using (StreamWriter sw = File.AppendText(seeDuplicate))
-                    {
-                        sw.WriteLine(sortCard);
-                    }
-                }
-            }
-            else
-            {
-                int numberHands = numLines / 4;
-                // Create a temporaroy list
-                List<string> tempCardHand = new List<string>();
+                // This stats the part of trying to see duplicate patterns
+                cardHand.Sort();
+                Debug.Write("SelectedSuits is four now \n \n");
+                
 
-                for (int hand = 0; hand < (numberHands-1); hand++)
-                {
-                    int badFour = 0;
-                    for (int carde = 0; carde < 4; carde++)
-                    {
-                        int index = hand * 4 + carde;
-                        eachCard = lines[index];
-                        tempCardHand.Add(eachCard);
-                    }
-                    //for (int element = 0; element < 4; element++)
-                    // {
-                        if (tempCardHand[0] == cardHand[0])
-                        {
-                            badFour++;
-                        }
-                        if (tempCardHand[1] == cardHand[1])
-                        {
-                            badFour++;
-                        }
-                        if (tempCardHand[2] == cardHand[2])
-                        {
-                            badFour++;
-                        }
-                        if (tempCardHand[3] == cardHand[3])
-                        {
-                            badFour++;
-                        }
-                    // }
-                    if (badFour == 4)
-                    {
-                        MessageBox.Show($"Please make sure this hand does not equal any other hands/deals that were selected in this pattern");
-                        System.Threading.Thread.Sleep(3000);
-                        return null;
-                    } 
-                }
-                // Assuming badFour does not equal four and the process of checking the current hand to all previous hands
-                // we can now safely add this hand to the list of hands for the current pattern
-                foreach (string sortCard in cardHand)
-                {
-                    using (StreamWriter sw = File.AppendText(seeDuplicate))
-                    {
-                        sw.WriteLine(sortCard);
-                    }
-                }
+                // Read all lines from the file into an array. This line and the next three lines are from ChatGPT
+                string[] lines = File.ReadAllLines(seeDuplicate);
+                
 
+                // Get the number of lines in the file
+                int numLines = lines.Length;
+                Debug.Write(numLines);
+                string eachCard;
+                if (numLines == 0)
+                {
+                    foreach (string sortCard in cardHand)
+                    {
+                        using (StreamWriter sw = File.AppendText(seeDuplicate))
+                        {
+                            sw.WriteLine(sortCard);
+                        }
+                    }
+                }
+                else
+                {
+                    int numberHands = numLines / 4;
+                    Debug.Write("\n\n" + numberHands + " ");
+                    // Create a temporaroy list
+                    List<string> tempCardHand = new List<string>();
+
+                    for (int hand = 0; hand < (numberHands - 1); hand++)
+                    {
+                        int badFour = 0;
+                        for (int carde = 0; carde < 4; carde++)
+                        {
+                            int index = hand * 4 + carde;
+                            Debug.Write("\n Index is " + index + "This is the huge");
+                            eachCard = lines[index];
+                            Debug.Write(eachCard);
+                            tempCardHand.Add(eachCard);
+                        }
+                        for (int element = 0; element < 4; element++)
+                        {
+                            if (tempCardHand[element] == cardHand[element])
+                            {
+                                badFour++;
+                                Debug.Write("\n\n have this display 1t \n\n");
+                            }
+                        }
+                        if (badFour == 4)
+                        {
+                            equalHands = true;
+                            Debug.Write("Equal Hands. \n");
+                        }
+                    }
+                    // Assuming badFour does not equal four and the process of checking the current hand to all previous hands
+                    // we can now safely add this hand to the list of hands for the current pattern
+                    foreach (string sortCard in cardHand)
+                    {
+                        using (StreamWriter sw = File.AppendText(seeDuplicate))
+                        {
+                            sw.WriteLine(sortCard);
+                        }
+                    }
+                }
             }
 
 

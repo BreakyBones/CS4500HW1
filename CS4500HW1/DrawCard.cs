@@ -221,6 +221,13 @@ namespace CS4500HW1
 
             }
 
+            // This is created by Grant. If two hands are equal, at least change one of the cards and try again.
+            if (deck.equalHands == true)
+            {
+                MessageBox.Show($"Please make sure this hand does not equal any other hands/deals that were selected in this pattern. Try again");
+                return;
+            }
+
             // Make sure all suits and values have been selected
             for (int i = 0; i < selectedSuits.Length; i++)
             {
