@@ -9,7 +9,7 @@
 // Ex team members are Noor Ghazal and Kanaan Sullivan.
 // Authors of the code are primarily Noor Ghazal and Kanaan Sullivan
 // Class name is CMPSCI 4500: Intro to Software Profession
-// Date of last Commit: April 12, 2024
+// Date of last Commit: April 13, 2024
 // The central data structures are winforms, which are used for displaying messages and 
 // for the process of selecting or dealing cards.
 // External files include images for all 52 cards in a deck
@@ -34,7 +34,7 @@
 // the Art Dealer will ask the user if they want to restart the game.
 // If so, the Art Dealer will reset the patterns. If not, the program will close.
 // If the user restarts the program after having already won the game without restarting the patterns, the Art Dealer will ask
-// if the user wants to restart the game. If so, then the patterns will be reset. If not, the program will close again as it did before 
+// if the user wants to restart the game after the user attempts to deal. If so, then the patterns will be reset. If not, the program will close again as it did before 
 // be one step closer to winning the pattern
 // The cards selected by you and the Art Dealer from previous rounds are shown in the upper right corner.
 // A third textfile called CurrentPattern.txt is used for this assignment. DO NOT EDIT IT YOURSELF!! If you do, then the user will easily 

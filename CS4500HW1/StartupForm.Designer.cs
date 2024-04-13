@@ -31,70 +31,73 @@ namespace CS4500HW1
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartupForm));
-            this.NextBtn = new System.Windows.Forms.Button();
-            this.purposeTitle = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            NextBtn = new System.Windows.Forms.Button();
+            purposeTitle = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
             // NextBtn
             // 
-            this.NextBtn.AccessibleDescription = "Next button";
-            this.NextBtn.AccessibleName = "NextBtn";
-            this.NextBtn.BackColor = System.Drawing.Color.DarkGreen;
-            this.NextBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.NextBtn.FlatAppearance.BorderSize = 2;
-            this.NextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NextBtn.Font = new System.Drawing.Font("Impact", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NextBtn.ForeColor = System.Drawing.Color.White;
-            this.NextBtn.Location = new System.Drawing.Point(410, 396);
-            this.NextBtn.Name = "NextBtn";
-            this.NextBtn.Size = new System.Drawing.Size(200, 40);
-            this.NextBtn.TabIndex = 1;
-            this.NextBtn.Text = "Next";
-            this.NextBtn.UseVisualStyleBackColor = false;
+            NextBtn.AccessibleDescription = "Next button";
+            NextBtn.AccessibleName = "NextBtn";
+            NextBtn.BackColor = System.Drawing.Color.DarkGreen;
+            NextBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(192, 192, 0);
+            NextBtn.FlatAppearance.BorderSize = 2;
+            NextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            NextBtn.Font = new System.Drawing.Font("Impact", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            NextBtn.ForeColor = System.Drawing.Color.White;
+            NextBtn.Location = new System.Drawing.Point(586, 660);
+            NextBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            NextBtn.Name = "NextBtn";
+            NextBtn.Size = new System.Drawing.Size(286, 67);
+            NextBtn.TabIndex = 1;
+            NextBtn.Text = "Next";
+            NextBtn.UseVisualStyleBackColor = false;
             NextBtn.Click += NextBtn_Click;
             // 
             // purposeTitle
             // 
-            this.purposeTitle.AutoSize = true;
-            this.purposeTitle.BackColor = System.Drawing.Color.Transparent;
-            this.purposeTitle.Font = new System.Drawing.Font("MS Gothic", 72F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.purposeTitle.ForeColor = System.Drawing.Color.Gold;
-            this.purposeTitle.Location = new System.Drawing.Point(311, 18);
-            this.purposeTitle.Name = "purposeTitle";
-            this.purposeTitle.Size = new System.Drawing.Size(434, 97);
-            this.purposeTitle.TabIndex = 7;
-            this.purposeTitle.Text = "Welcome!";
-            this.purposeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            purposeTitle.AutoSize = true;
+            purposeTitle.BackColor = System.Drawing.Color.Transparent;
+            purposeTitle.Font = new System.Drawing.Font("MS Gothic", 72F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            purposeTitle.ForeColor = System.Drawing.Color.Gold;
+            purposeTitle.Location = new System.Drawing.Point(435, 0);
+            purposeTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            purposeTitle.Name = "purposeTitle";
+            purposeTitle.Size = new System.Drawing.Size(644, 144);
+            purposeTitle.TabIndex = 7;
+            purposeTitle.Text = "Welcome!";
+            purposeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Constantia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(12, 124);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1010, 216);
-            this.label1.TabIndex = 8;
-            this.label1.Text = resources.GetString("label1.Text");
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.AutoSize = true;
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label1.Font = new System.Drawing.Font("Constantia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label1.ForeColor = System.Drawing.Color.Gold;
+            label1.Location = new System.Drawing.Point(13, 144);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(1438, 468);
+            label1.TabIndex = 8;
+            label1.Text = resources.GetString("label1.Text");
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StartupForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1037, 468);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.purposeTitle);
-            this.Controls.Add(this.NextBtn);
-            this.Name = "StartupForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StartupForm";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new System.Drawing.Size(1481, 780);
+            Controls.Add(label1);
+            Controls.Add(purposeTitle);
+            Controls.Add(NextBtn);
+            Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Name = "StartupForm";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "StartupForm";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
