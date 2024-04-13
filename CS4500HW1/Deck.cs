@@ -251,8 +251,11 @@ namespace CS4500HW1
 
             // This stats the part of trying to see duplicate patterns
             cardHand.Sort();
-            // got this ReadLines code from https://stackoverflow.com/questions/119559/determine-the-number-of-lines-within-a-text-file
-            var numLines = File.ReadLines(@"CurrentPattern.txt").Count();
+
+            // Read all lines from the file into an array. This line and the next three lines are from ChatGPT
+            string[] lines = File.ReadAllLines(seeDuplicate);
+            // Get the number of lines in the file
+            int numLines = lines.Length;
             string eachCard;
             if (numLines == 0)
             {
@@ -269,34 +272,50 @@ namespace CS4500HW1
                 int numberHands = numLines / 4;
                 // Create a temporaroy list
                 List<string> tempCardHand = new List<string>();
-                using (StreamReader eachOne = new StreamReader(seeDuplicate))
-                {
-                    for (int hand = 1; hand < numberHands; hand++)
-                    {
-                        int badFour = 0;
-                        for (int carde = 0; carde < 4; carde++)
-                        {
 
-                            eachCard = eachOne.ReadLine();
-                            tempCardHand.Add(eachCard);
-                        }
-                        for (int element = 0; element < 4; element++)
-                        {
-                            if (tempCardHand[element] == cardHand[element])
-                            {
-                                badFour++;
-                            }
-                        }
-                        if (badFour == 4)
-                        {
-                            MessageBox.Show($"Please make sure this hand does not equal any other hands/deals that were selected in this pattern");
-                            eachOne.Close();
-                            System.Threading.Thread.Sleep(3000);
-                            return null;
-                        }
-                        // Now I can compare 
+                for (int hand = 0; hand < (numberHands-1); hand++)
+                {
+                    int badFour = 0;
+                    for (int carde = 0; carde < 4; carde++)
+                    {
+                        int index = hand * 4 + carde;
+                        eachCard = lines[index];
+                        tempCardHand.Add(eachCard);
                     }
-                    eachOne.Close();
+                    //for (int element = 0; element < 4; element++)
+                    // {
+                        if (tempCardHand[0] == cardHand[0])
+                        {
+                            badFour++;
+                        }
+                        if (tempCardHand[1] == cardHand[1])
+                        {
+                            badFour++;
+                        }
+                        if (tempCardHand[2] == cardHand[2])
+                        {
+                            badFour++;
+                        }
+                        if (tempCardHand[3] == cardHand[3])
+                        {
+                            badFour++;
+                        }
+                    // }
+                    if (badFour == 4)
+                    {
+                        MessageBox.Show($"Please make sure this hand does not equal any other hands/deals that were selected in this pattern");
+                        System.Threading.Thread.Sleep(3000);
+                        return null;
+                    } 
+                }
+                // Assuming badFour does not equal four and the process of checking the current hand to all previous hands
+                // we can now safely add this hand to the list of hands for the current pattern
+                foreach (string sortCard in cardHand)
+                {
+                    using (StreamWriter sw = File.AppendText(seeDuplicate))
+                    {
+                        sw.WriteLine(sortCard);
+                    }
                 }
 
             }
