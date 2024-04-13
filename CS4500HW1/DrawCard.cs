@@ -453,6 +453,11 @@ namespace CS4500HW1
                     }
                     else if (dialogResult == DialogResult.No)
                     {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
+                        //This is Mihir, Fixed bug, now it will put in 6 into the file when user says no after winning the game instead of 5.
+                        using(StreamWriter swPattern2 = new StreamWriter(patternFile))
+                        {
+                            swPattern2.Write(6);
+                        }
                         MessageBox.Show("Ok, goodbye!");
                         System.Threading.Thread.Sleep(5000);
                         Application.Exit();
