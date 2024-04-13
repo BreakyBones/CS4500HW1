@@ -181,10 +181,15 @@ namespace CS4500HW1
         // Created by Kanaan 
         private void draw_Click(object sender, EventArgs e)
         {
+            // Get the selected cards from the deck first so that I can see if the two hands are equal
+            var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
+
             // This is created by Grant. If two hands are equal, at least change one of the cards and try again.
             if (Deck.equalHands == true)
             {
                 MessageBox.Show($"Please make sure this hand does not equal any other hands/deals that were selected in this pattern. Try again");
+                // Get the selected cards from the deck
+                //selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
                 return;
             }
 
@@ -411,11 +416,7 @@ namespace CS4500HW1
                 }
 
             }
-
-
-
-            // Get the selected cards from the deck
-            var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
+            // This is for adding text to the textbox in the corner
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
 
             // Align the "Next Round" button over the "Deal" button
