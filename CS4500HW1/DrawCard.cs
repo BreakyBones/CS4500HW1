@@ -228,7 +228,6 @@ namespace CS4500HW1
             {
                 MessageBox.Show("Please confirm all cards!");
                 return;
-
             }
 
 
@@ -450,7 +449,7 @@ namespace CS4500HW1
                 {
                     MessageBox.Show("Congratulations! User Won pattern " + current + ". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
                     // This puts the pattern winner message in the box that displays the history in the corner
-                    textBoxLog.AppendText("USER WON PATTERN " + current + Environment.NewLine + Environment.NewLine);
+                    textBoxLog.AppendText("USER WON PATTERN " + current + Environment.NewLine);
                     // This puts the pattern winner message in the textfile that contains history
                     using (StreamWriter sw = File.AppendText(Deck.logPath))
                     {
@@ -461,7 +460,7 @@ namespace CS4500HW1
                 if (patternNum == 5)
                 {
                     // This puts the pattern winner message in the box that displays the history in the corner
-                    textBoxLog.AppendText("USER WON PATTERN " + current + Environment.NewLine + Environment.NewLine);
+                    textBoxLog.AppendText("USER WON PATTERN " + current + Environment.NewLine);
                     // This puts the pattern winner message in the textfile that contains history
                     using (StreamWriter sw = File.AppendText(Deck.logPath))
                     {

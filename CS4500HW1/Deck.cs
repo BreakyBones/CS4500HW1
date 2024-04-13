@@ -392,7 +392,8 @@ namespace CS4500HW1
             {
                 Debug.Write("\ndealtCards count is: "+dealtCards.Count);
                 Debug.Write("\nselectedsuits length is: " + selectedSuits.Length);
-                throw new InvalidOperationException("Not enough cards were dealt." + dealtCards.Count + "and" + selectedSuits.Length);
+                MessageBox.Show("All cards needs to be selected and confirmed before selecting Deal");
+                // throw new InvalidOperationException("Not enough cards were dealt." + dealtCards.Count + "and" + selectedSuits.Length);
             }
 
             return dealtCards;
