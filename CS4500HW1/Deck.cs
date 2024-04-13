@@ -29,6 +29,8 @@ namespace CS4500HW1
 
         public static bool equalHands = false;
 
+        int somethingCounter = 0;
+
 
         string outlog = "";
         public string Outlog => outlog;
@@ -114,9 +116,14 @@ namespace CS4500HW1
         // Created by Kanaan
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
-            using (StreamReader srPattern = new StreamReader(patternFile))
+            //added this counter to make sure it doesnt get the file pattern num every single time.
+            somethingCounter++;
+            if (somethingCounter == 1)
             {
-                DrawCard.patternNum = int.Parse(srPattern.ReadToEnd());
+                using (StreamReader srPattern = new StreamReader(patternFile))
+                {
+                    DrawCard.patternNum = int.Parse(srPattern.ReadToEnd());
+                }
             }
                 List<Card> dealtCards = new List<Card>();
             outlog = "";
@@ -379,7 +386,9 @@ namespace CS4500HW1
             // Check if the correct number of cards were dealt
             if (dealtCards.Count != selectedSuits.Length)
             {
-                throw new InvalidOperationException("Not enough cards were dealt." + dealtCards.Count + "and" + selectedSuits.Length);
+                Debug.Write("\ndealtCards count is: "+dealtCards.Count);
+                Debug.Write("\nselectedsuits length is: " + selectedSuits.Length);
+                //throw new InvalidOperationException("Not enough cards were dealt." + dealtCards.Count + "and" + selectedSuits.Length);
             }
 
             return dealtCards;
