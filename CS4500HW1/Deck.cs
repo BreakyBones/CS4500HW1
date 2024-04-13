@@ -130,7 +130,8 @@ namespace CS4500HW1
             {
                 string value = MapFaceCardValue(selectedValues[i]);
                 string suit = selectedSuits[i];
-                // Map face card values to numbers
+                // Once all four cards have a suit and a value, add these four cards to the list cardHand that will be used to check
+                // if two different hands are equal
                 if (selectedSuits.Length == 4)
                 {
                     string thisCard = selectedValues[i] + selectedSuits[i];
@@ -138,10 +139,10 @@ namespace CS4500HW1
                 }
             }
 
-
+            // I had to add this if statement since this code is supposed to only run when the user clicks Deal instead of Confirm
+            // Then this if statement states the whole part of trying to see duplicate patterns
             if (selectedSuits.Length == 4)
             {
-                // This stats the part of trying to see duplicate patterns
                 cardHand.Sort();
                 Debug.Write("SelectedSuits is four now \n \n");
 
@@ -150,15 +151,17 @@ namespace CS4500HW1
                 string[] lines = File.ReadAllLines(seeDuplicate);
 
 
-                // Get the number of lines in the file
+                // Get the number of lines in the file, which also represent all previous cards selected.
                 int numLines = lines.Length;
-                Debug.Write("\n\nnumber of pervious entries is");
+                Debug.Write("\n\nnumber of pervious entries is ");
                 Debug.Write(numLines);
                 Debug.Write("\n");
                 string eachCard;
+                // This if statement is so that equality checking is skipped if this is the first hand dealt for this pattern
                 if (numLines == 0)
                 {
                     Debug.Write("\n\n I only want to see you one time per pattern");
+                    // Add each item to the textfile CurrentPattern.txt
                     foreach (string sortCard in cardHand)
                     {
                         using (StreamWriter sw = File.AppendText(seeDuplicate))
@@ -169,41 +172,51 @@ namespace CS4500HW1
                 }
                 else
                 {
+                    // This number represent the number of hands dealt so far
                     int numberHands = numLines / 4;
                     Debug.Write("\n\n" + numberHands + " ");
-                    // Create a temporaroy list
+                    // Create a temporary list that hold each previous hand dealt
                     List<string> tempCardHand = new List<string>();
 
                     for (int hand = 0; hand < numberHands; hand++)
                     {
+                        // It will be bad if this value reaches 4
                         int badFour = 0;
+                        // I initialize the two values here since I noticed bugs when I initialized them in the for loop.
                         int carde = 0;
                         int element = 0;
+                        // This for loop adds will make sure each previous hand takes a turn being compared to current hand.
                         for (carde = 0; carde < 4; carde++)
                         {
+                            // This index will eventually all previous cards dealt if no hands equal the current hand.
                             int index = hand * 4 + carde;
-                            Debug.Write("\n Index is " + index + "This is the huge");
+                            Debug.Write("\n Index is " + index + "\n\n");
                             eachCard = lines[index];
                             Debug.Write(eachCard);
                             tempCardHand.Add(eachCard);
                         }
+                        // This for loop will see if one the previous hands equal the current hand
                         for (element = 0; element < 4; element++)
                         {
                             if (tempCardHand[element] == cardHand[element])
                             {
                                 badFour++;
-                                Debug.Write("\n\n have this display 1t \n\n");
+                                Debug.Write("\n\n have this display each time \n\n");
                             }
                         }
+                        // Clear the contents from the list that holds a previous hand since that hand is done being used for comparison
                         tempCardHand.Clear();
 
+                        // If true, then the previous hand equals the current hand
                         if (badFour == 4)
                         {
                             equalHands = true;
                             Debug.Write("Equal Hands. \n");
                             dealtCards = null;
+                            // End the entire method here since two separate hands are unfortunately equal
                             return dealtCards;
                         }
+                        // This else was added to help stop a bug where equalHands was set to true when it was supposed to be false
                         else
                         {
                             equalHands = false;

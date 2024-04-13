@@ -449,7 +449,8 @@ namespace CS4500HW1
                 //Mihir - telling the user they won a pattern or that they won the whole game.
                 if (patternNum <= 4)
                 {
-                    MessageBox.Show("Congratulations! User Won pattern " + patternNum + ". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
+                    int current = patternNum + 1;
+                    MessageBox.Show("Congratulations! User Won pattern " + current + ". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
                 }
                 if (patternNum == 5)
                 {
@@ -524,6 +525,7 @@ namespace CS4500HW1
         {
             if (isArtDealerCard)
             {
+                pictureBox.Paint -= PictureBox_CustomPaint;
                 // Attach a custom paint event handler to draw the highlight
                 pictureBox.Paint += PictureBox_CustomPaint;
                 pictureBox.Tag = "highlight"; // Use Tag to indicate the PictureBox should be highlighted
