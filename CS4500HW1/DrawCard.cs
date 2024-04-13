@@ -446,14 +446,29 @@ namespace CS4500HW1
                 clearContent.Close(); // This flushes the content, too.
                 roundsWon = 0;
                 Debug.Write("user won this round, moving onto the next pattern");
+                int current = patternNum + 1;
                 //Mihir - telling the user they won a pattern or that they won the whole game.
                 if (patternNum <= 4)
                 {
-                    int current = patternNum + 1;
                     MessageBox.Show("Congratulations! User Won pattern " + current + ". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
+                    // This puts the pattern winner message in the box that displays the history in the corner
+                    textBoxLog.AppendText("USER WON PATTERN " + current + Environment.NewLine + Environment.NewLine);
+                    // This puts the pattern winner message in the textfile that contains history
+                    using (StreamWriter sw = File.AppendText(Deck.logPath))
+                    {
+                        sw.WriteLine("USER WON PATTERN " + current + Environment.NewLine);
+                    }
+
                 }
                 if (patternNum == 5)
                 {
+                    // This puts the pattern winner message in the box that displays the history in the corner
+                    textBoxLog.AppendText("USER WON PATTERN " + current + Environment.NewLine + Environment.NewLine);
+                    // This puts the pattern winner message in the textfile that contains history
+                    using (StreamWriter sw = File.AppendText(Deck.logPath))
+                    {
+                        sw.WriteLine("USER WON PATTERN " + current + Environment.NewLine);
+                    }
                     //MessageBox.Show("WOW, Congratulations! Not only has the user won the pattern, the user has won every pattern, which means the user has won the WHOLE GAME!");
                     DialogResult dialogResult = MessageBox.Show("WOW, Congratulations! Not only has the user won the pattern, the user has won every pattern, which means the user has won the WHOLE GAME!\r\nWould you like to start over again with the first pattern?", "Art Dealer", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)

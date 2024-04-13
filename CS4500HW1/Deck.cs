@@ -352,14 +352,17 @@ namespace CS4500HW1
 
             }
 
-            
 
 
 
-            // Log the cards dealt
-            using (StreamWriter sw = File.AppendText(logPath))
+
+            // Log the cards dealt when all are dealt
+            if (selectedSuits.Length == 4)
             {
-                sw.WriteLine(outlog);
+                using (StreamWriter sw = File.AppendText(logPath))
+                {
+                    sw.WriteLine(outlog);
+                }
             }
             // This below is uncommented for testing
             System.Diagnostics.Debug.WriteLine(outlog);
