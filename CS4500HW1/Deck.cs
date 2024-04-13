@@ -228,7 +228,7 @@ namespace CS4500HW1
                         {
                             equalHands = true;
                             Debug.Write("Equal Hands. \n");
-                            dealtCards = null;
+                            // dealtCards = null;
                             // End the entire method here since two separate hands are unfortunately equal
                             return dealtCards;
                         }
@@ -265,6 +265,10 @@ namespace CS4500HW1
                     // if the value read from LastWon.txt is zero, then do the redCard option
                     // This needs code to read that value.
                     //Pattern 1
+                    if (DrawCard.patternNum == 6)
+                    {
+                        DrawCard.patternNum = 0;
+                    }
                     if (DrawCard.patternNum == 0)
                     {
                         if (cardToDeal.Suit == "Hearts" || cardToDeal.Suit == "Diamonds")
@@ -388,7 +392,7 @@ namespace CS4500HW1
             {
                 Debug.Write("\ndealtCards count is: "+dealtCards.Count);
                 Debug.Write("\nselectedsuits length is: " + selectedSuits.Length);
-                //throw new InvalidOperationException("Not enough cards were dealt." + dealtCards.Count + "and" + selectedSuits.Length);
+                throw new InvalidOperationException("Not enough cards were dealt." + dealtCards.Count + "and" + selectedSuits.Length);
             }
 
             return dealtCards;

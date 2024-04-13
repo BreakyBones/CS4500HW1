@@ -188,8 +188,6 @@ namespace CS4500HW1
             if (Deck.equalHands == true)
             {
                 MessageBox.Show($"Please make sure this hand does not equal any other hands/deals that were selected in this pattern. Try again");
-                // Get the selected cards from the deck
-                //selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
                 return;
             }
 
