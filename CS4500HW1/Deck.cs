@@ -21,7 +21,7 @@ namespace CS4500HW1
         private Random random = new Random();
         public static string logPath = Application.StartupPath + "CardsDealt.txt";
 
-        string seeDuplicate = Application.StartupPath + "CurrentPattern.txt";
+        public static string seeDuplicate = Application.StartupPath + "CurrentPattern.txt";
 
         //This is Mihir, I add another file here for LastWon.txt and used https://www.c-sharpcorner.com/article/c-sharp-write-to-file/ to help
         //Not sure if this works, but it would be code for making a LastWon.txt file
@@ -123,7 +123,7 @@ namespace CS4500HW1
 
             // Increment by one. When the for loop is done, This goes back to when is Pattern is won.
             // Everything that is related to lists or arrays, I used chatGPT since I have never worked with it before in C#
-            // List<string> cardHand = new List<string>();
+            List<string> cardHand = new List<string>();
 
             for (int i = 0; i < selectedSuits.Length; i++)
             {
@@ -131,11 +131,8 @@ namespace CS4500HW1
                 string value = MapFaceCardValue(selectedValues[i]);
                 string suit = selectedSuits[i];
                 string thisCard = selectedValues[i] + selectedSuits[i];
-                // cardHand.Add(thisCard);
-                using (StreamWriter sw = File.AppendText(seeDuplicate))
-                {
-                    sw.WriteLine(thisCard);
-                }
+                cardHand.Add(thisCard);
+
 
 
 
@@ -248,6 +245,58 @@ namespace CS4500HW1
                 {
                     // If a card is not found, write a message to the debug output
                     System.Diagnostics.Debug.WriteLine($"Card with suit {suit} and value {value} not found or already dealt.");
+                }
+
+            }
+
+            // This stats the part of trying to see duplicate patterns
+            cardHand.Sort();
+            // got this ReadLines code from https://stackoverflow.com/questions/119559/determine-the-number-of-lines-within-a-text-file
+            var numLines = File.ReadLines(@"CurrentPattern.txt").Count();
+            string eachCard;
+            if (numLines == 0)
+            {
+                foreach (string sortCard in cardHand)
+                {
+                    using (StreamWriter sw = File.AppendText(seeDuplicate))
+                    {
+                        sw.WriteLine(sortCard);
+                    }
+                }
+            }
+            else
+            {
+                int numberHands = numLines / 4;
+                // Create a temporaroy list
+                List<string> tempCardHand = new List<string>();
+                using (StreamReader eachOne = new StreamReader(seeDuplicate))
+                {
+                    for (int hand = 1; hand < numberHands; hand++)
+                    {
+                        int badFour = 0;
+                        for (int carde = 0; carde < 4; carde++)
+                        {
+
+                            eachCard = eachOne.ReadLine();
+                            tempCardHand.Add(eachCard);
+                        }
+                        for (int element = 0; element < 4; element++)
+                        {
+                            if (tempCardHand[element] == cardHand[element])
+                            {
+                                badFour++;
+                            }
+                        }
+                        if (badFour == 4)
+                        {
+                            MessageBox.Show($"Please make sure this hand does not equal any other hands/deals that were selected in this pattern");
+                            eachOne.Close();
+                            System.Threading.Thread.Sleep(3000);
+                            return null;
+                        }
+                        // Now I can compare 
+                    }
+                    eachOne.Close();
                 }
 
             }

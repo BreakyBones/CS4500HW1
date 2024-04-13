@@ -432,6 +432,9 @@ namespace CS4500HW1
             //This ALSO means the user won the pattern
             if (roundsWon >= 2 && isPatternWon == true)
             {
+                FileStream clearContent = File.Open("CurrentPattern.txt", FileMode.Open);
+                clearContent.SetLength(0);
+                clearContent.Close(); // This flushes the content, too.
                 roundsWon = 0;
                 Debug.Write("user won this round, moving onto the next pattern");
                 //Mihir - telling the user they won a pattern or that they won the whole game.
