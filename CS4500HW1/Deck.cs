@@ -158,8 +158,12 @@ namespace CS4500HW1
                 Debug.Write("\n");
                 string eachCard;
                 // This if statement is so that equality checking is skipped if this is the first hand dealt for this pattern
-                if (numLines == 0)
+                if (numLines < 4)
                 {
+                    // The next three lines are to double-check that file is empty since users may edit it by accident.
+                    FileStream clearContent = File.Open("CurrentPattern.txt", FileMode.Open);
+                    clearContent.SetLength(0);
+                    clearContent.Close();
                     Debug.Write("\n\n I only want to see you one time per pattern");
                     // Add each item to the textfile CurrentPattern.txt
                     foreach (string sortCard in cardHand)
