@@ -114,8 +114,13 @@ namespace CS4500HW1
         // Created by Kanaan
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
-            List<Card> dealtCards = new List<Card>();
+            using (StreamReader srPattern = new StreamReader(patternFile))
+            {
+                DrawCard.patternNum = int.Parse(srPattern.ReadToEnd());
+            }
+                List<Card> dealtCards = new List<Card>();
             outlog = "";
+
             int highestValue = 1; //highValue means highest rank found
             // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
             // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
