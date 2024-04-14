@@ -30,7 +30,7 @@ namespace CS4500HW1
         public static int patternNum;
         public static int numCardsWon = 0;
         public static int roundsWon = 0;
-        bool isPatternWon = false;
+        // bool isPatternWon = false;
         int fileCounter;
 
 
@@ -234,8 +234,8 @@ namespace CS4500HW1
 
 
 
-            Debug.Write("patternNum initial value read from file:" + patternNum + "\n");
-            isPatternWon = true;
+            Debug.Write("\npatternNum initial value read from file:" + patternNum + "\n");
+            // isPatternWon = true;
 
 
             // Make sure all suits and values have been selected
@@ -252,6 +252,8 @@ namespace CS4500HW1
             //This is Mihir, I added if statements to determine the pattern and I added other for loops for patterns 2-5 similar to
             //that of pattern 1, which was already here.
 
+            // This is put by Grant here to catch a big bug. The bug was that some patterns were declared won even if they were not won.
+            numCardsWon = 0;
 
             //If statements Pattern 1 Red cards
             if (patternNum == 0)
@@ -260,17 +262,19 @@ namespace CS4500HW1
                 {
 
                     bool isArtDealerCard = selectedSuits[i] == "Hearts" || selectedSuits[i] == "Diamonds";
+                    Debug.Write("\n\nDoes this say that I selected the right card?" + isArtDealerCard + "\n");
                     HighlightCardPictureBox(pictureBoxes[i], isArtDealerCard);
                     //Mihir: If the card is highlighted, it means it was selected so if all 4 get selected then user gets a win for a round
                     //if 2 wins, then user gets a win for the pattern and moves onto the next pattern
                     if (isArtDealerCard == true)
                     {
+                        Debug.Write("This should only won if the above code is running and says true at the end of it\n\n");
                         numCardsWon++;
                         if (numCardsWon == 4) //All 4 cards were highlighted
                         {
                             numCardsWon = 0;
                             roundsWon++;
-                            Debug.Write("roundswon:" + roundsWon);
+                            Debug.Write("\n\nroundswon:" + roundsWon + "\n\n");
                         }
                     }
 
@@ -281,7 +285,7 @@ namespace CS4500HW1
             //Pattern 2 All clubs
             if (patternNum == 1)
             {
-                Debug.Write("pattern moved into CLUBS");
+                Debug.Write("\npattern moved into CLUBS");
                 for (int i = 0; i < selectedSuits.Length; i++)
                 {
                     bool isArtDealerCard = selectedSuits[i] == "Clubs";
@@ -295,7 +299,7 @@ namespace CS4500HW1
                         {
                             numCardsWon = 0;
                             roundsWon++;
-                            Debug.Write("roundswon:" + roundsWon);
+                            Debug.Write("\n\nroundswon:" + roundsWon + "\n\n");
                         }
                     }
                 }
@@ -316,7 +320,7 @@ namespace CS4500HW1
                         {
                             numCardsWon = 0;
                             roundsWon++;
-                            Debug.Write("roundswon:" + roundsWon);
+                            Debug.Write("\nroundswon:" + roundsWon);
                         }
                     }
                 }
@@ -339,7 +343,7 @@ namespace CS4500HW1
                         {
                             numCardsWon = 0;
                             roundsWon++;
-                            Debug.Write("roundswon:" + roundsWon);
+                            Debug.Write("\n\nroundswon:" + roundsWon + "\n");
                         }
                     }
                 }
@@ -362,7 +366,7 @@ namespace CS4500HW1
                         {
                             numCardsWon = 0;
                             roundsWon++;
-                            Debug.Write("roundswon:" + roundsWon);
+                            Debug.Write("\n\nroundswon:" + roundsWon + "\n");
                         }
                     }
                 }
@@ -414,7 +418,7 @@ namespace CS4500HW1
                         {
                             numCardsWon = 0;
                             roundsWon++;
-                            Debug.Write("roundswon:" + roundsWon);
+                            Debug.Write("\n\nroundswon:" + roundsWon + "\n");
                         }
                     }
                 }
@@ -441,9 +445,11 @@ namespace CS4500HW1
             NextRoundBtn.Visible = false;
             DealBtn.Visible = true;
 
+
+            Debug.Write("\nNumber of rounds won: " + roundsWon + "\n");
             //Created by Mihir - Upon clicking the button, make this value = true for the pattern to increase for hightling to work properly
             //This ALSO means the user won the pattern
-            if (roundsWon >= 2 && isPatternWon == true)
+            if (roundsWon >= 2)
             {
                 FileStream clearContent = File.Open("CurrentPattern.txt", FileMode.Open);
                 clearContent.SetLength(0);
@@ -496,7 +502,7 @@ namespace CS4500HW1
                 patternNum++;
 
             }
-            isPatternWon = false;
+            // isPatternWon = false;
 
         }
 
