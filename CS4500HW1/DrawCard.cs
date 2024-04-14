@@ -181,6 +181,13 @@ namespace CS4500HW1
         // Created by Kanaan 
         private void draw_Click(object sender, EventArgs e)
         {
+            var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
+            if (pictureBoxes.Any(pb => pb.Image == null))
+            {
+                MessageBox.Show("Please confirm all cards!");
+                return;
+            }
+
             // Get the selected cards from the deck first so that I can see if the two hands are equal
             var selectedCards = deck.DealSelectedCards(selectedSuits, selectedValues);
 
@@ -229,13 +236,6 @@ namespace CS4500HW1
 
             Debug.Write("patternNum initial value read from file:" + patternNum + "\n");
             isPatternWon = true;
-
-            var pictureBoxes = new[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4 };
-            if (pictureBoxes.Any(pb => pb.Image == null))
-            {
-                MessageBox.Show("Please confirm all cards!");
-                return;
-            }
 
 
             // Make sure all suits and values have been selected
