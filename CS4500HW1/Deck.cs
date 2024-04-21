@@ -202,6 +202,76 @@ namespace CS4500HW1
             return false;
         }
 
+        public bool PatternEleven(string[] selectedSuits, string[] selectedValues)
+        {
+            // Only run this function 
+            if (selectedSuits.Length == 4)
+            {
+                // Sort the cards before checking if each value increases by two 
+                List<int> cardValue = new List<int>();
+
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    int value = int.Parse(MapFaceCardValue(selectedValues[i]));
+                    cardValue.Add(value);
+                }
+                cardValue.Sort();
+
+                // This if statement makes sure there is on Jack (11), Queen (12), King (13), and Ace (14)
+                if (cardValue[0] == 11 && cardValue[1] == 12 && cardValue[2] == 13 && cardValue[3] == 14)
+                {
+                    if (selectedSuits[0] == selectedSuits[1] && selectedSuits[1] == selectedSuits[2] && selectedSuits[2] == selectedSuits[3])
+                    {
+                        Debug.Write("\n\nThis round is won\n\n");
+                        return true;
+                    }
+                }
+                Debug.Write("\nThis round is lost\n");
+            }
+            return false;
+        }
+
+        public bool PatternTwelve(string[] selectedSuits, string[] selectedValues)
+        {
+            // Only run this function 
+            if (selectedSuits.Length == 4)
+            {
+                int numBlackJacks = 0;
+                // I will first make sure both of the black jacks are present
+                for (int x = 0; x < selectedSuits.Length; x++)
+                {
+                    if (selectedSuits[x] == "Clubs" || selectedSuits[x] == "Spades")
+                    {
+                        if (selectedValues[x] == "J")
+                        {
+                            numBlackJacks++;
+                        }
+                    }
+                }
+
+                // This next part is for making sure there are two aces.
+                // Sort the cards before checking if each value increases by two 
+                List<int> cardValue = new List<int>();
+
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    int value = int.Parse(MapFaceCardValue(selectedValues[i]));
+                    cardValue.Add(value);
+                }
+                cardValue.Sort();
+
+                // This if statement makes sure the last two cards are aces along with the first two jacks
+                if (cardValue[2] == 14 && cardValue[3] == 14 && numBlackJacks == 2)
+                {
+                    Debug.Write("\n\nThis round is won\n\n");
+                    return true;
+                }
+                Debug.Write("\nThis round is lost\n");
+            }
+            return false;
+        }
+
+
 
         // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
         // Created by Kanaan
@@ -501,13 +571,35 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
+                    // If Art Dealer is on pattern 11
                     if (DrawCard.patternNum == 10)
                     {
-                        dealtCards.Add(cardToDeal);
+                        bool test = PatternEleven(selectedSuits, selectedValues);
+                        if (test == true)
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
                     }
+                    // If Art Dealer is on pattern 12
                     if (DrawCard.patternNum == 11)
                     {
-                        dealtCards.Add(cardToDeal);
+                        bool test = PatternTwelve(selectedSuits, selectedValues);
+                        if (test == true)
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
                     }
                    
                 }

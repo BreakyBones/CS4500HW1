@@ -483,9 +483,37 @@ namespace CS4500HW1
             }
             if (patternNum == 10)
             {
+                // Call the function which will return true if this pattern is won
+                bool test = deck.PatternEleven(selectedSuits, selectedValues);
+                if (test == true)
+                {
+                    // Highlight all cards if won.
+                    HighlightCardPictureBox(pictureBoxes[0], true);
+                    HighlightCardPictureBox(pictureBoxes[1], true);
+                    HighlightCardPictureBox(pictureBoxes[2], true);
+                    HighlightCardPictureBox(pictureBoxes[3], true);
+
+                    // Increase number of rounds won.
+                    roundsWon++;
+                    Debug.Write("\n\nroundswon:" + roundsWon + "\n");
+                }
             }
             if (patternNum == 11)
             {
+                // Call the function which will return true if this pattern is won
+                bool test = deck.PatternTwelve(selectedSuits, selectedValues);
+                if (test == true)
+                {
+                    // Highlight all cards if won.
+                    HighlightCardPictureBox(pictureBoxes[0], true);
+                    HighlightCardPictureBox(pictureBoxes[1], true);
+                    HighlightCardPictureBox(pictureBoxes[2], true);
+                    HighlightCardPictureBox(pictureBoxes[3], true);
+
+                    // Increase number of rounds won.
+                    roundsWon++;
+                    Debug.Write("\n\nroundswon:" + roundsWon + "\n");
+                }
             }
             // This is for adding text to the textbox in the corner
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
