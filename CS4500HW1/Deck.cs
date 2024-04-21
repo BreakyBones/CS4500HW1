@@ -84,6 +84,8 @@ namespace CS4500HW1
             }
         }
 
+        // This does not execute all of PatternSix, but rather just finds the highest value which will be used for Pattern six
+        // This part is the hardest part for pattern six.
         public int PatternSix(string[] selectedSuits, string[] selectedValues)
         {
             List<Card> dealtCards = new List<Card>();
@@ -109,6 +111,7 @@ namespace CS4500HW1
             }
             return highValue;
         }
+
         // Created by Grant on February 21
         // Pattern seven will see if all cards rise in ascending order for rank where Ace is the highest value then King, etc. down to two
         // Then make sure all cards are the same suit
@@ -137,14 +140,38 @@ namespace CS4500HW1
                     }
                 }
                 Debug.Write("\nThis round is lost\n");
-                // If this point is reached, the correct match is not found so return false.
-                return false;
+                // If this point is reached, the correct match is not found so return false in the line two after this one.
             }
-            // This return statement is to avoid errors, but does not matter since the inner return true statement will work when it is supposed to
             return false;
         }
-        // I am declaring some variables outside of DealSelectedCards since they are only to reset when a pattern is one.
-        // Create the 2d string list
+
+        // Created by Grant on February 21
+        // Pattern eight will see if the cards after sorting increase by a value of two each time for all four cards. Ace's value is 14 here
+        // The suit does not matter and neither the order
+        public bool PatternEight(string[] selectedSuits, string[] selectedValues)
+        {
+            // Only run this function 
+            if (selectedSuits.Length == 4)
+            {
+                // Sort the cards before checking if each value increases by two 
+                List<int> cardValue = new List<int>();
+
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    int value = int.Parse(MapFaceCardValue(selectedValues[i]));
+                    cardValue.Add(value);
+                }
+                cardValue.Sort();
+                // This length if statement makes sure each value is separated to another value by two
+                if ((cardValue[1] - cardValue[0]) == 2 && (cardValue[2] - cardValue[1]) == 2 && (cardValue[3] - cardValue[2]) == 2)
+                {
+                    Debug.Write("\n\nThis round is won\n\n");
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         // Co-opted this to do the actual legwork of Dealer Selection since it's no longer used to show cards anymore
         // Created by Kanaan
@@ -412,7 +439,17 @@ namespace CS4500HW1
                     
                     if (DrawCard.patternNum == 7)
                     {
-                        dealtCards.Add(cardToDeal);
+                        bool test = PatternEight(selectedSuits, selectedValues);
+                        if (test == true)
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
                     }
                     if (DrawCard.patternNum == 8)
                     {

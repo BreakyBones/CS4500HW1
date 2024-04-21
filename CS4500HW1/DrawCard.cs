@@ -446,6 +446,20 @@ namespace CS4500HW1
             }
             if (patternNum == 7)
             {
+                // Call the function which will return true if this pattern is won
+                bool test = deck.PatternEight(selectedSuits, selectedValues);
+                if (test == true)
+                {
+                    // Highlight all cards if won.
+                    HighlightCardPictureBox(pictureBoxes[0], true);
+                    HighlightCardPictureBox(pictureBoxes[1], true);
+                    HighlightCardPictureBox(pictureBoxes[2], true);
+                    HighlightCardPictureBox(pictureBoxes[3], true);
+
+                    // Increase number of rounds won.
+                    roundsWon++;
+                    Debug.Write("\n\nroundswon:" + roundsWon + "\n");
+                }
             }
             if (patternNum == 8)
             {
