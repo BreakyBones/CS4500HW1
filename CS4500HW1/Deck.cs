@@ -109,6 +109,40 @@ namespace CS4500HW1
             }
             return highValue;
         }
+        // Created by Grant on February 21
+        // Pattern seven will see if all cards rise in ascending order for rank where Ace is the highest value then King, etc. down to two
+        // Then make sure all cards are the same suit
+        public bool PatternSeven(string[] selectedSuits, string[] selectedValues)
+        {
+            // I tried implementing this in the if statements for pattern seven, but I will make sure here that this code is run only if all cards are selected
+            if (selectedValues.Length == 4)
+            {
+                // Mapping all values to numerical values since doing it in an if statement looks ugly
+                int firstValue = int.Parse(MapFaceCardValue(selectedValues[0]));
+                
+                int secondValue = int.Parse(MapFaceCardValue(selectedValues[1]));
+                int thirdValue = int.Parse(MapFaceCardValue(selectedValues[2]));
+                int fourthValue = int.Parse(MapFaceCardValue(selectedValues[3]));
+
+                Debug.Write("\n\nnumber value: " + Deck.MapFaceCardValue(selectedValues[0]) + "\n");
+                // This if statement makes sure the values rise in ascending order
+                if (firstValue < secondValue && secondValue < thirdValue && thirdValue < fourthValue)
+                {
+                    Debug.Write("\nThe cards rise in ascending order if this is reached.\n");
+                    // This if statement makes sure the cards are the same suit
+                    if (selectedSuits[0] == selectedSuits[1] && selectedSuits[1] == selectedSuits[2] && selectedSuits[2] == selectedSuits[3])
+                    {
+                        Debug.Write("\nThis round is won\n");
+                        return true;
+                    }
+                }
+                Debug.Write("\nThis round is lost\n");
+                // If this point is reached, the correct match is not found so return false.
+                return false;
+            }
+            // This return statement is to avoid errors, but does not matter since the inner return true statement will work when it is supposed to
+            return false;
+        }
         // I am declaring some variables outside of DealSelectedCards since they are only to reset when a pattern is one.
         // Create the 2d string list
 
@@ -265,7 +299,7 @@ namespace CS4500HW1
                     // if the value read from LastWon.txt is zero, then do the redCard option
                     // This needs code to read that value.
                     //Pattern 1
-                    if (DrawCard.patternNum == 6)
+                    if (DrawCard.patternNum == 12)
                     {
                         DrawCard.patternNum = 0;
                     }
@@ -361,8 +395,42 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
-                    // I will run a crazy for loop when i = 3 to make sure no other rows in the 2-D list are equal to any other row
-                    // I hope to learn how to access each element as I should.                
+                    if (DrawCard.patternNum == 6)
+                    {
+                        bool test = PatternSeven(selectedSuits, selectedValues);
+                        if (test == true)
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                    }
+                    
+                    if (DrawCard.patternNum == 7)
+                    {
+                        dealtCards.Add(cardToDeal);
+                    }
+                    if (DrawCard.patternNum == 8)
+                    {
+                        dealtCards.Add(cardToDeal);
+                    }
+                    if (DrawCard.patternNum == 9)
+                    {
+                        dealtCards.Add(cardToDeal);
+                    }
+                    if (DrawCard.patternNum == 10)
+                    {
+                        dealtCards.Add(cardToDeal);
+                    }
+                    if (DrawCard.patternNum == 11)
+                    {
+                        dealtCards.Add(cardToDeal);
+                    }
+                   
                 }
                 else
                 {
@@ -399,7 +467,7 @@ namespace CS4500HW1
             return dealtCards;
         }
 
-        private string MapFaceCardValue(string value)
+        public static string MapFaceCardValue(string value)
         {
             switch (value)
             {
@@ -411,6 +479,17 @@ namespace CS4500HW1
             }
         }
 
+        public static string MapFaceCardValueForAceOne(string value)
+        {
+            switch (value)
+            {
+                case "J": return "11";
+                case "Q": return "12";
+                case "K": return "13";
+                case "A": return "1";
+                default: return value; // For number cards, the value does not change
+            }
+        }
     }
 }
 

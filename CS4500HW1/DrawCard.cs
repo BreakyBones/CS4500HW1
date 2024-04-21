@@ -212,7 +212,7 @@ namespace CS4500HW1
                 using (StreamReader srPattern = new StreamReader(patternFile))
                 {
                     patternNum = int.Parse(srPattern.ReadToEnd());
-                    if (patternNum == 6)
+                    if (patternNum == 12)
                     {
                         //This is Mihir Bhakta. I used https://stackoverflow.com/questions/3036829/how-do-i-create-a-message-box-with-yes-no-choices-and-a-dialogresult
                         //to help me create this box that takes a yes or no from the user for the pattern number being 6.
@@ -419,10 +419,45 @@ namespace CS4500HW1
                             numCardsWon = 0;
                             roundsWon++;
                             Debug.Write("\n\nroundswon:" + roundsWon + "\n");
+
                         }
                     }
                 }
 
+            }
+
+            // Pattern 7
+            if (patternNum == 6)
+            {
+                // Call the function which will return true if this pattern is won
+                bool test = deck.PatternSeven(selectedSuits, selectedValues);
+                if (test == true)
+                {
+                    // Highlight all cards if won.
+                    HighlightCardPictureBox(pictureBoxes[0], true);
+                    HighlightCardPictureBox(pictureBoxes[1], true);
+                    HighlightCardPictureBox(pictureBoxes[2], true);
+                    HighlightCardPictureBox(pictureBoxes[3], true);
+
+                    // Increase number of rounds won.
+                    roundsWon++;
+                    Debug.Write("\n\nroundswon:" + roundsWon + "\n");
+                }
+            }
+            if (patternNum == 7)
+            {
+            }
+            if (patternNum == 8)
+            {
+            }
+            if (patternNum == 9)
+            {
+            }
+            if (patternNum == 10)
+            {
+            }
+            if (patternNum == 11)
+            {
             }
             // This is for adding text to the textbox in the corner
             textBoxLog.AppendText(deck.Outlog + Environment.NewLine);
@@ -458,7 +493,7 @@ namespace CS4500HW1
                 Debug.Write("user won this round, moving onto the next pattern");
                 int current = patternNum + 1;
                 //Mihir - telling the user they won a pattern or that they won the whole game.
-                if (patternNum <= 4)
+                if (patternNum <= 10)
                 {
                     MessageBox.Show("Congratulations! User Won pattern " + current + ". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
                     // This puts the pattern winner message in the box that displays the history in the corner
@@ -470,7 +505,7 @@ namespace CS4500HW1
                     }
 
                 }
-                if (patternNum == 5)
+                if (patternNum == 11)
                 {
                     // This puts the pattern winner message in the box that displays the history in the corner
                     textBoxLog.AppendText("USER WON PATTERN " + current + Environment.NewLine);
@@ -546,7 +581,7 @@ namespace CS4500HW1
         }
         // On Dealer Selection of liked cards, highlight the cards and tint them to ensure that the user knows which cards the dealers liked
         // Created by Noor and Kanaan
-        private void HighlightCardPictureBox(PictureBox pictureBox, bool isArtDealerCard)
+        public void HighlightCardPictureBox(PictureBox pictureBox, bool isArtDealerCard)
         {
             if (isArtDealerCard)
             {
