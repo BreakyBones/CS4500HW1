@@ -172,6 +172,95 @@ namespace CS4500HW1
             }
             return false;
         }
+        // Created by Grant on February 21
+        // Pattern nine involves trying to find any combination of cards that adds to 11.
+        public static bool[] PatternNine(string[] selectedSuits, string[] selectedValues)
+        {
+            bool[] eachCard = { false, false, false, false };
+            if (selectedSuits.Length == 4)
+            {
+                // Create a list that holds the value of each card where the order does matter
+                List<int> cardValue = new List<int>();
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    int value = int.Parse(MapFaceCardValueForAceOne(selectedValues[i]));
+                    cardValue.Add(value);
+                }
+
+                // Now do eleven if statements.
+                for (int i = 1; i < selectedSuits.Length; i++)
+                {
+                    // Does the first card plus the second, third, or fourth card equal 11?
+                    if (cardValue[0] + cardValue[i] == 11)
+                    {
+                        eachCard[0] = true;
+                        eachCard[i] = true;
+                    }
+                }
+
+                for (int i = 2; i < selectedSuits.Length; i++)
+                {
+                    // Does the second card plus the third or fourth card equal 11?
+                    if (cardValue[1] + cardValue[i] == 11)
+                    {
+                        eachCard[1] = true;
+                        eachCard[i] = true;
+                    }
+                }
+
+                // Does the third card plus the fourth card equal 11
+                if (cardValue[2] + cardValue[3] == 11)
+                {
+                    eachCard[2] = true;
+                    eachCard[3] = true;
+                }
+
+                // Does the first card plus the second card plus the third card equal 11?
+                if (cardValue[0] + cardValue[1] + cardValue[2] == 11)
+                {
+                    eachCard[0] = true;
+                    eachCard[1] = true;
+                    eachCard[2] = true;
+                }
+                // Does the first card plus the third card plus the fourth card equal 11?
+                if (cardValue[0] + cardValue[2] + cardValue[3] == 11)
+                {
+                    eachCard[0] = true;
+                    eachCard[2] = true;
+                    eachCard[3] = true;
+                }
+
+                // Does the second card plus the third card plus the fourth card equal 11?
+                if (cardValue[1] + cardValue[2] + cardValue[3] == 11)
+                {
+                    eachCard[1] = true;
+                    eachCard[2] = true;
+                    eachCard[3] = true;
+                }
+                // Does the first card plus the second card plus the fourth card equal 11?
+                if (cardValue[0] + cardValue[1] + cardValue[3] == 11)
+                {
+                    eachCard[0] = true;
+                    eachCard[1] = true;
+                    eachCard[3] = true;
+                }
+
+                // Do all the cards added together equal 11?
+                if (cardValue[0] + cardValue[1] + cardValue[2] + cardValue[3] == 11)
+                {
+                    eachCard[0] = true;
+                    eachCard[1] = true;
+                    eachCard[2] = true;
+                    eachCard[3] = true;
+                }
+
+
+                return eachCard;
+            }
+            // I will only call this function when selectedSuits.Length is four so that this does not return otherwise.
+            // This last return statement is so that no errors are thrown.
+            return eachCard;
+        }
 
         // Created by Grant on February 21
         // Pattern ten is like pattern eight and will have very similar code. Only the inner if statement will check for two eights
@@ -202,6 +291,8 @@ namespace CS4500HW1
             return false;
         }
 
+        // Created by Grant on February 21
+        // Pattern eleven checks to see if the cards include a jack, queen, king, and Ace in all of the same suit.
         public bool PatternEleven(string[] selectedSuits, string[] selectedValues)
         {
             // Only run this function 
@@ -231,6 +322,8 @@ namespace CS4500HW1
             return false;
         }
 
+        // Created by Grant on February 21
+        // Pattern twelve checks to see if there are two black jacks and two of any other aces
         public bool PatternTwelve(string[] selectedSuits, string[] selectedValues)
         {
             // Only run this function 
@@ -277,7 +370,7 @@ namespace CS4500HW1
         // Created by Kanaan
         public List<Card> DealSelectedCards(string[] selectedSuits, string[] selectedValues)
         {
-            //added this counter to make sure it doesnt get the file pattern num every single time.
+            //added this counter to make sure it does not get the file pattern num every single time.
             somethingCounter++;
             if (somethingCounter == 1)
             {
@@ -552,9 +645,24 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
+                    // If Art Dealer is on number nine
                     if (DrawCard.patternNum == 8)
-                    {
-                        dealtCards.Add(cardToDeal);
+                    {                    
+                        bool[] cardsSelected = PatternNine(selectedSuits, selectedValues);
+                        // This for loop will check what cards were true
+                        for (int y = 0; y < selectedSuits.Length; y++)
+                        {
+                            if (cardsSelected[y] == true)
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
+                            else
+                            {
+                                dealtCards.Add(cardToDeal);
+                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                            }
+                        }
                     }
                     // If the Art Dealer is on Pattern 10
                     if (DrawCard.patternNum == 9)

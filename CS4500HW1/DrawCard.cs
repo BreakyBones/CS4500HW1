@@ -463,6 +463,30 @@ namespace CS4500HW1
             }
             if (patternNum == 8)
             {
+                // This is to tally up the number of cards won
+                int cardsWon = 0;
+                bool[] cardsSelected = Deck.PatternNine(selectedSuits, selectedValues);
+                // This for loop will check what cards were true
+                for (int y = 0; y < selectedSuits.Length; y++)
+                {
+                    if (cardsSelected[y] == true)
+                    {
+                        HighlightCardPictureBox(pictureBoxes[y], true);
+                        cardsWon++;
+                    }
+                    // For the last iteration
+                    if (y == 3)
+                    {
+                        if (cardsWon == 4)
+                        {
+                            // Increase number of rounds won.
+                            roundsWon++;
+                            Debug.Write("\n\nroundswon:" + roundsWon + "\n");
+                        }
+                        cardsWon = 0;
+                    }
+                }
+                
             }
             if (patternNum == 9)
             {
