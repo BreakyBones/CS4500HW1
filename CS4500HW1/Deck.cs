@@ -162,12 +162,42 @@ namespace CS4500HW1
                     cardValue.Add(value);
                 }
                 cardValue.Sort();
-                // This length if statement makes sure each value is separated to another value by two
+                // This lengthy if statement makes sure each value is separated to another value by two
                 if ((cardValue[1] - cardValue[0]) == 2 && (cardValue[2] - cardValue[1]) == 2 && (cardValue[3] - cardValue[2]) == 2)
                 {
                     Debug.Write("\n\nThis round is won\n\n");
                     return true;
                 }
+                Debug.Write("\nThis round is lost\n");
+            }
+            return false;
+        }
+
+        // Created by Grant on February 21
+        // Pattern ten is like pattern eight and will have very similar code. Only the inner if statement will check for two eights
+        // and two aces instead. I will sort it for ease.
+        public bool PatternTen(string[] selectedSuits, string[] selectedValues)
+        {
+            // Only run this function 
+            if (selectedSuits.Length == 4)
+            {
+                // Sort the cards before checking if each value increases by two 
+                List<int> cardValue = new List<int>();
+
+                for (int i = 0; i < selectedSuits.Length; i++)
+                {
+                    int value = int.Parse(MapFaceCardValue(selectedValues[i]));
+                    cardValue.Add(value);
+                }
+                cardValue.Sort();
+
+                // This if statement makes sure there are two eights and two aces
+                if (cardValue[0] == 8 && cardValue[1] == 8 && cardValue[2] == 14 && cardValue[3] == 14)
+                {
+                    Debug.Write("\n\nThis round is won\n\n");
+                    return true;
+                }
+                Debug.Write("\nThis round is lost\n");
             }
             return false;
         }
@@ -422,6 +452,7 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
+                    // If pattern seven is tested
                     if (DrawCard.patternNum == 6)
                     {
                         bool test = PatternSeven(selectedSuits, selectedValues);
@@ -436,7 +467,7 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
-                    
+                    // If the Art Dealer is on Pattern 8
                     if (DrawCard.patternNum == 7)
                     {
                         bool test = PatternEight(selectedSuits, selectedValues);
@@ -455,9 +486,20 @@ namespace CS4500HW1
                     {
                         dealtCards.Add(cardToDeal);
                     }
+                    // If the Art Dealer is on Pattern 10
                     if (DrawCard.patternNum == 9)
                     {
-                        dealtCards.Add(cardToDeal);
+                        bool test = PatternTen(selectedSuits, selectedValues);
+                        if (test == true)
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
                     }
                     if (DrawCard.patternNum == 10)
                     {
