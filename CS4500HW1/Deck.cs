@@ -649,19 +649,15 @@ namespace CS4500HW1
                     if (DrawCard.patternNum == 8)
                     {                    
                         bool[] cardsSelected = PatternNine(selectedSuits, selectedValues);
-                        // This for loop will check what cards were true
-                        for (int y = 0; y < selectedSuits.Length; y++)
+                        if (cardsSelected[i] == true)
                         {
-                            if (cardsSelected[y] == true)
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
-                            else
-                            {
-                                dealtCards.Add(cardToDeal);
-                                outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
-                            }
+                            dealtCards.Add(cardToDeal);
+                            outlog += "*" + cardToDeal.Log() + "*" + (i < selectedSuits.Length - 1 ? "," : "");
+                        }
+                        else
+                        {
+                            dealtCards.Add(cardToDeal);
+                            outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
                     // If the Art Dealer is on Pattern 10
