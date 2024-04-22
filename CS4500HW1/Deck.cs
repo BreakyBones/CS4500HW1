@@ -515,93 +515,256 @@ namespace CS4500HW1
                     int valuee = int.Parse(MapFaceCardValueForAceOne(selectedValues[j]));
                     cardValue.Add(valuee);
                 }
-               
-                    // Now do eleven if statements to see each set that the Art Dealer selected.
-                    for (int j = 1; j < selectedSuits.Length; j++)
+
+                // Set the card value for all of the four cards
+                // This stores information about the first cards
+                string value0 = MapFaceCardValue(selectedValues[0]);
+                string suit0 = selectedSuits[0];
+                // Find the card with the first matching suit and value
+                Card cardToDeal0 = cards.FirstOrDefault(card => card.Suit == suit0 && card.Value == value0);
+
+                // This may store information about the second, third, or fourth card
+                string value1 = MapFaceCardValue(selectedValues[1]);
+                string suit1 = selectedSuits[1];
+                // Find the card with the matching suit and value
+                Card cardToDeal1 = cards.FirstOrDefault(card => card.Suit == suit1 && card.Value == value1);
+
+                // This may store information about the second, third, or fourth card
+                string value2 = MapFaceCardValue(selectedValues[2]);
+                string suit2 = selectedSuits[2];
+                // Find the card with the matching suit and value
+                Card cardToDeal2 = cards.FirstOrDefault(card => card.Suit == suit2 && card.Value == value2);
+
+                // This may store information about the second, third, or fourth card
+                string value3 = MapFaceCardValue(selectedValues[3]);
+                string suit3 = selectedSuits[3];
+                // Find the card with the matching suit and value
+                Card cardToDeal3 = cards.FirstOrDefault(card => card.Suit == suit3 && card.Value == value3);
+
+                // Now do eleven if statements to see each set that the Art Dealer selected.
+                for (int j = 1; j < selectedSuits.Length; j++)
+                {
+                    // Does the first card plus the second, third, or fourth card equal 11?
+                    // If so, display any set to both the screen to pause the game, to the external file CardsDealt.txt,
+                    // and to the corner box that keeps track of all selected cards and sets too for Pattern nine
+                    if (cardValue[0] + cardValue[j] == 11)
                     {
-                        // Does the first card plus the second, third, or fourth card equal 11?
-                        // If so, display any set to both the screen to pause the game, to the external file CardsDealt.txt,
-                        // and to the corner box that keeps track of all selected cards and sets too for Pattern nine
-                        if (cardValue[0] + cardValue[j] == 11)
-                        {
-                            // This stores information about the first cards
-                            string value0 = MapFaceCardValue(selectedValues[0]);
-                            string suit0 = selectedSuits[0];
+                        dealtCards.Add(cardToDeal0);
 
-                            // Find the card with the first matching suit and value
-                            Card cardToDeal0 = cards.FirstOrDefault(card => card.Suit == suit0 && card.Value == value0);
-                            //dealtCards.Add(cardToDeal0);
-
-                            // This may store information about the second, third, or fourth card
-                            string valuej = MapFaceCardValue(selectedValues[j]);
-                            string suitj = selectedSuits[j];
-                            // Find the card with the matching suit and value
-                            Card cardToDealj = cards.FirstOrDefault(card => card.Suit == suitj && card.Value == valuej);
+                        // This may store information about the second, third, or fourth card
+                        // I am doing it again since I am using j instead of the literal 1, 2, or 3.
+                        // Doing it this means more of this initializing but less if statements in the long run
+                        string valuej = MapFaceCardValue(selectedValues[j]);
+                        string suitj = selectedSuits[j];
+                        // Find the card with the matching suit and value
+                        Card cardToDealj = cards.FirstOrDefault(card => card.Suit == suitj && card.Value == valuej);
 
                             
-                            dealtCards.Add(cardToDealj);
+                        dealtCards.Add(cardToDealj);
 
-                            // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
-                            // to the external output, to the screen, and to the box in the corner that stores 
-                            // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
-                            outlog += "A selected set by Art Dealer: *" + cardToDeal0.Log() + "*,*" + cardToDealj.Log() + "*";
-                            // This is for adding text to the textbox in the corner
-                            DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+                        // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                        // to the external output, to the screen, and to the box in the corner that stores 
+                        // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                        outlog += "A selected set by Art Dealer: *" + cardToDeal0.Log() + "*,*" + cardToDealj.Log() + "*";
+                        // This is for adding text to the textbox in the corner
+                        DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
 
-                            // This is for writing to the External file CardsDealt.txt
-                            using (StreamWriter sw = File.AppendText(logPath))
-                            {
-                                sw.WriteLine(outlog);
-                            }
-                            MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDealj.Log() + "}");
-                        }
-                        // Clear both so I start out fresh when finding another set the Art Dealer selected.
-                        dealtCards.Clear();
-                        outlog = "";
-                    }
-
-                    for (int j = 2; j < selectedSuits.Length; j++)
-                    {
-                        // Does the second card plus the third or fourth card equal 11?
-                        if (cardValue[1] + cardValue[j] == 11)
+                        // This is for writing to the External file CardsDealt.txt
+                        using (StreamWriter sw = File.AppendText(logPath))
                         {
-                            
+                            sw.WriteLine(outlog);
                         }
+                        MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDealj.Log() + "}");
                     }
+                    // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                    dealtCards.Clear();
+                    outlog = "";
+                }
 
-                    // Does the third card plus the fourth card equal 11
-                    if (cardValue[2] + cardValue[3] == 11)
+                for (int j = 2; j < selectedSuits.Length; j++)
+                {
+                    // Does the second card plus the third or fourth card equal 11?
+                    if (cardValue[1] + cardValue[j] == 11)
                     {
-                        
-                    }
+                        dealtCards.Add(cardToDeal1);
 
-                    // Does the first card plus the second card plus the third card equal 11?
-                    if (cardValue[0] + cardValue[1] + cardValue[2] == 11)
-                    {
-                        
-                    }
-                    // Does the first card plus the third card plus the fourth card equal 11?
-                    if (cardValue[0] + cardValue[2] + cardValue[3] == 11)
-                    {
-                        
-                    }
+                        // This may store information about the second, third, or fourth card
+                        string valuej = MapFaceCardValue(selectedValues[j]);
+                        string suitj = selectedSuits[j];
+                        // Find the card with the matching suit and value
+                        Card cardToDealj = cards.FirstOrDefault(card => card.Suit == suitj && card.Value == valuej);
+                        dealtCards.Add(cardToDealj);
 
-                    // Does the second card plus the third card plus the fourth card equal 11?
-                    if (cardValue[1] + cardValue[2] + cardValue[3] == 11)
-                    {
-                        
-                    }
-                    // Does the first card plus the second card plus the fourth card equal 11?
-                    if (cardValue[0] + cardValue[1] + cardValue[3] == 11)
-                    {
-                        
-                    }
+                        // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                        // to the external output, to the screen, and to the box in the corner that stores 
+                        // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                        outlog += "A selected set by Art Dealer: *" + cardToDeal1.Log() + "*,*" + cardToDealj.Log() + "*";
+                        // This is for adding text to the textbox in the corner
+                        DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
 
-                    // Do all the cards added together equal 11?
-                    if (cardValue[0] + cardValue[1] + cardValue[2] + cardValue[3] == 11)
-                    {
-                        
+                        // This is for writing to the External file CardsDealt.txt
+                        using (StreamWriter sw = File.AppendText(logPath))
+                        {
+                            sw.WriteLine(outlog);
+                        }
+                        MessageBox.Show("Art Dealer selected this set {" + cardToDeal1.Log() + "," + cardToDealj.Log() + "}");
                     }
+                    // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                    dealtCards.Clear();
+                    outlog = "";
+                            
+                        
+                }
+
+                // Does the third card plus the fourth card equal 11
+                if (cardValue[2] + cardValue[3] == 11)
+                {
+                    dealtCards.Add(cardToDeal2);                 
+                    dealtCards.Add(cardToDeal3);
+
+                    // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                    // to the external output, to the screen, and to the box in the corner that stores 
+                    // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                    outlog += "A selected set by Art Dealer: *" + cardToDeal2.Log() + "*,*" + cardToDeal3.Log() + "*";
+                    // This is for adding text to the textbox in the corner
+                    DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+
+                    // This is for writing to the External file CardsDealt.txt
+                    using (StreamWriter sw = File.AppendText(logPath))
+                    {
+                        sw.WriteLine(outlog);
+                    }
+                    MessageBox.Show("Art Dealer selected this set {" + cardToDeal2.Log() + "," + cardToDeal3.Log() + "}");
+                    // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                    dealtCards.Clear();
+                    outlog = "";
+                }
+
+                // Does the first card plus the second card plus the third card equal 11?
+                if (cardValue[0] + cardValue[1] + cardValue[2] == 11)
+                {
+                    dealtCards.Add(cardToDeal0);
+                    dealtCards.Add(cardToDeal1);
+                    dealtCards.Add(cardToDeal2);
+
+                    // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                    // to the external output, to the screen, and to the box in the corner that stores 
+                    // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                    outlog += "A selected set by Art Dealer: *" + cardToDeal0.Log() + "*,*" + cardToDeal1.Log() + "*,*" + cardToDeal2.Log() + "*";
+                    // This is for adding text to the textbox in the corner
+                    DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+
+                    // This is for writing to the External file CardsDealt.txt
+                    using (StreamWriter sw = File.AppendText(logPath))
+                    {
+                        sw.WriteLine(outlog);
+                    }
+                    MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDeal1.Log() + "," + cardToDeal2.Log() +"}");
+                    // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                    dealtCards.Clear();
+                    outlog = "";
+                }
+                // Does the first card plus the third card plus the fourth card equal 11?
+                if (cardValue[0] + cardValue[2] + cardValue[3] == 11)
+                {
+                    dealtCards.Add(cardToDeal0);
+                    dealtCards.Add(cardToDeal2);
+                    dealtCards.Add(cardToDeal3);
+
+
+                    // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                    // to the external output, to the screen, and to the box in the corner that stores 
+                    // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                    outlog += "A selected set by Art Dealer: *" + cardToDeal0.Log() + "*,*" + cardToDeal2.Log() + "*,*" + cardToDeal3.Log() + "*";
+                    // This is for adding text to the textbox in the corner
+                    DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+
+                    // This is for writing to the External file CardsDealt.txt
+                    using (StreamWriter sw = File.AppendText(logPath))
+                    {
+                        sw.WriteLine(outlog);
+                    }
+                    MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDeal2.Log() + "," + cardToDeal3.Log() + "}");
+                    // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                    dealtCards.Clear();
+                    outlog = "";
+                }
+
+                // Does the second card plus the third card plus the fourth card equal 11?
+                if (cardValue[1] + cardValue[2] + cardValue[3] == 11)
+                {
+                    dealtCards.Add(cardToDeal1);
+                    dealtCards.Add(cardToDeal2);
+                    dealtCards.Add(cardToDeal3);
+
+
+                    // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                    // to the external output, to the screen, and to the box in the corner that stores 
+                    // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                    outlog += "A selected set by Art Dealer: *" + cardToDeal1.Log() + "*,*" + cardToDeal2.Log() + "*,*" + cardToDeal3.Log() + "*";
+                    // This is for adding text to the textbox in the corner
+                    DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+
+                    // This is for writing to the External file CardsDealt.txt
+                    using (StreamWriter sw = File.AppendText(logPath))
+                    {
+                        sw.WriteLine(outlog);
+                    }
+                    MessageBox.Show("Art Dealer selected this set {" + cardToDeal1.Log() + "," + cardToDeal2.Log() + "," + cardToDeal3.Log() + "}");
+                    // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                    dealtCards.Clear();
+                    outlog = "";
+                }
+                // Does the first card plus the second card plus the fourth card equal 11?
+                if (cardValue[0] + cardValue[1] + cardValue[3] == 11)
+                {
+                    dealtCards.Add(cardToDeal0);
+                    dealtCards.Add(cardToDeal1);
+                    dealtCards.Add(cardToDeal3);
+
+                    // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                    // to the external output, to the screen, and to the box in the corner that stores 
+                    // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                    outlog += "A selected set by Art Dealer: *" + cardToDeal0.Log() + "*,*" + cardToDeal1.Log() + "*,*" + cardToDeal3.Log() + "*";
+                    // This is for adding text to the textbox in the corner
+                    DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+
+                    // This is for writing to the External file CardsDealt.txt
+                    using (StreamWriter sw = File.AppendText(logPath))
+                    {
+                        sw.WriteLine(outlog);
+                    }
+                    MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDeal1.Log() + "," + cardToDeal3.Log() + "}");
+                    // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                    dealtCards.Clear();
+                    outlog = "";
+                }
+
+                // Do all the cards added together equal 11?
+                if (cardValue[0] + cardValue[1] + cardValue[2] + cardValue[3] == 11)
+                {
+                    dealtCards.Add(cardToDeal0);
+                    dealtCards.Add(cardToDeal1);
+                    dealtCards.Add(cardToDeal2);
+                    dealtCards.Add(cardToDeal3);
+
+                    // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                    // to the external output, to the screen, and to the box in the corner that stores 
+                    // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                    outlog += "A selected set by Art Dealer: *" + cardToDeal0.Log() + "*,*" + cardToDeal1.Log() + "*,*" + cardToDeal2.Log() + "*,*" + cardToDeal3.Log() + "*";
+                    // This is for adding text to the textbox in the corner
+                    DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+
+                    // This is for writing to the External file CardsDealt.txt
+                    using (StreamWriter sw = File.AppendText(logPath))
+                    {
+                        sw.WriteLine(outlog);
+                    }
+                    MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDeal1.Log() + "," + cardToDeal2.Log() + "," + cardToDeal3.Log() + "}");
+                    // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                    dealtCards.Clear();
+                    outlog = "";
+                }
                 cardValue.Clear();
                 dealtCards.Clear();
             }
