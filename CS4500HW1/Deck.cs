@@ -30,6 +30,7 @@ namespace CS4500HW1
         public static bool equalHands = false;
 
         int somethingCounter = 0;
+        int howMany = 0;
 
 
         string outlog = "";
@@ -174,6 +175,7 @@ namespace CS4500HW1
         }
         // Created by Grant on February 21
         // Pattern nine involves trying to find any combination of cards that adds to 11.
+        // This method is only used in DrawCard since this whole block of code needs to be put in the if statement for patternNum==8
         public static bool[] PatternNine(string[] selectedSuits, string[] selectedValues)
         {
             bool[] eachCard = { false, false, false, false };
@@ -379,16 +381,11 @@ namespace CS4500HW1
                     DrawCard.patternNum = int.Parse(srPattern.ReadToEnd());
                 }
             }
-                List<Card> dealtCards = new List<Card>();
+            List<Card> dealtCards = new List<Card>();
             outlog = "";
 
             int highestValue = 1; //highValue means highest rank found
-            // This is tested first since if the put after the others, pattern 5 and 6 could be used simultaneously.
-            // Code: if value from LastWon.txt is five, then do PATTERN 6 which is for selecting the highest value cards
-            // First find highest value of the cards PATTERN 6. Authored by Grant
-
-
-            // Increment by one. When the for loop is done, This goes back to when is Pattern is won.
+            
             // Everything that is related to lists or arrays, I used chatGPT since I have never worked with it before in C#
             List<string> cardHand = new List<string>();
 
@@ -410,7 +407,7 @@ namespace CS4500HW1
             if (selectedSuits.Length == 4)
             {
                 cardHand.Sort();
-                Debug.Write("SelectedSuits is four now \n \n");
+                // Debug.Write("SelectedSuits is four now \n \n");
 
 
                 // Read all lines from the file into an array. This line and the next three lines are from ChatGPT
@@ -419,9 +416,9 @@ namespace CS4500HW1
 
                 // Get the number of lines in the file, which also represent all previous cards selected.
                 int numLines = lines.Length;
-                Debug.Write("\n\nnumber of pervious entries is ");
-                Debug.Write(numLines);
-                Debug.Write("\n");
+                //Debug.Write("\n\nnumber of pervious entries is ");
+                //Debug.Write(numLines);
+                //Debug.Write("\n");
                 string eachCard;
                 // This if statement is so that equality checking is skipped if this is the first hand dealt for this pattern
                 if (numLines < 4)
@@ -430,7 +427,7 @@ namespace CS4500HW1
                     FileStream clearContent = File.Open("CurrentPattern.txt", FileMode.Open);
                     clearContent.SetLength(0);
                     clearContent.Close();
-                    Debug.Write("\n\n I only want to see you one time per pattern");
+                    // Debug.Write("\n\n I only want to see you one time per pattern");
                     // Add each item to the textfile CurrentPattern.txt
                     foreach (string sortCard in cardHand)
                     {
@@ -444,7 +441,7 @@ namespace CS4500HW1
                 {
                     // This number represent the number of hands dealt so far
                     int numberHands = numLines / 4;
-                    Debug.Write("\n\n" + numberHands + " ");
+                    // Debug.Write("\n\n" + numberHands + " ");
                     // Create a temporary list that hold each previous hand dealt
                     List<string> tempCardHand = new List<string>();
 
@@ -460,9 +457,9 @@ namespace CS4500HW1
                         {
                             // This index will eventually all previous cards dealt if no hands equal the current hand.
                             int index = hand * 4 + carde;
-                            Debug.Write("\n Index is " + index + "\n\n");
+                            // Debug.Write("\n Index is " + index + "\n\n");
                             eachCard = lines[index];
-                            Debug.Write(eachCard);
+                            // Debug.Write(eachCard);
                             tempCardHand.Add(eachCard);
                         }
                         // This for loop will see if one the previous hands equal the current hand
@@ -471,7 +468,7 @@ namespace CS4500HW1
                             if (tempCardHand[element] == cardHand[element])
                             {
                                 badFour++;
-                                Debug.Write("\n\n have this display each time \n\n");
+                                // Debug.Write("\n\n have this display each time \n\n");
                             }
                         }
                         // Clear the contents from the list that holds a previous hand since that hand is done being used for comparison
@@ -504,6 +501,109 @@ namespace CS4500HW1
                         }
                     }
                 }
+            }
+            if (DrawCard.patternNum == 8 && selectedSuits.Length == 4)
+            {
+                howMany++;
+                Debug.Write("\n\nHow many iterations so far? " + howMany + "\n");
+
+                bool[] eachCard = { false, false, false, false };
+                List<int> cardValue = new List<int>();
+                // Create a list that holds the value of each card where the order does matter
+                for (int j = 0; j < selectedSuits.Length; j++)
+                {
+                    int valuee = int.Parse(MapFaceCardValueForAceOne(selectedValues[j]));
+                    cardValue.Add(valuee);
+                }
+               
+                    // Now do eleven if statements to see each set that the Art Dealer selected.
+                    for (int j = 1; j < selectedSuits.Length; j++)
+                    {
+                        // Does the first card plus the second, third, or fourth card equal 11?
+                        // If so, display any set to both the screen to pause the game, to the external file CardsDealt.txt,
+                        // and to the corner box that keeps track of all selected cards and sets too for Pattern nine
+                        if (cardValue[0] + cardValue[j] == 11)
+                        {
+                            // This stores information about the first cards
+                            string value0 = MapFaceCardValue(selectedValues[0]);
+                            string suit0 = selectedSuits[0];
+
+                            // Find the card with the first matching suit and value
+                            Card cardToDeal0 = cards.FirstOrDefault(card => card.Suit == suit0 && card.Value == value0);
+                            //dealtCards.Add(cardToDeal0);
+
+                            // This may store information about the second, third, or fourth card
+                            string valuej = MapFaceCardValue(selectedValues[j]);
+                            string suitj = selectedSuits[j];
+                            // Find the card with the matching suit and value
+                            Card cardToDealj = cards.FirstOrDefault(card => card.Suit == suitj && card.Value == valuej);
+
+                            
+                            dealtCards.Add(cardToDealj);
+
+                            // This outlog shows what set the Art Dealer selected. This outlog will be used for writing
+                            // to the external output, to the screen, and to the box in the corner that stores 
+                            // previous selected hands in this whole game and previous sets the Art Dealer selected in this pattern.
+                            outlog += "A selected set by Art Dealer: *" + cardToDeal0.Log() + "*,*" + cardToDealj.Log() + "*";
+                            // This is for adding text to the textbox in the corner
+                            DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+
+                            // This is for writing to the External file CardsDealt.txt
+                            using (StreamWriter sw = File.AppendText(logPath))
+                            {
+                                sw.WriteLine(outlog);
+                            }
+                            MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDealj.Log() + "}");
+                        }
+                        // Clear both so I start out fresh when finding another set the Art Dealer selected.
+                        dealtCards.Clear();
+                        outlog = "";
+                    }
+
+                    for (int j = 2; j < selectedSuits.Length; j++)
+                    {
+                        // Does the second card plus the third or fourth card equal 11?
+                        if (cardValue[1] + cardValue[j] == 11)
+                        {
+                            
+                        }
+                    }
+
+                    // Does the third card plus the fourth card equal 11
+                    if (cardValue[2] + cardValue[3] == 11)
+                    {
+                        
+                    }
+
+                    // Does the first card plus the second card plus the third card equal 11?
+                    if (cardValue[0] + cardValue[1] + cardValue[2] == 11)
+                    {
+                        
+                    }
+                    // Does the first card plus the third card plus the fourth card equal 11?
+                    if (cardValue[0] + cardValue[2] + cardValue[3] == 11)
+                    {
+                        
+                    }
+
+                    // Does the second card plus the third card plus the fourth card equal 11?
+                    if (cardValue[1] + cardValue[2] + cardValue[3] == 11)
+                    {
+                        
+                    }
+                    // Does the first card plus the second card plus the fourth card equal 11?
+                    if (cardValue[0] + cardValue[1] + cardValue[3] == 11)
+                    {
+                        
+                    }
+
+                    // Do all the cards added together equal 11?
+                    if (cardValue[0] + cardValue[1] + cardValue[2] + cardValue[3] == 11)
+                    {
+                        
+                    }
+                cardValue.Clear();
+                dealtCards.Clear();
             }
 
             for (int i = 0; i < selectedSuits.Length; i++)
@@ -645,9 +745,12 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
-                    // If Art Dealer is on number nine
+
+                    // This code is for simply logging the whole hand of cards selected when Art Dealer is searching for Pattern 8
                     if (DrawCard.patternNum == 8)
-                    {                    
+                    {
+                        // outlog = "";
+                        // dealtCards.Clear();
                         bool[] cardsSelected = PatternNine(selectedSuits, selectedValues);
                         if (cardsSelected[i] == true)
                         {
@@ -660,6 +763,116 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
+
+                    /*
+                    // If Art Dealer is on number nine, then I also have to display each set the Art Dealer selected, which the code below will do
+                    if (DrawCard.patternNum == 8)
+                    {
+                        bool[] eachCard = { false, false, false, false };
+                        List<int> cardValue = new List<int>();
+                        // Create a list that holds the value of each card where the order does matter
+                        for (int j = 0; j < selectedSuits.Length; j++)
+                        {
+                            int valuee = int.Parse(MapFaceCardValueForAceOne(selectedValues[j]));
+                            cardValue.Add(valuee);
+                        }
+                        Debug.Write("\n\n\n I am seen today 4 times\n");
+                        if (i == 3)
+                        {
+                            Debug.Write("\n\n\n I am seen today! This after is for displaying each set the Art Dealer selected");
+                            // Now do eleven if statements.
+                            for (int j = 1; j < selectedSuits.Length; j++)
+                            {
+                                // Does the first card plus the second, third, or fourth card equal 11?
+                                // If so, display any set to both the screen to pause the game, to the external file CardsDealt.txt,
+                                // and to the corner box that keeps track of all selected cards and sets too for Pattern nine
+                                if (cardValue[0] + cardValue[j] == 11)
+                                {
+                                    eachCard[0] = true;
+                                    eachCard[i] = true;
+                                    string value0 = MapFaceCardValue(selectedValues[0]);
+                                    string suit0 = selectedSuits[0];
+                                    // Find the card with the first matching suit and value
+                                    Card cardToDeal0 = cards.FirstOrDefault(card => card.Suit == suit0 && card.Value == value0);
+                                    dealtCards.Add(cardToDeal0);
+                                    string valuej = MapFaceCardValue(selectedValues[j]);
+                                    string suitj = selectedSuits[j];
+                                    // Find the card with the matching suit and value
+                                    Card cardToDealj = cards.FirstOrDefault(card => card.Suit == suitj && card.Value == valuej);
+                                    dealtCards.Add(cardToDealj);
+                                    outlog += "\nA selected set: *" + cardToDeal0.Log() + "*,*" + cardToDealj.Log() + "*";
+                                    // This is for adding text to the textbox in the corner
+                                    DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
+                                    using (StreamWriter sw = File.AppendText(logPath))
+                                    {
+                                        sw.WriteLine(outlog);
+                                    }
+                                    MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDealj.Log() + "}");
+                                }
+                            }
+
+                            for (int j = 2; j < selectedSuits.Length; j++)
+                            {
+                                // Does the second card plus the third or fourth card equal 11?
+                                if (cardValue[1] + cardValue[j] == 11)
+                                {
+                                    eachCard[1] = true;
+                                    eachCard[i] = true;
+                                }
+                            }
+
+                            // Does the third card plus the fourth card equal 11
+                            if (cardValue[2] + cardValue[3] == 11)
+                            {
+                                eachCard[2] = true;
+                                eachCard[3] = true;
+                            }
+
+                            // Does the first card plus the second card plus the third card equal 11?
+                            if (cardValue[0] + cardValue[1] + cardValue[2] == 11)
+                            {
+                                eachCard[0] = true;
+                                eachCard[1] = true;
+                                eachCard[2] = true;
+                            }
+                            // Does the first card plus the third card plus the fourth card equal 11?
+                            if (cardValue[0] + cardValue[2] + cardValue[3] == 11)
+                            {
+                                eachCard[0] = true;
+                                eachCard[2] = true;
+                                eachCard[3] = true;
+                            }
+
+                            // Does the second card plus the third card plus the fourth card equal 11?
+                            if (cardValue[1] + cardValue[2] + cardValue[3] == 11)
+                            {
+                                eachCard[1] = true;
+                                eachCard[2] = true;
+                                eachCard[3] = true;
+                            }
+                            // Does the first card plus the second card plus the fourth card equal 11?
+                            if (cardValue[0] + cardValue[1] + cardValue[3] == 11)
+                            {
+                                eachCard[0] = true;
+                                eachCard[1] = true;
+                                eachCard[3] = true;
+                            }
+
+                            // Do all the cards added together equal 11?
+                            if (cardValue[0] + cardValue[1] + cardValue[2] + cardValue[3] == 11)
+                            {
+                                eachCard[0] = true;
+                                eachCard[1] = true;
+                                eachCard[2] = true;
+                                eachCard[3] = true;
+                            }
+                        }                        
+                        cardValue.Clear();
+                        dealtCards.Clear();
+                    }
+                    */
+                    
+
                     // If the Art Dealer is on Pattern 10
                     if (DrawCard.patternNum == 9)
                     {
@@ -733,9 +946,10 @@ namespace CS4500HW1
             // Check if the correct number of cards were dealt
             if (dealtCards.Count != selectedSuits.Length)
             {
+               
                 Debug.Write("\ndealtCards count is: "+dealtCards.Count);
                 Debug.Write("\nselectedsuits length is: " + selectedSuits.Length);
-                MessageBox.Show("All cards needs to be selected and confirmed before selecting Deal");
+                // MessageBox.Show("All cards needs to be selected and confirmed before selecting Deal");
                 // throw new InvalidOperationException("Not enough cards were dealt." + dealtCards.Count + "and" + selectedSuits.Length);
             }
 

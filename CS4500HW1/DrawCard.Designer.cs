@@ -405,11 +405,11 @@ namespace CS4500HW1
             // 
             // textBoxLog
             // 
-            textBoxLog.Location = new Point(891, 5);
+            textBoxLog.Location = new Point(811, 5);
             textBoxLog.Multiline = true;
             textBoxLog.Name = "textBoxLog";
             textBoxLog.ScrollBars = ScrollBars.Vertical;
-            textBoxLog.Size = new Size(196, 107);
+            textBoxLog.Size = new Size(260, 115);
             textBoxLog.TabIndex = 39;
             // 
             // card1Confirm
@@ -581,7 +581,7 @@ namespace CS4500HW1
         private PictureBox pictureBoxC4;
         private PictureBox pictureBoxD4;
         private PictureBox pictureBoxH4;
-        private TextBox textBoxLog;
+        public static TextBox textBoxLog;
         private Button card1Confirm;
         private Button card2Confirm;
         private Button card3Confirm;

@@ -224,7 +224,7 @@ namespace CS4500HW1
                         else if (dialogResult == DialogResult.No)
                         {//This is Mihir Bhakta and I got this waiting time idea from https://stackoverflow.com/questions/10458118/wait-one-second-in-running-program
                             MessageBox.Show("Ok, goodbye!");
-                            System.Threading.Thread.Sleep(5000);
+                            System.Threading.Thread.Sleep(3000);
                             Application.Exit();
                         }
                     }
@@ -465,6 +465,7 @@ namespace CS4500HW1
             {
                 // This is to tally up the number of cards won
                 int cardsWon = 0;
+                // Call the PatternNine method to find the cards that should be highlighted
                 bool[] cardsSelected = Deck.PatternNine(selectedSuits, selectedValues);
                 // This for loop will check what cards were true
                 for (int y = 0; y < selectedSuits.Length; y++)
@@ -547,6 +548,7 @@ namespace CS4500HW1
             NextRoundBtn.Size = DealBtn.Size;
 
             DealBtn.Visible = false;
+            MessageBox.Show("Changing any of the cards or confirming any on them after this message goes away will be lost if done before selecting Next Round. Thus, hit Next Round or Quit after this message is okayed");
             NextRoundBtn.Visible = true;
 
         }
@@ -562,7 +564,7 @@ namespace CS4500HW1
 
 
             Debug.Write("\nNumber of rounds won: " + roundsWon + "\n");
-            //Created by Mihir - Upon clicking the button, make this value = true for the pattern to increase for hightling to work properly
+            //Created by Mihir - Upon clicking the button, make this value = true for the pattern to increase for highlighting to work properly
             //This ALSO means the user won the pattern
             if (roundsWon >= 2)
             {
