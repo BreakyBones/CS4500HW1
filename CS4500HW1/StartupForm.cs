@@ -23,6 +23,16 @@ namespace CS4500HW1
             drawCard.Show();
             this.Hide();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void purposeTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 // End of file

@@ -502,6 +502,8 @@ namespace CS4500HW1
                     }
                 }
             }
+            // Authored by Grant on April 21-22.
+            // This big if statement will show each set that the Art Dealer bought as a group.
             if (DrawCard.patternNum == 8 && selectedSuits.Length == 4)
             {
                 howMany++;
@@ -926,114 +928,6 @@ namespace CS4500HW1
                             outlog += cardToDeal.Log() + (i < selectedSuits.Length - 1 ? "," : "");
                         }
                     }
-
-                    /*
-                    // If Art Dealer is on number nine, then I also have to display each set the Art Dealer selected, which the code below will do
-                    if (DrawCard.patternNum == 8)
-                    {
-                        bool[] eachCard = { false, false, false, false };
-                        List<int> cardValue = new List<int>();
-                        // Create a list that holds the value of each card where the order does matter
-                        for (int j = 0; j < selectedSuits.Length; j++)
-                        {
-                            int valuee = int.Parse(MapFaceCardValueForAceOne(selectedValues[j]));
-                            cardValue.Add(valuee);
-                        }
-                        Debug.Write("\n\n\n I am seen today 4 times\n");
-                        if (i == 3)
-                        {
-                            Debug.Write("\n\n\n I am seen today! This after is for displaying each set the Art Dealer selected");
-                            // Now do eleven if statements.
-                            for (int j = 1; j < selectedSuits.Length; j++)
-                            {
-                                // Does the first card plus the second, third, or fourth card equal 11?
-                                // If so, display any set to both the screen to pause the game, to the external file CardsDealt.txt,
-                                // and to the corner box that keeps track of all selected cards and sets too for Pattern nine
-                                if (cardValue[0] + cardValue[j] == 11)
-                                {
-                                    eachCard[0] = true;
-                                    eachCard[i] = true;
-                                    string value0 = MapFaceCardValue(selectedValues[0]);
-                                    string suit0 = selectedSuits[0];
-                                    // Find the card with the first matching suit and value
-                                    Card cardToDeal0 = cards.FirstOrDefault(card => card.Suit == suit0 && card.Value == value0);
-                                    dealtCards.Add(cardToDeal0);
-                                    string valuej = MapFaceCardValue(selectedValues[j]);
-                                    string suitj = selectedSuits[j];
-                                    // Find the card with the matching suit and value
-                                    Card cardToDealj = cards.FirstOrDefault(card => card.Suit == suitj && card.Value == valuej);
-                                    dealtCards.Add(cardToDealj);
-                                    outlog += "\nA selected set: *" + cardToDeal0.Log() + "*,*" + cardToDealj.Log() + "*";
-                                    // This is for adding text to the textbox in the corner
-                                    DrawCard.textBoxLog.AppendText(Outlog + Environment.NewLine);
-                                    using (StreamWriter sw = File.AppendText(logPath))
-                                    {
-                                        sw.WriteLine(outlog);
-                                    }
-                                    MessageBox.Show("Art Dealer selected this set {" + cardToDeal0.Log() + "," + cardToDealj.Log() + "}");
-                                }
-                            }
-
-                            for (int j = 2; j < selectedSuits.Length; j++)
-                            {
-                                // Does the second card plus the third or fourth card equal 11?
-                                if (cardValue[1] + cardValue[j] == 11)
-                                {
-                                    eachCard[1] = true;
-                                    eachCard[i] = true;
-                                }
-                            }
-
-                            // Does the third card plus the fourth card equal 11
-                            if (cardValue[2] + cardValue[3] == 11)
-                            {
-                                eachCard[2] = true;
-                                eachCard[3] = true;
-                            }
-
-                            // Does the first card plus the second card plus the third card equal 11?
-                            if (cardValue[0] + cardValue[1] + cardValue[2] == 11)
-                            {
-                                eachCard[0] = true;
-                                eachCard[1] = true;
-                                eachCard[2] = true;
-                            }
-                            // Does the first card plus the third card plus the fourth card equal 11?
-                            if (cardValue[0] + cardValue[2] + cardValue[3] == 11)
-                            {
-                                eachCard[0] = true;
-                                eachCard[2] = true;
-                                eachCard[3] = true;
-                            }
-
-                            // Does the second card plus the third card plus the fourth card equal 11?
-                            if (cardValue[1] + cardValue[2] + cardValue[3] == 11)
-                            {
-                                eachCard[1] = true;
-                                eachCard[2] = true;
-                                eachCard[3] = true;
-                            }
-                            // Does the first card plus the second card plus the fourth card equal 11?
-                            if (cardValue[0] + cardValue[1] + cardValue[3] == 11)
-                            {
-                                eachCard[0] = true;
-                                eachCard[1] = true;
-                                eachCard[3] = true;
-                            }
-
-                            // Do all the cards added together equal 11?
-                            if (cardValue[0] + cardValue[1] + cardValue[2] + cardValue[3] == 11)
-                            {
-                                eachCard[0] = true;
-                                eachCard[1] = true;
-                                eachCard[2] = true;
-                                eachCard[3] = true;
-                            }
-                        }                        
-                        cardValue.Clear();
-                        dealtCards.Clear();
-                    }
-                    */
                     
 
                     // If the Art Dealer is on Pattern 10

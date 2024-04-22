@@ -16,6 +16,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace CS4500HW1
 {
@@ -577,6 +578,9 @@ namespace CS4500HW1
                 //Mihir - telling the user they won a pattern or that they won the whole game.
                 if (patternNum <= 10)
                 {
+                    // Grant got this from https://learn.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-play-a-sound-from-a-windows-form?view=netframeworkdesktop-4.8
+                    SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+                    simpleSound.Play();
                     MessageBox.Show("Congratulations! User Won pattern " + current + ". The old pattern is gone and The Art Dealer is now looking for a NEW pattern!");
                     // This puts the pattern winner message in the box that displays the history in the corner
                     textBoxLog.AppendText("USER WON PATTERN " + current + Environment.NewLine);
@@ -596,7 +600,7 @@ namespace CS4500HW1
                     {
                         sw.WriteLine("USER WON PATTERN " + current + Environment.NewLine);
                     }
-                    //MessageBox.Show("WOW, Congratulations! Not only has the user won the pattern, the user has won every pattern, which means the user has won the WHOLE GAME!");
+
                     DialogResult dialogResult = MessageBox.Show("WOW, Congratulations! Not only has the user won the pattern, the user has won every pattern, which means the user has won the WHOLE GAME!\r\nWould you like to start over again with the first pattern?", "Art Dealer", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {

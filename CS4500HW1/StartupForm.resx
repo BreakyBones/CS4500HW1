@@ -128,8 +128,10 @@ has "won" a pattern and the Art Dealer will move onto the next pattern until all
 been completed. Once all patterns are completed, the Art Dealer will let the user know they 
 have won all the patterns and therefore they have won the whole game. Either the user can 
 click the "yes" button to restart the game or they can click no to quit the program.
-Previous round cards and dealer selections are saved in the top right and a log file called "CardsDealt.txt"
-Clicking "Quit" will exit the application</value>
+Previous round cards and dealer selections are saved in the top right and in "CardsDealt.txt".
+Clicking "Quit" will exit the application. One additional feature is that for pattern nine, each
+set the Art Dealer selects will be displayed and sent to "CardsDealt.txt". Another feature is that 
+a small sound is played if a user wins a pattern but a big sound is played if the game is won.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -46,10 +46,10 @@ namespace CS4500HW1
             NextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             NextBtn.Font = new System.Drawing.Font("Impact", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             NextBtn.ForeColor = System.Drawing.Color.White;
-            NextBtn.Location = new System.Drawing.Point(586, 660);
-            NextBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            NextBtn.Location = new System.Drawing.Point(475, 557);
+            NextBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             NextBtn.Name = "NextBtn";
-            NextBtn.Size = new System.Drawing.Size(286, 67);
+            NextBtn.Size = new System.Drawing.Size(229, 54);
             NextBtn.TabIndex = 1;
             NextBtn.Text = "Next";
             NextBtn.UseVisualStyleBackColor = false;
@@ -59,15 +59,15 @@ namespace CS4500HW1
             // 
             purposeTitle.AutoSize = true;
             purposeTitle.BackColor = System.Drawing.Color.Transparent;
-            purposeTitle.Font = new System.Drawing.Font("MS Gothic", 72F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            purposeTitle.Font = new System.Drawing.Font("MS Gothic", 50F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             purposeTitle.ForeColor = System.Drawing.Color.Gold;
-            purposeTitle.Location = new System.Drawing.Point(435, 0);
-            purposeTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            purposeTitle.Location = new System.Drawing.Point(399, 9);
             purposeTitle.Name = "purposeTitle";
-            purposeTitle.Size = new System.Drawing.Size(644, 144);
+            purposeTitle.Size = new System.Drawing.Size(379, 84);
             purposeTitle.TabIndex = 7;
             purposeTitle.Text = "Welcome!";
             purposeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            purposeTitle.Click += purposeTitle_Click;
             // 
             // label1
             // 
@@ -75,24 +75,24 @@ namespace CS4500HW1
             label1.BackColor = System.Drawing.Color.Transparent;
             label1.Font = new System.Drawing.Font("Constantia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             label1.ForeColor = System.Drawing.Color.Gold;
-            label1.Location = new System.Drawing.Point(13, 144);
-            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Location = new System.Drawing.Point(12, 91);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(1438, 468);
+            label1.Size = new System.Drawing.Size(1122, 462);
             label1.TabIndex = 8;
             label1.Text = resources.GetString("label1.Text");
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
             // StartupForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new System.Drawing.Size(1481, 780);
+            ClientSize = new System.Drawing.Size(1185, 624);
             Controls.Add(label1);
             Controls.Add(purposeTitle);
             Controls.Add(NextBtn);
-            Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "StartupForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "StartupForm";
