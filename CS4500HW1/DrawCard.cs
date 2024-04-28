@@ -601,9 +601,10 @@ namespace CS4500HW1
                         sw.WriteLine("USER WON PATTERN " + current + Environment.NewLine);
                     }
                     //This is Mihir. This is the overall win sound effect. Got this idea from https://stackoverflow.com/questions/3502311/how-to-play-a-sound-in-c-net
+                    //Ignore the 2 lines below this, it has been changed since then.
                     //I got the sound effect from https://pixabay.com/sound-effects/search/fireworks/
                     //and I coverted it into a .wav file at https://cloudconvert.com/mp3-to-wav
-                    using (var soundPlayer = new SoundPlayer(Application.StartupPath + "fireworks-1-94483.wav"))
+                    using (var soundPlayer = new SoundPlayer(@"c:\Windows\Media\tada.wav"))//This is Mihir, I changed this so it just uses a tada sound effect now.
                     {
                         soundPlayer.Play();
                         //soundPlayer.PlaySync();
