@@ -612,7 +612,7 @@ namespace CS4500HW1
                         //This is Mihir, Fixed bug, now it will put in 12 into the file when user says no after winning the game instead of 5.
                         using(StreamWriter swPattern2 = new StreamWriter(patternFile))
                         {
-                            swPattern2.Write(12);
+                            swPattern2.Write(12); //This is Mihir changed 6 to 12 for hw5
                         }
                         MessageBox.Show("Ok, goodbye!");
                         System.Threading.Thread.Sleep(5000);
