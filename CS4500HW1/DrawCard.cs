@@ -600,7 +600,13 @@ namespace CS4500HW1
                     {
                         sw.WriteLine("USER WON PATTERN " + current + Environment.NewLine);
                     }
-
+                    //This is Mihir. This is the overall win sound effect. Got this idea from https://stackoverflow.com/questions/3502311/how-to-play-a-sound-in-c-net
+                    //I got the sound effect from https://pixabay.com/sound-effects/search/fireworks/
+                    //and I coverted it into a .wav file at https://cloudconvert.com/mp3-to-wav
+                    using (var soundPlayer = new SoundPlayer(Application.StartupPath + "fireworks-1-94483.wav"))
+                    {
+                        soundPlayer.Play(); // can also use soundPlayer.PlaySync()
+                    }
                     DialogResult dialogResult = MessageBox.Show("WOW, Congratulations! Not only has the user won the pattern, the user has won every pattern, which means the user has won the WHOLE GAME!\r\nWould you like to start over again with the first pattern?", "Art Dealer", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
