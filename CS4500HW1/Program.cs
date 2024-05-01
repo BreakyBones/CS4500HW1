@@ -21,7 +21,8 @@
 // There is also a file called LastWon.txt that must be made by the user and the user must enter the number
 // 0 into that file before starting the game.
 // Another external that must be empty before the program starts is CurrentPattern.txt.
-// DO NOT EDIT IT YOURSELF!! If you do, then the user will easily use duplicate hands to win the same pattern.
+// This file must be downloaded by the user before starting the program. It is a text file that will start out with nothing it.
+// When running the program, DO NOT EDIT CurrentPattern.txt YOURSELF!! If you do, then the user will easily use duplicate hands to win the same pattern.
 // This program starts with a welcome message.The user clicks Next to start selecting cards.
 // One by one, the user confirms each of the four cards separately.
 // For each card selected, select one of the boxes containing the suit to select the suit
